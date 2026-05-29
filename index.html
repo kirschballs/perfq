@@ -874,6 +874,28 @@
       border-style: dashed;
     }
 
+
+    /* RFQ 2 patch: use real PNG preset images from /images instead of CSS-generated placeholders */
+    img.pattern-asset {
+      display: block;
+      width: 100%;
+      height: 116px;
+      object-fit: contain;
+      padding: 6px;
+      background: #ffffff;
+      border: 1px solid #9aa4af;
+      border-radius: 8px;
+      margin: 10px 0;
+      position: static;
+      overflow: visible;
+    }
+
+    img.pattern-asset::before,
+    img.pattern-asset::after {
+      content: none !important;
+      display: none !important;
+    }
+
   </style>
 </head>
 <body>
@@ -968,13 +990,16 @@
         <section class="section">
           <div class="section-title"><span class="num">3</span> Pattern Selection</div>
           <div class="section-body">
-            <p style="margin-top:0">Select the side-view pattern that most closely matches the required row layout and spacing.</p>
+            <p style="margin-top:0">Select the radial/end-view pattern that most closely matches the required row layout.</p>
             <div class="pattern-grid">
-              <label class="pattern-card"><input type="radio" name="pattern" value="A" checked /> <strong>Pattern A</strong><div class="pattern-img radial-2"></div><div class="desc">Straight rows, standard spacing</div></label>
-              <label class="pattern-card"><input type="radio" name="pattern" value="B" /> <strong>Pattern B</strong><div class="pattern-img radial-4"></div><div class="desc">More rows around pipe</div></label>
-              <label class="pattern-card"><input type="radio" name="pattern" value="C" /> <strong>Pattern C</strong><div class="pattern-img radial-6"></div><div class="desc">Wider center spacing</div></label>
-              <label class="pattern-card"><input type="radio" name="pattern" value="D" /> <strong>Pattern D</strong><div class="pattern-img radial-8"></div><div class="desc">Tighter center spacing</div></label>
-              <label class="pattern-card"><input type="radio" name="pattern" value="Staggered" /> <strong>Staggered</strong><div class="pattern-img radial-stagger"></div><div class="desc">Use only when specifically required</div></label>
+              <label class="pattern-card"><input type="radio" name="pattern" value="A" checked /> <strong>Pattern A</strong><img class="pattern-img pattern-asset" src="images/patA.png" alt="Pattern A radial layout" /><div class="desc">Preset radial layout A</div></label>
+              <label class="pattern-card"><input type="radio" name="pattern" value="B" /> <strong>Pattern B</strong><img class="pattern-img pattern-asset" src="images/patB.png" alt="Pattern B radial layout" /><div class="desc">Preset radial layout B</div></label>
+              <label class="pattern-card"><input type="radio" name="pattern" value="C" /> <strong>Pattern C</strong><img class="pattern-img pattern-asset" src="images/patC.png" alt="Pattern C radial layout" /><div class="desc">Preset radial layout C</div></label>
+              <label class="pattern-card"><input type="radio" name="pattern" value="D" /> <strong>Pattern D</strong><img class="pattern-img pattern-asset" src="images/patD.png" alt="Pattern D radial layout" /><div class="desc">Preset radial layout D</div></label>
+              <label class="pattern-card"><input type="radio" name="pattern" value="E" /> <strong>Pattern E</strong><img class="pattern-img pattern-asset" src="images/patE.png" alt="Pattern E radial layout" /><div class="desc">Preset radial layout E</div></label>
+              <label class="pattern-card"><input type="radio" name="pattern" value="F" /> <strong>Pattern F</strong><img class="pattern-img pattern-asset" src="images/patF.png" alt="Pattern F radial layout" /><div class="desc">Preset radial layout F</div></label>
+              <label class="pattern-card"><input type="radio" name="pattern" value="G" /> <strong>Pattern G</strong><img class="pattern-img pattern-asset" src="images/patG.png" alt="Pattern G radial layout" /><div class="desc">Preset radial layout G</div></label>
+              <label class="pattern-card"><input type="radio" name="pattern" value="H" /> <strong>Pattern H</strong><img class="pattern-img pattern-asset" src="images/patH.png" alt="Pattern H radial layout" /><div class="desc">Preset radial layout H</div></label>
               <label class="pattern-card"><input type="radio" name="pattern" value="Custom" /> <strong>Custom</strong><div class="pattern-img radial-custom"></div><div class="desc">Build visual pattern from RFQ values</div></label>
             </div>
 
