@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Perforating RFQ - Index v3</title>
+  <title>Perforating RFQ - Index v6</title>
   <style>
     :root {
       --blue: #003b73;
@@ -762,6 +762,159 @@
 
     .attachments-full { width: 100%; }
 
+
+    /* RFQ 2 v5 patch: spec summary, validation, and manufacturing detail modal */
+    .file-actions-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .validation-result-box {
+      display: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fbfcfe;
+      padding: 10px;
+    }
+
+    .validation-result-box.active { display: block; }
+    .validation-result-box.valid { border-color: #98d7b2; background: var(--soft-green); }
+    .validation-result-box.invalid { border-color: #fda29b; background: #fffafa; }
+
+    .spec-summary-head {
+      color: var(--blue);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+
+    .spec-summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .spec-k {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 5px;
+    }
+
+    .spec-chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      min-height: 28px;
+      align-items: flex-start;
+    }
+
+    .spec-chip {
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: 999px;
+      padding: 5px 8px;
+      font-size: 12px;
+      line-height: 1.2;
+      color: #334155;
+    }
+
+    .spec-chip.missing {
+      border-color: #fda29b;
+      background: #fff1f0;
+      color: #912018;
+      font-weight: 800;
+    }
+
+    .section.section-error {
+      border-color: #fda29b;
+      box-shadow: 0 0 0 2px rgba(180, 35, 24, 0.12);
+    }
+
+    .section.section-error > .section-title {
+      background: linear-gradient(90deg, #fff1f0, #fff7f6);
+      color: #912018;
+      border-bottom-color: #fda29b;
+    }
+
+    input.missing-control,
+    select.missing-control,
+    textarea.missing-control,
+    .choice-row.missing-control,
+    .inline-options.missing-control,
+    .pipe-end-summary.missing-control {
+      border-color: #f04438 !important;
+      box-shadow: 0 0 0 2px rgba(240, 68, 56, 0.13);
+      background: #fffafa;
+      border-radius: 6px;
+    }
+
+    .choice-row.missing-control,
+    .inline-options.missing-control { padding: 4px; }
+
+    .modal.full-page-modal {
+      width: min(1320px, 98vw);
+      height: 96vh;
+      max-height: 96vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal.full-page-modal .modal-body {
+      flex: 1;
+      overflow: auto;
+    }
+
+    .manufacturing-detail-layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .manufacturing-spec-panel,
+    .manufacturing-visual-panel {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fbfcfe;
+      padding: 12px;
+    }
+
+    .manufacturing-spec-line {
+      font-family: Consolas, monospace;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      padding: 10px;
+      margin-bottom: 12px;
+      color: #0f2742;
+      line-height: 1.45;
+    }
+
+    .manufacturing-visuals {
+      display: grid;
+      grid-template-columns: minmax(320px, 0.75fr) minmax(520px, 1.25fr);
+      gap: 12px;
+    }
+
+    .manufacturing-visuals .svg-box svg {
+      max-height: 560px;
+    }
+
+    @media (max-width: 900px) {
+      .file-actions-grid,
+      .spec-summary-grid,
+      .manufacturing-detail-layout,
+      .manufacturing-visuals {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 900px) {
       body { font-size: 13px; background: #fff; }
       .page { margin: 0; border: 0; border-radius: 0; box-shadow: none; }
@@ -1117,6 +1270,159 @@
 
     .attachments-full { width: 100%; }
 
+
+    /* RFQ 2 v5 patch: spec summary, validation, and manufacturing detail modal */
+    .file-actions-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .validation-result-box {
+      display: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fbfcfe;
+      padding: 10px;
+    }
+
+    .validation-result-box.active { display: block; }
+    .validation-result-box.valid { border-color: #98d7b2; background: var(--soft-green); }
+    .validation-result-box.invalid { border-color: #fda29b; background: #fffafa; }
+
+    .spec-summary-head {
+      color: var(--blue);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+
+    .spec-summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .spec-k {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 5px;
+    }
+
+    .spec-chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      min-height: 28px;
+      align-items: flex-start;
+    }
+
+    .spec-chip {
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: 999px;
+      padding: 5px 8px;
+      font-size: 12px;
+      line-height: 1.2;
+      color: #334155;
+    }
+
+    .spec-chip.missing {
+      border-color: #fda29b;
+      background: #fff1f0;
+      color: #912018;
+      font-weight: 800;
+    }
+
+    .section.section-error {
+      border-color: #fda29b;
+      box-shadow: 0 0 0 2px rgba(180, 35, 24, 0.12);
+    }
+
+    .section.section-error > .section-title {
+      background: linear-gradient(90deg, #fff1f0, #fff7f6);
+      color: #912018;
+      border-bottom-color: #fda29b;
+    }
+
+    input.missing-control,
+    select.missing-control,
+    textarea.missing-control,
+    .choice-row.missing-control,
+    .inline-options.missing-control,
+    .pipe-end-summary.missing-control {
+      border-color: #f04438 !important;
+      box-shadow: 0 0 0 2px rgba(240, 68, 56, 0.13);
+      background: #fffafa;
+      border-radius: 6px;
+    }
+
+    .choice-row.missing-control,
+    .inline-options.missing-control { padding: 4px; }
+
+    .modal.full-page-modal {
+      width: min(1320px, 98vw);
+      height: 96vh;
+      max-height: 96vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal.full-page-modal .modal-body {
+      flex: 1;
+      overflow: auto;
+    }
+
+    .manufacturing-detail-layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .manufacturing-spec-panel,
+    .manufacturing-visual-panel {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fbfcfe;
+      padding: 12px;
+    }
+
+    .manufacturing-spec-line {
+      font-family: Consolas, monospace;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      padding: 10px;
+      margin-bottom: 12px;
+      color: #0f2742;
+      line-height: 1.45;
+    }
+
+    .manufacturing-visuals {
+      display: grid;
+      grid-template-columns: minmax(320px, 0.75fr) minmax(520px, 1.25fr);
+      gap: 12px;
+    }
+
+    .manufacturing-visuals .svg-box svg {
+      max-height: 560px;
+    }
+
+    @media (max-width: 900px) {
+      .file-actions-grid,
+      .spec-summary-grid,
+      .manufacturing-detail-layout,
+      .manufacturing-visuals {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 900px) {
       .compact-form > .field-grid,
       .compact-form .split .field-grid,
@@ -1151,14 +1457,30 @@
     </header>
 
     <main class="content">
-      <section class="section">
+      <section class="section" id="fileActionsSection">
         <div class="section-title"><span class="num">0</span> File Actions</div>
         <div class="section-body">
-          <div class="button-row" style="margin-top:0">
-            <button type="button" class="orange" onclick="downloadCurrentHtml()">Download HTML File</button>
-            <button type="button" class="secondary" onclick="window.print()">Print / Save as PDF</button>
+          <div class="file-actions-grid">
+            <div class="button-row" style="margin-top:0">
+              <button type="button" class="orange" onclick="downloadCurrentHtml()">Download HTML File</button>
+              <button type="button" class="secondary" onclick="window.print()">Print / Save as PDF</button>
+              <button type="button" onclick="validateFormOnly()">Validate Form</button>
+              <button type="button" class="green" onclick="openManufacturingDetails()">Generate Manufacturing Details</button>
+            </div>
+            <div class="validation-result-box" id="validationResultBox" aria-live="polite">
+              <div class="spec-summary-head" id="validationResultTitle">Validation Results</div>
+              <div class="spec-summary-grid">
+                <div>
+                  <div class="spec-k">Captured Required Info</div>
+                  <div class="spec-chip-list" id="enteredRequiredList"></div>
+                </div>
+                <div>
+                  <div class="spec-k">Missing Required Info</div>
+                  <div class="spec-chip-list" id="missingRequiredList"></div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="download-help">Save to PDF to submit to our team by email for now. To keep an editable filled copy, use the Save HTML button.</div>
         </div>
       </section>
 
@@ -1176,7 +1498,7 @@
               <label class="choice-button"><input type="radio" name="projectTiming" value="TBD" checked /> Bid / End Date TBD</label>
               <label class="choice-button"><input type="radio" name="projectTiming" value="Specific" /> Specific Dates</label>
             </div>
-            <label class="project-date-field-label req">Quote Required By</label><input class="project-date-field" name="quoteRequired" type="date" />
+            <label class="req">Quote Required By</label><input name="quoteRequired" type="date" required />
             <label class="project-date-field-label">Product Required By</label><input class="project-date-field" name="productRequired" type="date" />
             <label>Sales Representative</label>
             <select name="salesRep"><option></option><option>Cory Hornung</option><option>Dale</option><option>Other</option></select>
@@ -1437,6 +1759,43 @@
     </div>
   </div>
 
+
+
+  <div class="modal-backdrop" id="manufacturingDetailsModal" aria-hidden="true">
+    <div class="modal full-page-modal" role="dialog" aria-modal="true" aria-labelledby="manufacturingDetailsTitle">
+      <div class="modal-header">
+        <div>
+          <h2 id="manufacturingDetailsTitle">Manufacturing Details</h2>
+          <div class="desc">Generated from the currently entered RFQ specs.</div>
+        </div>
+        <div class="button-row" style="margin-top:0">
+          <button type="button" class="secondary" onclick="closeManufacturingDetails()">Close</button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="manufacturing-detail-layout">
+          <div class="manufacturing-spec-panel">
+            <h3 class="subsection-title">Current Specs</h3>
+            <div class="manufacturing-spec-line" id="manufacturingSpecLine"></div>
+            <div class="metric-grid" id="manufacturingMetrics"></div>
+          </div>
+          <div class="manufacturing-visual-panel">
+            <h3 class="subsection-title">Generated Pattern Views</h3>
+            <div class="manufacturing-visuals">
+              <div class="svg-box">
+                <div class="svg-box-title">Radial / End View</div>
+                <svg id="manufacturingRadialSvg" viewBox="0 0 340 340"></svg>
+              </div>
+              <div class="svg-box">
+                <div class="svg-box-title">Unwrapped Side View</div>
+                <svg id="manufacturingSideSvg" viewBox="0 0 720 420"></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <script>
     (function () {
       var form = document.getElementById('rfqForm');
@@ -1456,6 +1815,9 @@
       window.openPipeEndModal = openPipeEndModal;
       window.closePipeEndModal = closePipeEndModal;
       window.choosePipeEnd = choosePipeEnd;
+      window.openManufacturingDetails = openManufacturingDetails;
+      window.closeManufacturingDetails = closeManufacturingDetails;
+      window.validateFormOnly = validateFormOnly;
 
       function trimText(value) { return String(value || '').replace(/^\s+|\s+$/g, ''); }
 
@@ -1670,10 +2032,10 @@
       }
 
       function updateProjectTimingVisibility() {
-        var showDates = getCheckedValue('projectTiming') === 'Specific';
+        var showProductRequired = getCheckedValue('projectTiming') === 'Specific';
         var fields = document.querySelectorAll('.project-date-field, .project-date-field-label');
         for (var i = 0; i < fields.length; i += 1) {
-          if (showDates) {
+          if (showProductRequired) {
             fields[i].className = fields[i].className.replace(/\s*project-date-hidden/g, '');
           } else if (fields[i].className.indexOf('project-date-hidden') === -1) {
             fields[i].className += ' project-date-hidden';
@@ -1681,9 +2043,7 @@
         }
 
         var quoteRequired = form.elements.quoteRequired;
-        if (quoteRequired) {
-          quoteRequired.required = showDates;
-        }
+        if (quoteRequired) { quoteRequired.required = true; }
       }
 
       function updatePipeEndSummary() {
@@ -1823,12 +2183,230 @@
         return od + ' ' + spec + ' ' + material + pipeEndsText + ' | ' + buildQuantityText() + ' | ' + diameter + ' holes | ' + spacing + ' C-C | ' + rows + ' rows | Pattern ' + pattern + staggerText + approvedText + buildQuantityWarning();
       }
 
+      function getDisplayValue(name) {
+        if (name === 'pipeSupplier' || name === 'material' || name === 'pattern' || name === 'staggerRequired') { return getCheckedValue(name); }
+        if (name === 'pipeEnds') { return getFieldValue(name); }
+        return getFieldValue(name);
+      }
+
+      function getRequiredSpecs() {
+        var items = [
+          { name: 'company', label: 'Company Name', section: 'Customer Information' },
+          { name: 'contact', label: 'Contact Name', section: 'Customer Information' },
+          { name: 'email', label: 'Email Address', section: 'Customer Information' },
+          { name: 'quoteRequired', label: 'Quote Required By', section: 'Customer Information' },
+          { name: 'pipeSupplier', label: 'Pipe Supplied By', section: 'Pipe Information' },
+          { name: 'material', label: 'Pipe Material', section: 'Pipe Information' },
+          { name: 'pipeOD', label: 'Pipe Size OD', section: 'Pipe Information' },
+          { name: 'pipeLength', label: 'Length Per Pipe', section: 'Pipe Information' },
+          { name: 'numberOfLengths', label: 'Number of Lengths', section: 'Pipe Information' },
+          { name: 'holeDiameter', label: 'Hole Diameter', section: 'Perforating Details' },
+          { name: 'holeSpacing', label: 'Center-to-Center Spacing', section: 'Perforating Details' },
+          { name: 'holeRows', label: 'Number of Rows', section: 'Perforating Details' }
+        ];
+
+        if (getCheckedValue('material') === 'PVC') {
+          items.splice(6, 0, { name: 'pipeEnds', label: 'PVC Pipe Ends', section: 'Pipe Information' });
+        }
+
+        if (getCheckedValue('staggerRequired') === 'Yes') {
+          items.push({ name: 'staggerOffset', label: 'Stagger Offset', section: 'Perforating Details' });
+        }
+
+        return items;
+      }
+
+      function getSpecStatus() {
+        var items = getRequiredSpecs();
+        var entered = [];
+        var missing = [];
+        for (var i = 0; i < items.length; i += 1) {
+          var value = getDisplayValue(items[i].name);
+          if (value) {
+            entered.push({ label: items[i].label, value: value, name: items[i].name, section: items[i].section });
+          } else {
+            missing.push(items[i]);
+          }
+        }
+        return { entered: entered, missing: missing };
+      }
+
+      function renderChipList(items, missing) {
+        if (!items.length) {
+          return '<span class="spec-chip' + (missing ? ' missing' : '') + '">None</span>';
+        }
+        return items.map(function (item) {
+          var text = item.value ? item.label + ': ' + item.value : item.label;
+          return '<span class="spec-chip' + (missing ? ' missing' : '') + '">' + escapeHtml(text) + '</span>';
+        }).join('');
+      }
+
+      function setValidationResultVisible(show) {
+        var box = document.getElementById('validationResultBox');
+        if (!box) { return; }
+        if (!show) {
+          box.className = 'validation-result-box';
+        }
+      }
+
+      function renderValidationResult(status) {
+        var entered = document.getElementById('enteredRequiredList');
+        var missing = document.getElementById('missingRequiredList');
+        var box = document.getElementById('validationResultBox');
+        var title = document.getElementById('validationResultTitle');
+        var isValid = status.missing.length === 0;
+
+        if (entered) { entered.innerHTML = renderChipList(status.entered, false); }
+        if (missing) { missing.innerHTML = renderChipList(status.missing, true); }
+        if (title) { title.textContent = isValid ? 'Validation Passed' : 'Validation Failed'; }
+        if (box) { box.className = 'validation-result-box active ' + (isValid ? 'valid' : 'invalid'); }
+      }
+
+      function validateFormOnly() {
+        var validation = validateManufacturingInputs(true);
+        if (!validation.valid && validation.firstSection && validation.firstSection.scrollIntoView) {
+          validation.firstSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+
+      function clearValidationState() {
+        var controls = form.querySelectorAll('.missing-control');
+        for (var i = 0; i < controls.length; i += 1) {
+          controls[i].className = controls[i].className.replace(/\s*missing-control/g, '');
+        }
+        var sections = form.querySelectorAll('.section-error');
+        for (var j = 0; j < sections.length; j += 1) {
+          sections[j].className = sections[j].className.replace(/\s*section-error/g, '');
+        }
+      }
+
+      function markSectionErrorForControl(control) {
+        if (!control) { return null; }
+        var node = control;
+        while (node && node !== form) {
+          if (node.className && String(node.className).indexOf('section') !== -1) {
+            if (String(node.className).indexOf('section-error') === -1) { node.className += ' section-error'; }
+            return node;
+          }
+          node = node.parentNode;
+        }
+        return null;
+      }
+
+      function markMissing(item) {
+        var control = null;
+        var input = form.querySelector('[name="' + item.name + '"]');
+        if (input) {
+          var type = String(input.type || '').toLowerCase();
+          if (type === 'radio') {
+            control = input.closest ? input.closest('.choice-row, .inline-options') : input.parentNode;
+          } else {
+            control = input;
+          }
+        }
+
+        if (item.name === 'pipeEnds') {
+          control = document.getElementById('pipeEndRowControl') || control;
+        }
+
+        if (control && String(control.className).indexOf('missing-control') === -1) {
+          control.className += ' missing-control';
+        }
+
+        return markSectionErrorForControl(control || input);
+      }
+
+      function validateManufacturingInputs(showResults) {
+        clearValidationState();
+        var status = getSpecStatus();
+        var firstSection = null;
+        for (var i = 0; i < status.missing.length; i += 1) {
+          var section = markMissing(status.missing[i]);
+          if (!firstSection && section) { firstSection = section; }
+        }
+        if (showResults) { renderValidationResult(status); }
+        return { valid: status.missing.length === 0, firstSection: firstSection, missing: status.missing, status: status };
+      }
+
+      function buildManufacturingPatternData() {
+        var p = collectRfqPatternData();
+        var pipeOD = p.pipeOD || 0;
+        var pipeLength = p.pipeLength || 0;
+        var holeDia = p.holeDia || 0;
+        var holeSpacing = p.holeSpacing || 0;
+        var startOffset = p.startOffset || 12;
+        var endOffset = p.endOffset || 12;
+        var rowCount = Math.max(1, Math.floor(p.rowCount || 1));
+        var usableLength = Math.max(0, pipeLength - startOffset - endOffset);
+        var holesPerRow = holeSpacing > 0 ? Math.floor(usableLength / holeSpacing) + 1 : 0;
+        var totalHolesPerPipe = holesPerRow * rowCount;
+        return {
+          material: p.material,
+          pipeSpec: p.pipeSpec,
+          numberOfLengths: p.numberOfLengths || 1,
+          pipeOD: pipeOD,
+          pipeLength: pipeLength,
+          holeDia: holeDia,
+          holeSpacing: holeSpacing,
+          rowCount: rowCount,
+          startOffset: startOffset,
+          endOffset: endOffset,
+          usableLength: usableLength,
+          holesPerRow: holesPerRow,
+          totalHolesPerPipe: totalHolesPerPipe,
+          totalHolesAllLengths: totalHolesPerPipe * (p.numberOfLengths || 1),
+          staggered: p.staggered,
+          patternNotes: p.patternNotes
+        };
+      }
+
+      function renderManufacturingDetails() {
+        var p = buildManufacturingPatternData();
+        var metrics = document.getElementById('manufacturingMetrics');
+        var specLine = document.getElementById('manufacturingSpecLine');
+        if (specLine) { specLine.textContent = buildSummary(); }
+        if (metrics) {
+          metrics.innerHTML = [
+            metric('Rows', p.rowCount),
+            metric('Holes / Row', p.holesPerRow),
+            metric('Holes / Pipe', p.totalHolesPerPipe),
+            metric('Total Holes', p.totalHolesAllLengths),
+            metric('Spacing', formatInches(p.holeSpacing)),
+            metric('Offsets', formatInches(p.startOffset) + ' / ' + formatInches(p.endOffset)),
+            metric('Pipe OD', formatInches(p.pipeOD)),
+            metric('Pipe Length', formatInches(p.pipeLength))
+          ].join('');
+        }
+        drawRadialSvg('manufacturingRadialSvg', p);
+        drawSideSvg('manufacturingSideSvg', p);
+      }
+
+      function openManufacturingDetails() {
+        var validation = validateManufacturingInputs(true);
+        if (!validation.valid) {
+          if (validation.firstSection && validation.firstSection.scrollIntoView) {
+            validation.firstSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          return;
+        }
+        renderManufacturingDetails();
+        document.getElementById('manufacturingDetailsModal').className = 'modal-backdrop active';
+        document.getElementById('manufacturingDetailsModal').setAttribute('aria-hidden', 'false');
+      }
+
+      function closeManufacturingDetails() {
+        document.getElementById('manufacturingDetailsModal').className = 'modal-backdrop';
+        document.getElementById('manufacturingDetailsModal').setAttribute('aria-hidden', 'true');
+      }
+
       function updateSummary() {
         updateCalculatedTotal();
         summaryLine.textContent = buildSummary();
       }
 
       function handleFormChange(event) {
+        clearValidationState();
+        setValidationResultVisible(false);
         if (event && event.target && event.target.name === 'material') {
           handleMaterialSelectionChanged();
         }
@@ -2140,6 +2718,10 @@
 
       addEvent(document.getElementById('customPatternModal'), 'click', function (event) {
         if (event.target && event.target.id === 'customPatternModal') { closeCustomPatternBuilder(); }
+      });
+
+      addEvent(document.getElementById('manufacturingDetailsModal'), 'click', function (event) {
+        if (event.target && event.target.id === 'manufacturingDetailsModal') { closeManufacturingDetails(); }
       });
 
       addEvent(document.getElementById('pipeEndModal'), 'click', function (event) {
