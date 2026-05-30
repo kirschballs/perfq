@@ -336,6 +336,14 @@
       gap: 16px;
     }
 
+    .pattern-subsection-title {
+      margin-top: 18px;
+    }
+
+    .pattern-detail-block {
+      margin-bottom: 12px;
+    }
+
     .upload-box {
       border: 1px solid var(--border);
       border-radius: 8px;
@@ -920,13 +928,13 @@
             <button type="button" class="orange" onclick="downloadCurrentHtml()">Download HTML File</button>
             <button type="button" class="secondary" onclick="window.print()">Print / Save as PDF</button>
           </div>
-          <div class="download-help">MSave to PDF to submit to our team in an email for now :) if you want to save a filled copy for use, please use the save HTML button.</div>
+          <div class="download-help">Save to PDF to submit to our team by email for now. To keep an editable filled copy, use the Save HTML button.</div>
         </div>
       </section>
 
       <section class="section">
         <div class="section-title"><span class="num">1</span> Customer Information</div>
-        <div class="section-body grid-2">
+        <div class="section-body">
           <div class="field-grid">
             <label class="req">Company Name</label><input name="company" required />
             <label class="req">Contact Name</label><input name="contact" required />
@@ -943,9 +951,8 @@
         </div>
       </section>
 
-      <div class="grid-2">
-        <section class="section">
-          <div class="section-title"><span class="num">2</span> Pipe Information</div>
+      <section class="section">
+        <div class="section-title"><span class="num">2</span> Pipe Information</div>
           <div class="section-body">
             <div class="field-grid">
               <label class="req">Pipe Supplied By</label>
@@ -1011,15 +1018,9 @@
               <label>Pattern / Row Notes</label><textarea name="patternNotes" placeholder="Use only for unusual row layout, custom stagger, or special orientation."></textarea>
             </div>
           </div>
-          <div class="summary-line" id="summaryLine">Manufacturing summary preview will generate here.</div>
-          <div class="test-panel" id="testPanel"></div>
-        </div>
-      </section>
-	  
-	  <section class="section">
-          <div class="section-title"><span class="num">4</span> Row Pattern Detail</div>
-          <div class="section-body">
-            <p style="margin-top:0">Select the radial/end-view pattern that most closely matches the required row layout, otherwise make your own!.</p>
+          <h3 class="subsection-title pattern-subsection-title">Row Pattern Detail</h3>
+          <div class="pattern-detail-block">
+            <p style="margin-top:0">Select the radial/end-view pattern that most closely matches the required row layout, otherwise build a custom pattern.</p>
             <div class="pattern-grid">
               <label class="pattern-card"><input type="radio" name="pattern" value="A" checked /> <strong>Pattern A</strong><img class="pattern-img pattern-asset" src="images/patA.png" alt="Pattern A radial layout" /><div class="desc">Preset radial layout A</div></label>
               <label class="pattern-card"><input type="radio" name="pattern" value="B" /> <strong>Pattern B</strong><img class="pattern-img pattern-asset" src="images/patB.png" alt="Pattern B radial layout" /><div class="desc">Preset radial layout B</div></label>
@@ -1034,7 +1035,7 @@
 
             <div class="custom-builder-bar" id="customBuilderBar">
               <strong>Custom Pattern Builder</strong>
-              <div class="desc">Uses the RFQ pipe and perforating details already entered below. No re-keying unless needed.</div>
+              <div class="desc">Uses the RFQ pipe and perforating details already entered above. No re-keying unless needed.</div>
               <div class="button-row">
                 <button type="button" onclick="openCustomPatternBuilder()">Launch Custom Pattern Builder</button>
                 <button type="button" class="secondary" onclick="clearApprovedPattern()">Clear Approved Pattern</button>
@@ -1049,12 +1050,15 @@
 
             <div class="info-box"><strong>i</strong><span>Most perforating requests can be defined by pipe size, length per pipe, number of lengths, hole diameter, center-to-center spacing, number of rows, and start/end offsets.</span></div>
           </div>
-        </section>
-      </div>
 
+          <div class="summary-line" id="summaryLine">Manufacturing summary preview will generate here.</div>
+          <div class="test-panel" id="testPanel"></div>
+        </div>
+      </section>
+	  
       <div class="grid-2">
         <section class="section">
-          <div class="section-title"><span class="num">5</span> Optional Requirements</div>
+          <div class="section-title"><span class="num">4</span> Optional Requirements</div>
           <div class="section-body split">
             <div>
               <h3 class="subsection-title">Partial Processing</h3>
@@ -1075,7 +1079,7 @@
         </section>
 
         <section class="section">
-          <div class="section-title"><span class="num">6</span> Attachments / Sketches</div>
+          <div class="section-title"><span class="num">5</span> Attachments / Sketches</div>
           <div class="section-body">
             <p style="margin-top:0">Attach drawings, marked-up sketches, or specification documents that may assist in quoting or manufacturing.</p>
             <div class="upload-row">
@@ -1090,14 +1094,9 @@
         </section>
       </div>
 
-      <section class="section">
-        <div class="section-title"><span class="num">7</span> Additional Notes <span style="font-weight:400;text-transform:none;color:var(--muted)">Provide any additional requirements, instructions, or special conditions.</span></div>
-        <div class="section-body"><textarea name="notes" style="min-height:100px"></textarea></div>
-      </section>
-
       <div class="grid-2">
         <section class="section">
-          <div class="section-title"><span class="num">8</span> Customer Approval</div>
+          <div class="section-title"><span class="num">6</span> Customer Approval</div>
           <div class="section-body">
             <p>I confirm that the above information reflects the requested perforating requirements.</p>
             <div class="field-grid">
