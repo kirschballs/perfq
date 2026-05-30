@@ -907,8 +907,8 @@
         <p>Please complete all sections to the best of your ability.<br />This will help us provide an accurate quote and lead time.</p>
       </div>
       <div class="rfq-box">
-        <label for="rfqNumber">RFQ Number (Internal)</label>
-        <input id="rfqNumber" name="rfqNumber" />
+        <label for="QuoteNum">Quote number (Internal)</label>
+        <input id="QuoteNum" name="QuoteNum" />
       </div>
     </header>
 
@@ -920,7 +920,7 @@
             <button type="button" class="orange" onclick="downloadCurrentHtml()">Download HTML File</button>
             <button type="button" class="secondary" onclick="window.print()">Print / Save as PDF</button>
           </div>
-          <div class="download-help">Mobile app downloads can be weird. This button creates the file inside the browser using a Blob. If the app blocks it, open the preview in Chrome/Safari and tap the same button there.</div>
+          <div class="download-help">MSave to PDF to submit to our team in an email for now :) if you want to save a filled copy for use, please use the save HTML button.</div>
         </div>
       </section>
 
@@ -948,13 +948,19 @@
           <div class="section-title"><span class="num">2</span> Pipe Information</div>
           <div class="section-body">
             <div class="field-grid">
-              <label class="req">Pipe Material</label>
+              <label class="req">Pipe Supplied By</label>
               <div class="inline-options">
-                <label><input type="radio" name="material" value="PVC" /> PVC</label>
-                <label><input type="radio" name="material" value="HDPE" /> HDPE</label>
+              <label><input type="radio" name="pipeSupplier" value="Rice" required /> Rice</label>
+              <label><input type="radio" name="pipeSupplier" value="Customer" /> Customer</label>
               </div>
-
-              <label class="req">Pipe Size (OD)</label>
+			  
+			  <label class="req">Pipe Material</label>
+              <div class="inline-options">
+              <label><input type="radio" name="material" value="PVC" /> PVC</label>
+              <label><input type="radio" name="material" value="HDPE" /> HDPE</label>
+              </div>
+			  
+			  <label class="req">Pipe Size (OD)</label>
               <div class="unit-row"><input name="pipeOD" required /><select name="pipeODUnit"><option>inches</option><option>mm</option></select></div>
 
               <label>SDR / Schedule / Series</label><input name="pipeSpec" />
@@ -978,19 +984,42 @@
                 <label class="pipe-card"><input type="radio" name="pipeEnds" value="Threaded / Other" /><div class="pipe-img pipe-thread"></div>Threaded / Other</label>
               </div>
 
-              <label class="req">Pipe Supplied By</label>
-              <div class="inline-options">
-                <label><input type="radio" name="pipeSupplier" value="Rice" required /> Rice</label>
-                <label><input type="radio" name="pipeSupplier" value="Customer" /> Customer</label>
-              </div>
+              
             </div>
           </div>
         </section>
 
-        <section class="section">
-          <div class="section-title"><span class="num">3</span> Pattern Selection</div>
+      <section class="section">
+        <div class="section-title"><span class="num">3</span> Perforating Details</div>
+        <div class="section-body">
+          <h3 class="subsection-title">Hole Configuration</h3>
+          <div class="split">
+            <div class="field-grid">
+              <label class="req">Hole Diameter</label><div class="unit-row"><input name="holeDiameter" /><select name="holeDiameterUnit"><option>mm</option><option>inches</option></select></div>
+              <label class="req">Center-to-Center Spacing</label><div class="unit-row"><input name="holeSpacing" /><select name="holeSpacingUnit"><option>mm</option><option>inches</option></select></div>
+              <label class="req">Number of Rows</label><input name="holeRows" />
+              <label>Start Offset</label><div class="unit-row"><input name="holeStartOffset" placeholder='Standard (12")' /><select name="startOffsetUnit"><option>inches</option><option>mm</option></select></div>
+              <label>End Offset</label><div class="unit-row"><input name="holeEndOffset" placeholder='Standard (12")' /><select name="endOffsetUnit"><option>inches</option><option>mm</option></select></div>
+            </div>
+            <div class="field-grid">
+              <label>Stagger Required?</label>
+              <div class="inline-options">
+                <label><input type="radio" name="staggerRequired" value="No" checked /> No</label>
+                <label><input type="radio" name="staggerRequired" value="Yes" /> Yes</label>
+              </div>
+              <label>Stagger Offset</label><div class="unit-row"><input name="staggerOffset" placeholder="Only if required" /><select name="staggerOffsetUnit"><option>mm</option><option>inches</option></select></div>
+              <label>Pattern / Row Notes</label><textarea name="patternNotes" placeholder="Use only for unusual row layout, custom stagger, or special orientation."></textarea>
+            </div>
+          </div>
+          <div class="summary-line" id="summaryLine">Manufacturing summary preview will generate here.</div>
+          <div class="test-panel" id="testPanel"></div>
+        </div>
+      </section>
+	  
+	  <section class="section">
+          <div class="section-title"><span class="num">4</span> Row Pattern Detail</div>
           <div class="section-body">
-            <p style="margin-top:0">Select the radial/end-view pattern that most closely matches the required row layout.</p>
+            <p style="margin-top:0">Select the radial/end-view pattern that most closely matches the required row layout, otherwise make your own!.</p>
             <div class="pattern-grid">
               <label class="pattern-card"><input type="radio" name="pattern" value="A" checked /> <strong>Pattern A</strong><img class="pattern-img pattern-asset" src="images/patA.png" alt="Pattern A radial layout" /><div class="desc">Preset radial layout A</div></label>
               <label class="pattern-card"><input type="radio" name="pattern" value="B" /> <strong>Pattern B</strong><img class="pattern-img pattern-asset" src="images/patB.png" alt="Pattern B radial layout" /><div class="desc">Preset radial layout B</div></label>
@@ -1023,33 +1052,6 @@
         </section>
       </div>
 
-      <section class="section">
-        <div class="section-title"><span class="num">4</span> Perforating Details</div>
-        <div class="section-body">
-          <h3 class="subsection-title">Hole Configuration</h3>
-          <div class="split">
-            <div class="field-grid">
-              <label class="req">Hole Diameter</label><div class="unit-row"><input name="holeDiameter" /><select name="holeDiameterUnit"><option>mm</option><option>inches</option></select></div>
-              <label class="req">Center-to-Center Spacing</label><div class="unit-row"><input name="holeSpacing" /><select name="holeSpacingUnit"><option>mm</option><option>inches</option></select></div>
-              <label class="req">Number of Rows</label><input name="holeRows" />
-              <label>Start Offset</label><div class="unit-row"><input name="holeStartOffset" placeholder='Standard (12")' /><select name="startOffsetUnit"><option>inches</option><option>mm</option></select></div>
-              <label>End Offset</label><div class="unit-row"><input name="holeEndOffset" placeholder='Standard (12")' /><select name="endOffsetUnit"><option>inches</option><option>mm</option></select></div>
-            </div>
-            <div class="field-grid">
-              <label>Stagger Required?</label>
-              <div class="inline-options">
-                <label><input type="radio" name="staggerRequired" value="No" checked /> No</label>
-                <label><input type="radio" name="staggerRequired" value="Yes" /> Yes</label>
-              </div>
-              <label>Stagger Offset</label><div class="unit-row"><input name="staggerOffset" placeholder="Only if required" /><select name="staggerOffsetUnit"><option>mm</option><option>inches</option></select></div>
-              <label>Pattern / Row Notes</label><textarea name="patternNotes" placeholder="Use only for unusual row layout, custom stagger, or special orientation."></textarea>
-            </div>
-          </div>
-          <div class="summary-line" id="summaryLine">Manufacturing summary preview will generate here.</div>
-          <div class="test-panel" id="testPanel"></div>
-        </div>
-      </section>
-
       <div class="grid-2">
         <section class="section">
           <div class="section-title"><span class="num">5</span> Optional Requirements</div>
@@ -1066,9 +1068,6 @@
             </div>
             <div>
               <h3 class="subsection-title">Packaging Requirements</h3>
-              <label><input type="checkbox" name="packaging" value="Bagged" /> Bagged</label><br />
-              <label><input type="checkbox" name="packaging" value="Boxed" /> Boxed</label><br />
-              <label><input type="checkbox" name="packaging" value="Crated" /> Crated</label><br />
               <label><input type="checkbox" name="packaging" value="Wrapped" /> Wrapped</label>
               <textarea name="packagingNotes" placeholder="Additional packaging instructions" style="margin-top:12px"></textarea>
             </div>
@@ -1113,7 +1112,7 @@
           <ul>
             <li>We will review your RFQ and contact you if we have questions.</li>
             <li>You will receive a quote and estimated lead time.</li>
-            <li>Upon approval, we will provide a manufacturing order and confirmation.</li>
+            <li>Upon approval, we will provide confirmation.</li>
           </ul>
         </div>
       </div>
