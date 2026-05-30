@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Perforating RFQ - Custom Pattern Prototype</title>
+  <title>Perforating RFQ - Index v3</title>
   <style>
     :root {
       --blue: #003b73;
@@ -709,6 +709,59 @@
       .metric-grid { grid-template-columns: repeat(2, minmax(110px, 1fr)); }
     }
 
+
+
+    /* RFQ 2 v4 patch: fill the pipe section, move optional processing into specs, full-width attachments */
+    .customer-grid {
+      grid-template-columns: 180px minmax(260px, 1fr);
+      align-items: center;
+    }
+
+    .project-date-hidden { display: none !important; }
+
+    .pipe-layout {
+      display: grid;
+      grid-template-columns: minmax(520px, 0.95fr) minmax(320px, 0.75fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .pipe-main-fields {
+      max-width: 660px;
+    }
+
+    .pipe-side-panel {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fbfcfe;
+      padding: 14px;
+      min-height: 100%;
+    }
+
+    .form-note {
+      margin: 0 0 12px;
+      color: #334155;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .side-field-grid {
+      grid-template-columns: 145px minmax(160px, 1fr);
+      gap: 10px 12px;
+      align-items: start;
+      margin-top: 12px;
+    }
+
+    .side-field-grid textarea { min-height: 78px; }
+
+    .side-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 16px 0 12px;
+    }
+
+    .attachments-full { width: 100%; }
+
     @media (max-width: 900px) {
       body { font-size: 13px; background: #fff; }
       .page { margin: 0; border: 0; border-radius: 0; box-shadow: none; }
@@ -904,6 +957,183 @@
       display: none !important;
     }
 
+
+
+    /* RFQ 2 v3 patch: compact entry fields + clean radio button rows */
+    .compact-form > .field-grid {
+      grid-template-columns: 180px minmax(260px, 460px);
+      align-items: start;
+    }
+
+    .compact-form .split {
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+      align-items: start;
+    }
+
+    .compact-form .split .field-grid {
+      grid-template-columns: 170px minmax(220px, 330px);
+      align-items: start;
+    }
+
+    .choice-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .choice-button {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 118px;
+      padding: 9px 14px;
+      border: 1px solid #cfd8e3;
+      border-radius: 6px;
+      background: #f8fafc;
+      color: #111827;
+      font-weight: 800;
+      cursor: pointer;
+      text-align: center;
+      user-select: none;
+    }
+
+    .choice-button input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .choice-button:hover { border-color: var(--blue-2); }
+
+    .choice-button.selected {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+      box-shadow: 0 0 0 2px rgba(11, 93, 168, 0.12);
+    }
+
+    .fixed-offset-note,
+    .pipe-end-summary {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #fbfcfe;
+      color: #334155;
+      padding: 9px 10px;
+      line-height: 1.35;
+    }
+
+    .pipe-end-summary strong { color: var(--blue); }
+
+    .pipe-card.selected {
+      border-color: var(--blue-2);
+      background: #f0f7ff;
+      box-shadow: 0 0 0 2px rgba(11, 93, 168, 0.12);
+    }
+
+    .modal.small-modal { width: min(760px, 96vw); }
+
+    .pipe-end-picker {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .pipe-end-picker button.pipe-card {
+      appearance: none;
+      color: inherit;
+      font: inherit;
+      text-align: left;
+    }
+
+    .builder-offset-note {
+      margin-bottom: 10px;
+      font-size: 13px;
+    }
+
+    .approved-pattern-box .svg-preview {
+      max-width: 430px;
+      margin: 12px auto 0;
+    }
+
+    .approved-pattern-box .svg-preview svg,
+    #approvedPatternSvg {
+      min-width: 0 !important;
+      max-height: 360px;
+    }
+
+
+
+    /* RFQ 2 v4 patch: fill the pipe section, move optional processing into specs, full-width attachments */
+    .customer-grid {
+      grid-template-columns: 180px minmax(260px, 1fr);
+      align-items: center;
+    }
+
+    .project-date-hidden { display: none !important; }
+
+    .pipe-layout {
+      display: grid;
+      grid-template-columns: minmax(520px, 0.95fr) minmax(320px, 0.75fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .pipe-main-fields {
+      max-width: 660px;
+    }
+
+    .pipe-side-panel {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fbfcfe;
+      padding: 14px;
+      min-height: 100%;
+    }
+
+    .form-note {
+      margin: 0 0 12px;
+      color: #334155;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .side-field-grid {
+      grid-template-columns: 145px minmax(160px, 1fr);
+      gap: 10px 12px;
+      align-items: start;
+      margin-top: 12px;
+    }
+
+    .side-field-grid textarea { min-height: 78px; }
+
+    .side-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 16px 0 12px;
+    }
+
+    .attachments-full { width: 100%; }
+
+    @media (max-width: 900px) {
+      .compact-form > .field-grid,
+      .compact-form .split .field-grid,
+      .customer-grid,
+      .side-field-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .compact-form .split,
+      .pipe-layout,
+      .pipe-end-picker {
+        grid-template-columns: 1fr;
+      }
+
+      .choice-button { flex: 1 1 130px; }
+    }
+
   </style>
 </head>
 <body>
@@ -935,16 +1165,19 @@
       <section class="section">
         <div class="section-title"><span class="num">1</span> Customer Information</div>
         <div class="section-body">
-          <div class="field-grid">
+          <div class="field-grid customer-grid">
             <label class="req">Company Name</label><input name="company" required />
             <label class="req">Contact Name</label><input name="contact" required />
             <label class="req">Email Address</label><input name="email" type="email" required />
             <label>Phone Number</label><input name="phone" />
-          </div>
-          <div class="field-grid">
             <label>Project Name</label><input name="project" />
-            <label class="req">Quote Required By</label><input name="quoteRequired" type="date" required />
-            <label>Product Required By</label><input name="productRequired" type="date" />
+            <label>Project Timing</label>
+            <div class="choice-row">
+              <label class="choice-button"><input type="radio" name="projectTiming" value="TBD" checked /> Bid / End Date TBD</label>
+              <label class="choice-button"><input type="radio" name="projectTiming" value="Specific" /> Specific Dates</label>
+            </div>
+            <label class="project-date-field-label req">Quote Required By</label><input class="project-date-field" name="quoteRequired" type="date" />
+            <label class="project-date-field-label">Product Required By</label><input class="project-date-field" name="productRequired" type="date" />
             <label>Sales Representative</label>
             <select name="salesRep"><option></option><option>Cory Hornung</option><option>Dale</option><option>Other</option></select>
           </div>
@@ -953,21 +1186,26 @@
 
       <section class="section">
         <div class="section-title"><span class="num">2</span> Pipe Information</div>
-          <div class="section-body">
-            <div class="field-grid">
+        <div class="section-body compact-form">
+          <div class="pipe-layout">
+            <div class="field-grid pipe-main-fields">
               <label class="req">Pipe Supplied By</label>
-              <div class="inline-options">
-              <label><input type="radio" name="pipeSupplier" value="Rice" required /> Rice</label>
-              <label><input type="radio" name="pipeSupplier" value="Customer" /> Customer</label>
+              <div class="choice-row">
+                <label class="choice-button"><input type="radio" name="pipeSupplier" value="Rice" required /> Rice</label>
+                <label class="choice-button"><input type="radio" name="pipeSupplier" value="Customer" /> Customer</label>
               </div>
-			  
-			  <label class="req">Pipe Material</label>
-              <div class="inline-options">
-              <label><input type="radio" name="material" value="PVC" /> PVC</label>
-              <label><input type="radio" name="material" value="HDPE" /> HDPE</label>
+
+              <label class="req">Pipe Material</label>
+              <div class="choice-row">
+                <label class="choice-button"><input type="radio" name="material" value="PVC" /> PVC</label>
+                <label class="choice-button"><input type="radio" name="material" value="HDPE" /> HDPE</label>
               </div>
-			  
-			  <label class="req">Pipe Size (OD)</label>
+
+              <label id="pipeEndRowLabel" style="display:none">Pipe Ends</label>
+              <div id="pipeEndRowControl" class="pipe-end-summary" style="display:none">PVC selected — choose pipe end style.</div>
+              <input type="hidden" id="pipeEndsValue" name="pipeEnds" />
+
+              <label class="req">Pipe Size (OD)</label>
               <div class="unit-row"><input name="pipeOD" required /><select name="pipeODUnit"><option>inches</option><option>mm</option></select></div>
 
               <label>SDR / Schedule / Series</label><input name="pipeSpec" />
@@ -983,30 +1221,45 @@
               <label>Calculated Total</label><input name="calculatedTotal" readonly placeholder="Length × # lengths" />
 
               <label>Quantity Notes</label><textarea name="quantityNotes" placeholder="Use when total quantity and length count do not match, or when customer provided unclear quantity info."></textarea>
+            </div>
 
-              <label>Pipe Ends</label>
-              <div class="pipe-ends">
-                <label class="pipe-card"><input type="radio" name="pipeEnds" value="Plain x Plain" /><div class="pipe-img pipe-plain"></div>Plain x Plain</label>
-                <label class="pipe-card"><input type="radio" name="pipeEnds" value="Bell x Plain" /><div class="pipe-img pipe-bell"></div>Bell x Plain</label>
-                <label class="pipe-card"><input type="radio" name="pipeEnds" value="Threaded / Other" /><div class="pipe-img pipe-thread"></div>Threaded / Other</label>
+            <div class="pipe-side-panel">
+              <h3 class="subsection-title">Length Exceptions / Processing</h3>
+              <p class="form-note">The main pipe fields assume equal lengths of pipe. Use this section for partial lengths, processed-only sections, or any quantity/length setup that does not fit the basic fields.</p>
+              <div class="choice-row">
+                <label class="choice-button"><input type="radio" name="partial" value="Entire" checked /> Entire Pipe Length</label>
+                <label class="choice-button"><input type="radio" name="partial" value="Partial" /> Partial / Special Lengths</label>
+              </div>
+              <div class="field-grid side-field-grid">
+                <label>Processed Length</label><div class="unit-row"><input name="processedLength" /><select name="processedLengthUnit"><option>ft</option><option>m</option></select></div>
+                <label>Start Location</label><div class="unit-row"><input name="startLocation" /><select name="startLocationUnit"><option>ft</option><option>m</option></select></div>
+                <label>Processing Notes</label><textarea name="partialNotes" placeholder="Example: first length full pipe, second length 20 ft only, customer supplied mixed lengths, etc."></textarea>
               </div>
 
-              
+              <div class="side-divider"></div>
+              <h3 class="subsection-title">Packaging Requirements</h3>
+              <label class="checkbox-line"><input type="checkbox" name="packaging" value="Wrapped" /> Wrapped</label>
+              <textarea name="packagingNotes" placeholder="Additional packaging instructions" style="margin-top:12px"></textarea>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
       <section class="section">
         <div class="section-title"><span class="num">3</span> Perforating Details</div>
-        <div class="section-body">
+        <div class="section-body compact-form">
           <h3 class="subsection-title">Hole Configuration</h3>
           <div class="split">
             <div class="field-grid">
               <label class="req">Hole Diameter</label><div class="unit-row"><input name="holeDiameter" /><select name="holeDiameterUnit"><option>mm</option><option>inches</option></select></div>
               <label class="req">Center-to-Center Spacing</label><div class="unit-row"><input name="holeSpacing" /><select name="holeSpacingUnit"><option>mm</option><option>inches</option></select></div>
               <label class="req">Number of Rows</label><input name="holeRows" />
-              <label>Start Offset</label><div class="unit-row"><input name="holeStartOffset" placeholder='Standard (12")' /><select name="startOffsetUnit"><option>inches</option><option>mm</option></select></div>
-              <label>End Offset</label><div class="unit-row"><input name="holeEndOffset" placeholder='Standard (12")' /><select name="endOffsetUnit"><option>inches</option><option>mm</option></select></div>
+              <label>Start / End Offset</label>
+              <div class="fixed-offset-note">Standard machine offset: first/last holes are 12&quot; from each pipe end. This is locked, not customer-selected.</div>
+              <input type="hidden" name="holeStartOffset" value="12" />
+              <input type="hidden" name="startOffsetUnit" value="inches" />
+              <input type="hidden" name="holeEndOffset" value="12" />
+              <input type="hidden" name="endOffsetUnit" value="inches" />
             </div>
             <div class="field-grid">
               <label>Stagger Required?</label>
@@ -1045,10 +1298,10 @@
             <div class="approved-pattern-box" id="approvedPatternBox">
               <div class="approved-pattern-title">Approved Custom Pattern</div>
               <div id="approvedPatternSummary"></div>
-              <div class="svg-preview"><svg id="approvedPatternSvg" viewBox="0 0 720 420"></svg></div>
+              <div class="svg-preview"><svg id="approvedPatternSvg" viewBox="0 0 340 340"></svg></div>
             </div>
 
-            <div class="info-box"><strong>i</strong><span>Most perforating requests can be defined by pipe size, length per pipe, number of lengths, hole diameter, center-to-center spacing, number of rows, and start/end offsets.</span></div>
+            <div class="info-box"><strong>i</strong><span>Most perforating requests can be defined by pipe size, length per pipe, number of lengths, hole diameter, center-to-center spacing, number of rows. Start/end offsets are locked at 12&quot; by machine constraint.</span></div>
           </div>
 
           <div class="summary-line" id="summaryLine">Manufacturing summary preview will generate here.</div>
@@ -1056,47 +1309,24 @@
         </div>
       </section>
 	  
-      <div class="grid-2">
-        <section class="section">
-          <div class="section-title"><span class="num">4</span> Optional Requirements</div>
-          <div class="section-body split">
-            <div>
-              <h3 class="subsection-title">Partial Processing</h3>
-              <div class="checkbox-line"><label><input type="radio" name="partial" value="Entire" checked /> Entire Pipe Length</label></div>
-              <div class="checkbox-line"><label><input type="radio" name="partial" value="Partial" /> Partial Processing Required</label></div>
-              <div class="field-grid" style="margin-top:10px">
-                <label>Processed Length</label><div class="unit-row"><input name="processedLength" /><select><option>ft</option><option>m</option></select></div>
-                <label>Start Location</label><div class="unit-row"><input name="startLocation" /><select><option>ft</option><option>m</option></select></div>
-                <label>Additional Notes</label><textarea name="partialNotes"></textarea>
-              </div>
-            </div>
-            <div>
-              <h3 class="subsection-title">Packaging Requirements</h3>
-              <label><input type="checkbox" name="packaging" value="Wrapped" /> Wrapped</label>
-              <textarea name="packagingNotes" placeholder="Additional packaging instructions" style="margin-top:12px"></textarea>
-            </div>
+      <section class="section attachments-full">
+        <div class="section-title"><span class="num">4</span> Attachments / Sketches</div>
+        <div class="section-body">
+          <p style="margin-top:0">Attach drawings, marked-up sketches, or specification documents that may assist in quoting or manufacturing.</p>
+          <div class="upload-row">
+            <label class="upload-box">Upload Drawing<br /><span class="desc">PDF, DWG, JPG, PNG</span><input type="file" multiple accept=".pdf,.dwg,.jpg,.jpeg,.png" data-attachment-category="Drawing" /></label>
+            <label class="upload-box">Upload Sketch<br /><span class="desc">PDF, JPG, PNG</span><input type="file" multiple accept=".pdf,.jpg,.jpeg,.png" data-attachment-category="Sketch" /></label>
+            <label class="upload-box">Upload Documents<br /><span class="desc">PDF, DOCX, XLSX</span><input type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx" data-attachment-category="Document" /></label>
           </div>
-        </section>
-
-        <section class="section">
-          <div class="section-title"><span class="num">5</span> Attachments / Sketches</div>
-          <div class="section-body">
-            <p style="margin-top:0">Attach drawings, marked-up sketches, or specification documents that may assist in quoting or manufacturing.</p>
-            <div class="upload-row">
-              <label class="upload-box">Upload Drawing<br /><span class="desc">PDF, DWG, JPG, PNG</span><input type="file" multiple accept=".pdf,.dwg,.jpg,.jpeg,.png" data-attachment-category="Drawing" /></label>
-              <label class="upload-box">Upload Sketch<br /><span class="desc">PDF, JPG, PNG</span><input type="file" multiple accept=".pdf,.jpg,.jpeg,.png" data-attachment-category="Sketch" /></label>
-              <label class="upload-box">Upload Documents<br /><span class="desc">PDF, DOCX, XLSX</span><input type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx" data-attachment-category="Document" /></label>
-            </div>
-            <div class="drop-zone" id="dropZone">Or drag and drop files here</div>
-            <input type="hidden" id="attachmentPayload" name="attachmentPayload" />
-            <div class="attachment-list" id="attachmentList"></div>
-          </div>
-        </section>
-      </div>
+          <div class="drop-zone" id="dropZone">Or drag and drop files here</div>
+          <input type="hidden" id="attachmentPayload" name="attachmentPayload" />
+          <div class="attachment-list" id="attachmentList"></div>
+        </div>
+      </section>
 
       <div class="grid-2">
         <section class="section">
-          <div class="section-title"><span class="num">6</span> Customer Approval</div>
+          <div class="section-title"><span class="num">5</span> Customer Approval</div>
           <div class="section-body">
             <p>I confirm that the above information reflects the requested perforating requirements.</p>
             <div class="field-grid">
@@ -1124,6 +1354,28 @@
       </footer>
     </main>
   </form>
+
+
+  <div class="modal-backdrop" id="pipeEndModal" aria-hidden="true">
+    <div class="modal small-modal" role="dialog" aria-modal="true" aria-labelledby="pipeEndTitle">
+      <div class="modal-header">
+        <div>
+          <h2 id="pipeEndTitle">PVC Pipe End Selection</h2>
+          <div class="desc">PVC selected. Choose the pipe end style used for estimating and manufacturing notes.</div>
+        </div>
+        <div class="button-row" style="margin-top:0">
+          <button type="button" class="secondary" onclick="closePipeEndModal()">Close</button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="pipe-end-picker">
+          <button type="button" class="pipe-card" data-pipe-end="Plain x Plain" onclick="choosePipeEnd('Plain x Plain')"><div class="pipe-img pipe-plain"></div><strong>Plain x Plain</strong></button>
+          <button type="button" class="pipe-card" data-pipe-end="Bell x Plain" onclick="choosePipeEnd('Bell x Plain')"><div class="pipe-img pipe-bell"></div><strong>Bell x Plain</strong></button>
+          <button type="button" class="pipe-card" data-pipe-end="Threaded / Other" onclick="choosePipeEnd('Threaded / Other')"><div class="pipe-img pipe-thread"></div><strong>Threaded / Other</strong></button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="modal-backdrop" id="customPatternModal" aria-hidden="true">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="builderTitle">
@@ -1153,10 +1405,9 @@
               <div class="builder-field"><label>Spacing Along Pipe (in)</label><input id="b_holeSpacing" type="number" step="0.001" /></div>
               <div class="builder-field"><label>Staggered?</label><select id="b_staggered"><option value="No">No</option><option value="Yes">Yes</option></select></div>
             </div>
-            <div class="builder-field-row">
-              <div class="builder-field"><label>Start Offset (in)</label><input id="b_startOffset" type="number" step="0.001" /></div>
-              <div class="builder-field"><label>End Offset (in)</label><input id="b_endOffset" type="number" step="0.001" /></div>
-            </div>
+            <input id="b_startOffset" type="hidden" value="12" />
+            <input id="b_endOffset" type="hidden" value="12" />
+            <div class="fixed-offset-note builder-offset-note">Start/end offsets are locked at 12&quot; from each pipe end.</div>
             <div class="builder-field">
               <label>Builder Notes</label>
               <textarea id="b_patternNotes" placeholder="Optional custom pattern note"></textarea>
@@ -1202,6 +1453,9 @@
       window.downloadCurrentHtml = downloadCurrentHtml;
       window.removeAttachment = removeAttachment;
       window.clearAttachments = clearAttachments;
+      window.openPipeEndModal = openPipeEndModal;
+      window.closePipeEndModal = closePipeEndModal;
+      window.choosePipeEnd = choosePipeEnd;
 
       function trimText(value) { return String(value || '').replace(/^\s+|\s+$/g, ''); }
 
@@ -1395,8 +1649,92 @@
           }
         }
 
+        updateChoiceButtons();
+        updateProjectTimingVisibility();
+        updatePipeEndSummary();
+
         var bar = document.getElementById('customBuilderBar');
         bar.className = getCheckedValue('pattern') === 'Custom' ? 'custom-builder-bar active' : 'custom-builder-bar';
+      }
+
+      function updateChoiceButtons() {
+        var buttons = document.querySelectorAll('.choice-button');
+        for (var i = 0; i < buttons.length; i += 1) {
+          var radio = buttons[i].querySelector('input[type="radio"]');
+          if (radio && radio.checked) {
+            buttons[i].className = buttons[i].className.replace(/\s*selected/g, '') + ' selected';
+          } else {
+            buttons[i].className = buttons[i].className.replace(/\s*selected/g, '');
+          }
+        }
+      }
+
+      function updateProjectTimingVisibility() {
+        var showDates = getCheckedValue('projectTiming') === 'Specific';
+        var fields = document.querySelectorAll('.project-date-field, .project-date-field-label');
+        for (var i = 0; i < fields.length; i += 1) {
+          if (showDates) {
+            fields[i].className = fields[i].className.replace(/\s*project-date-hidden/g, '');
+          } else if (fields[i].className.indexOf('project-date-hidden') === -1) {
+            fields[i].className += ' project-date-hidden';
+          }
+        }
+
+        var quoteRequired = form.elements.quoteRequired;
+        if (quoteRequired) {
+          quoteRequired.required = showDates;
+        }
+      }
+
+      function updatePipeEndSummary() {
+        var isPvc = getCheckedValue('material') === 'PVC';
+        var value = getFieldValue('pipeEnds');
+        var label = document.getElementById('pipeEndRowLabel');
+        var control = document.getElementById('pipeEndRowControl');
+
+        if (label) { label.style.display = isPvc ? '' : 'none'; }
+        if (control) {
+          control.style.display = isPvc ? '' : 'none';
+          control.innerHTML = value ? '<strong>' + escapeHtml(value) + '</strong> <button type="button" class="secondary" onclick="openPipeEndModal()" style="margin-left:10px;padding:6px 8px">Change</button>' : 'PVC selected — <button type="button" onclick="openPipeEndModal()" style="padding:6px 8px">Choose pipe ends</button>';
+        }
+
+        var endCards = document.querySelectorAll('[data-pipe-end]');
+        for (var i = 0; i < endCards.length; i += 1) {
+          if (endCards[i].getAttribute('data-pipe-end') === value) {
+            endCards[i].className = endCards[i].className.replace(/\s*selected/g, '') + ' selected';
+          } else {
+            endCards[i].className = endCards[i].className.replace(/\s*selected/g, '');
+          }
+        }
+      }
+
+      function openPipeEndModal() {
+        if (getCheckedValue('material') !== 'PVC') { return; }
+        updatePipeEndSummary();
+        document.getElementById('pipeEndModal').className = 'modal-backdrop active';
+        document.getElementById('pipeEndModal').setAttribute('aria-hidden', 'false');
+      }
+
+      function closePipeEndModal() {
+        document.getElementById('pipeEndModal').className = 'modal-backdrop';
+        document.getElementById('pipeEndModal').setAttribute('aria-hidden', 'true');
+      }
+
+      function choosePipeEnd(value) {
+        setFieldValue('pipeEnds', value);
+        updatePipeEndSummary();
+        updateSummary();
+        closePipeEndModal();
+      }
+
+      function handleMaterialSelectionChanged() {
+        if (getCheckedValue('material') === 'PVC') {
+          openPipeEndModal();
+        } else {
+          setFieldValue('pipeEnds', '');
+          closePipeEndModal();
+          updatePipeEndSummary();
+        }
       }
 
       function toNumber(value) {
@@ -1469,6 +1807,8 @@
         var diameter = getFieldValue('holeDiameter') || '[diameter]';
         var spacing = getFieldValue('holeSpacing') || '[spacing]';
         var rows = getFieldValue('holeRows') || '[rows]';
+        var pipeEnds = getFieldValue('pipeEnds');
+        var pipeEndsText = material === 'PVC' ? ' | Ends: ' + (pipeEnds || '[pipe ends]') : '';
         var staggerText = '';
         var approvedText = '';
 
@@ -1480,7 +1820,7 @@
           approvedText = ' | APPROVED VISUAL: ' + approvedPattern.totalHolesPerPipe + ' holes/pipe';
         }
 
-        return od + ' ' + spec + ' ' + material + ' | ' + buildQuantityText() + ' | ' + diameter + ' holes | ' + spacing + ' C-C | ' + rows + ' rows | Pattern ' + pattern + staggerText + approvedText + buildQuantityWarning();
+        return od + ' ' + spec + ' ' + material + pipeEndsText + ' | ' + buildQuantityText() + ' | ' + diameter + ' holes | ' + spacing + ' C-C | ' + rows + ' rows | Pattern ' + pattern + staggerText + approvedText + buildQuantityWarning();
       }
 
       function updateSummary() {
@@ -1488,7 +1828,13 @@
         summaryLine.textContent = buildSummary();
       }
 
-      function handleFormChange() {
+      function handleFormChange(event) {
+        if (event && event.target && event.target.name === 'material') {
+          handleMaterialSelectionChanged();
+        }
+        if (event && event.target && event.target.name === 'projectTiming') {
+          updateProjectTimingVisibility();
+        }
         updateCards();
         updateSummary();
       }
@@ -1634,11 +1980,12 @@
         ].join('') + '</div>' +
         '<div class="desc">' + escapeHtml(approvedPattern.rowCount + ' rows | ' + formatInches(approvedPattern.holeDia) + ' holes | ' + formatInches(approvedPattern.holeSpacing) + ' C-C | ' + (approvedPattern.staggered ? 'staggered' : 'straight rows')) + '</div>';
 
-        drawSideSvg('approvedPatternSvg', approvedPattern);
+        drawRadialSvg('approvedPatternSvg', approvedPattern);
       }
 
       function drawRadialSvg(svgId, p) {
         var svg = document.getElementById(svgId);
+        svg.setAttribute('viewBox', '0 0 340 340');
         svg.innerHTML = '';
         var cx = 170;
         var cy = 170;
@@ -1666,6 +2013,7 @@
 
       function drawSideSvg(svgId, p) {
         var svg = document.getElementById(svgId);
+        svg.setAttribute('viewBox', '0 0 720 420');
         svg.innerHTML = '';
         var marginL = 54;
         var marginT = 54;
@@ -1794,8 +2142,15 @@
         if (event.target && event.target.id === 'customPatternModal') { closeCustomPatternBuilder(); }
       });
 
+      addEvent(document.getElementById('pipeEndModal'), 'click', function (event) {
+        if (event.target && event.target.id === 'pipeEndModal') { closePipeEndModal(); }
+      });
+
       addEvent(document, 'keydown', function (event) {
-        if (event.key === 'Escape') { closeCustomPatternBuilder(); }
+        if (event.key === 'Escape') {
+          closeCustomPatternBuilder();
+          closePipeEndModal();
+        }
       });
 
       loadAttachmentPayload();
