@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Perforating RFQ - Index v6</title>
+  <title>Perforating RFQ - Index v7 Print Ready</title>
   <style>
     :root {
       --blue: #003b73;
@@ -539,6 +539,31 @@
       letter-spacing: 0.03em;
     }
 
+    .approved-pattern-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .approved-pattern-head .approved-pattern-title { margin-bottom: 0; }
+
+    .approved-pattern-actions { margin-top: 0; }
+
+    .approved-pattern-actions button {
+      padding: 7px 10px;
+      font-size: 12px;
+    }
+
+    .row-position-builder-block {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+    }
+
+    .row-override-actions { margin-top: 8px; }
+
     .metric-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(110px, 1fr));
@@ -948,15 +973,351 @@
       .builder-field-row { grid-template-columns: 1fr; }
       .metric-grid { grid-template-columns: 1fr 1fr; }
       .button-row button { flex: 1 1 100%; }
+      .approved-pattern-head { align-items: flex-start; flex-direction: column; }
       .section-title { font-size: 13px; }
     }
 
     @media print {
-      body { background: #fff; }
-      .page { box-shadow: none; margin: 0; border: none; }
-      input, select, textarea { border-color: #999; }
-      .test-panel, .modal-backdrop, .custom-builder-bar .button-row, .download-help { display: none !important; }
-      .custom-builder-bar, .approved-pattern-box { display: block !important; }
+      @page {
+        size: Letter portrait;
+        margin: 0.35in;
+      }
+
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      html,
+      body {
+        width: auto !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+        color: #111827 !important;
+        font-size: 9.5pt !important;
+        line-height: 1.25 !important;
+      }
+
+      .page {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+      }
+
+      header {
+        display: grid !important;
+        grid-template-columns: 1.55in 1fr 1.65in !important;
+        gap: 0.15in !important;
+        align-items: center !important;
+        padding: 0 0 0.14in !important;
+        margin-bottom: 0.12in !important;
+        border-bottom: 1px solid #9aa4af !important;
+        background: #fff !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .logo {
+        font-size: 23pt !important;
+        letter-spacing: -1px !important;
+      }
+
+      .logo span {
+        font-size: 9pt !important;
+      }
+
+      .title {
+        text-align: center !important;
+      }
+
+      .title h1 {
+        font-size: 17pt !important;
+        margin: 0 !important;
+      }
+
+      .title p {
+        font-size: 8.5pt !important;
+        margin-top: 0.04in !important;
+      }
+
+      .rfq-box {
+        padding: 0.07in !important;
+        border: 1px solid #9aa4af !important;
+        background: #eef6ff !important;
+      }
+
+      .rfq-box label {
+        font-size: 8pt !important;
+        margin-bottom: 0.04in !important;
+      }
+
+      .content {
+        padding: 0 !important;
+      }
+
+      #fileActionsSection,
+      .modal-backdrop,
+      .test-panel,
+      .download-help,
+      .validation-result-box,
+      .custom-builder-bar .button-row,
+      button,
+      .button-row,
+      .upload-row,
+      .drop-zone {
+        display: none !important;
+      }
+
+      .section {
+        margin: 0 0 0.11in !important;
+        border: 1px solid #9aa4af !important;
+        border-radius: 5px !important;
+        overflow: visible !important;
+        background: #fff !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .section-title {
+        padding: 0.06in 0.08in !important;
+        font-size: 9.5pt !important;
+        line-height: 1.1 !important;
+        background: #eaf3fb !important;
+        color: #003b73 !important;
+        border-bottom: 1px solid #9aa4af !important;
+      }
+
+      .num {
+        width: 0.24in !important;
+        height: 0.24in !important;
+        border-radius: 3px !important;
+        font-size: 8.5pt !important;
+        background: #003b73 !important;
+        color: #fff !important;
+      }
+
+      .section-body {
+        padding: 0.09in !important;
+      }
+
+      .grid-2,
+      .split,
+      .pipe-section-layout {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0.1in !important;
+      }
+
+      .field-grid {
+        display: grid !important;
+        grid-template-columns: 1.22in 1fr !important;
+        gap: 0.055in 0.08in !important;
+        align-items: center !important;
+      }
+
+      .pipe-spec-grid {
+        display: grid !important;
+        grid-template-columns: 1.18in 1fr !important;
+        gap: 0.055in 0.08in !important;
+        align-items: center !important;
+      }
+
+      label {
+        font-size: 8.4pt !important;
+        line-height: 1.15 !important;
+      }
+
+      input,
+      select,
+      textarea {
+        border: 1px solid #9aa4af !important;
+        border-radius: 3px !important;
+        padding: 0.045in 0.055in !important;
+        min-height: 0.22in !important;
+        font-size: 8.5pt !important;
+        line-height: 1.2 !important;
+        background: #fff !important;
+        color: #111827 !important;
+        box-shadow: none !important;
+      }
+
+      input[type="radio"],
+      input[type="checkbox"] {
+        width: auto !important;
+        min-height: 0 !important;
+        padding: 0 !important;
+      }
+
+      textarea {
+        min-height: 0.55in !important;
+        resize: none !important;
+      }
+
+      .unit-row {
+        grid-template-columns: 1fr 0.62in !important;
+        gap: 0.05in !important;
+      }
+
+      .choice-row,
+      .inline-options {
+        gap: 0.08in !important;
+      }
+
+      .choice-card {
+        padding: 0.055in 0.08in !important;
+        min-width: 0.78in !important;
+        border: 1px solid #9aa4af !important;
+        border-radius: 4px !important;
+        background: #fff !important;
+      }
+
+      .choice-card.selected {
+        background: #eaf3fb !important;
+        border-color: #003b73 !important;
+        box-shadow: inset 0 0 0 1px #003b73 !important;
+      }
+
+      .subsection-title {
+        margin: 0 0 0.075in !important;
+        padding: 0.045in 0.06in !important;
+        font-size: 9pt !important;
+        background: #eaf3fb !important;
+      }
+
+      .pattern-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+        margin-top: 0.06in !important;
+      }
+
+      .pattern-card {
+        display: none !important;
+      }
+
+      .pattern-card.selected {
+        display: block !important;
+        border: 1px solid #003b73 !important;
+        background: #f8fbff !important;
+        box-shadow: none !important;
+        padding: 0.075in !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      img.pattern-asset,
+      .pattern-img {
+        height: 0.95in !important;
+        max-height: 0.95in !important;
+        margin: 0.04in 0 !important;
+        padding: 0.03in !important;
+      }
+
+      .approved-pattern-box {
+        display: block !important;
+        border: 1px solid #98d7b2 !important;
+        background: #e7f7ec !important;
+        padding: 0.08in !important;
+        margin-top: 0.08in !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .metric-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 0.055in !important;
+        margin: 0.06in 0 !important;
+      }
+
+      .metric {
+        padding: 0.055in !important;
+        border: 1px solid #9aa4af !important;
+        border-radius: 4px !important;
+        background: #fff !important;
+      }
+
+      .metric .k {
+        font-size: 6.8pt !important;
+      }
+
+      .metric .v {
+        font-size: 10pt !important;
+      }
+
+      .svg-preview {
+        padding: 0.06in !important;
+        margin-top: 0.06in !important;
+        border: 1px solid #9aa4af !important;
+        overflow: visible !important;
+      }
+
+      .svg-preview svg {
+        max-height: 2.05in !important;
+        min-width: 0 !important;
+        width: 100% !important;
+      }
+
+      .info-box,
+      .summary-line {
+        padding: 0.07in !important;
+        margin-top: 0.07in !important;
+        font-size: 8pt !important;
+        border: 1px solid #9aa4af !important;
+        background: #f8fbff !important;
+      }
+
+      .attachment-list {
+        display: grid !important;
+        gap: 0.05in !important;
+      }
+
+      .attachment-item {
+        grid-template-columns: 0.45in 1fr !important;
+        padding: 0.055in !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .attachment-actions {
+        display: none !important;
+      }
+
+      .attachment-thumb {
+        width: 0.45in !important;
+        height: 0.34in !important;
+      }
+
+      .next-box {
+        border-radius: 5px !important;
+        padding: 0.11in !important;
+        background: #003b73 !important;
+        color: #fff !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .next-box h3 {
+        font-size: 9.5pt !important;
+      }
+
+      .next-box ul {
+        line-height: 1.35 !important;
+        padding-left: 0.16in !important;
+      }
+
+      footer {
+        display: flex !important;
+        justify-content: space-between !important;
+        gap: 0.08in !important;
+        padding-top: 0.04in !important;
+        font-size: 7.5pt !important;
+        border-top: 1px solid #d7e0ea !important;
+      }
     }
   
     /* RFQ 2 patch: pattern selector images are radial/end-view diagrams, not side-view rows */
@@ -1440,6 +1801,107 @@
       .choice-button { flex: 1 1 130px; }
     }
 
+
+    /* RFQ 2 v8 patch: pattern row data, fixed half-spacing stagger, row position override */
+    .row-override-panel {
+      display: none;
+      margin-top: 10px;
+      border: 1px solid #b6cbe0;
+      border-radius: 8px;
+      background: #f4faff;
+      padding: 12px;
+    }
+
+    .row-override-panel.active { display: block; }
+
+    .row-override-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .row-override-title {
+      color: var(--blue);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .row-override-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 8px;
+    }
+
+    .row-degree-field label {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+
+    .row-degree-field input {
+      font-weight: 800;
+    }
+
+    .fixed-stagger-note {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #fbfcfe;
+      padding: 8px 9px;
+      color: #334155;
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+    }
+
+    .row-override-panel.missing-control {
+      border-color: #f04438 !important;
+      box-shadow: 0 0 0 2px rgba(240, 68, 56, 0.13);
+      background: #fffafa;
+    }
+
+
+    /* RFQ 2 v10 patch: stack manufacturing detail panels vertically for readable full-page review */
+    .modal.full-page-modal {
+      width: min(1180px, 98vw);
+    }
+
+    .manufacturing-detail-layout {
+      grid-template-columns: 1fr !important;
+      gap: 16px;
+    }
+
+    .manufacturing-visuals {
+      grid-template-columns: 1fr !important;
+      gap: 16px;
+    }
+
+    .manufacturing-visuals .svg-box {
+      overflow-x: auto;
+    }
+
+    .manufacturing-visuals .svg-box svg {
+      width: 100%;
+      max-height: none;
+      min-width: 0;
+    }
+
+    #manufacturingRadialSvg {
+      max-width: 460px;
+      margin: 0 auto;
+    }
+
+    #manufacturingSideSvg {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
   </style>
 </head>
 <body>
@@ -1589,22 +2051,27 @@
                 <label><input type="radio" name="staggerRequired" value="No" checked /> No</label>
                 <label><input type="radio" name="staggerRequired" value="Yes" /> Yes</label>
               </div>
-              <label>Stagger Offset</label><div class="unit-row"><input name="staggerOffset" placeholder="Only if required" /><select name="staggerOffsetUnit"><option>mm</option><option>inches</option></select></div>
+              <label>Stagger Offset</label>
+              <div class="fixed-stagger-note" id="staggerOffsetNote">If staggered, offset is locked to 1/2 of C-C spacing.</div>
+              <input type="hidden" name="staggerOffset" />
+              <input type="hidden" name="staggerOffsetUnit" />
               <label>Pattern / Row Notes</label><textarea name="patternNotes" placeholder="Use only for unusual row layout, custom stagger, or special orientation."></textarea>
+              <input type="hidden" id="rowPositionOverrideActive" name="rowPositionOverrideActive" value="No" />
+              <input type="hidden" id="rowPositionPayload" name="rowPositionPayload" />
             </div>
           </div>
           <h3 class="subsection-title pattern-subsection-title">Row Pattern Detail</h3>
           <div class="pattern-detail-block">
             <p style="margin-top:0">Select the radial/end-view pattern that most closely matches the required row layout, otherwise build a custom pattern.</p>
             <div class="pattern-grid">
-              <label class="pattern-card"><input type="radio" name="pattern" value="A" checked /> <strong>Pattern A</strong><img class="pattern-img pattern-asset" src="images/patA.png" alt="Pattern A radial layout" /><div class="desc">Preset radial layout A</div></label>
-              <label class="pattern-card"><input type="radio" name="pattern" value="B" /> <strong>Pattern B</strong><img class="pattern-img pattern-asset" src="images/patB.png" alt="Pattern B radial layout" /><div class="desc">Preset radial layout B</div></label>
-              <label class="pattern-card"><input type="radio" name="pattern" value="C" /> <strong>Pattern C</strong><img class="pattern-img pattern-asset" src="images/patC.png" alt="Pattern C radial layout" /><div class="desc">Preset radial layout C</div></label>
-              <label class="pattern-card"><input type="radio" name="pattern" value="D" /> <strong>Pattern D</strong><img class="pattern-img pattern-asset" src="images/patD.png" alt="Pattern D radial layout" /><div class="desc">Preset radial layout D</div></label>
-              <label class="pattern-card"><input type="radio" name="pattern" value="E" /> <strong>Pattern E</strong><img class="pattern-img pattern-asset" src="images/patE.png" alt="Pattern E radial layout" /><div class="desc">Preset radial layout E</div></label>
-              <label class="pattern-card"><input type="radio" name="pattern" value="F" /> <strong>Pattern F</strong><img class="pattern-img pattern-asset" src="images/patF.png" alt="Pattern F radial layout" /><div class="desc">Preset radial layout F</div></label>
-              <label class="pattern-card"><input type="radio" name="pattern" value="G" /> <strong>Pattern G</strong><img class="pattern-img pattern-asset" src="images/patG.png" alt="Pattern G radial layout" /><div class="desc">Preset radial layout G</div></label>
-              <label class="pattern-card"><input type="radio" name="pattern" value="H" /> <strong>Pattern H</strong><img class="pattern-img pattern-asset" src="images/patH.png" alt="Pattern H radial layout" /><div class="desc">Preset radial layout H</div></label>
+              <label class="pattern-card"><input type="radio" name="pattern" value="A" checked /> <strong>Pattern A</strong><img class="pattern-img pattern-asset" src="images/patA.png" alt="Pattern A radial layout" /><div class="desc">1 row @ 0°</div></label>
+              <label class="pattern-card"><input type="radio" name="pattern" value="B" /> <strong>Pattern B</strong><img class="pattern-img pattern-asset" src="images/patB.png" alt="Pattern B radial layout" /><div class="desc">4 rows @ 0°, 90°, 180°, 270°</div></label>
+              <label class="pattern-card"><input type="radio" name="pattern" value="C" /> <strong>Pattern C</strong><img class="pattern-img pattern-asset" src="images/patC.png" alt="Pattern C radial layout" /><div class="desc">4 rows @ 60°, 120°, 240°, 300°</div></label>
+              <label class="pattern-card"><input type="radio" name="pattern" value="D" /> <strong>Pattern D</strong><img class="pattern-img pattern-asset" src="images/patD.png" alt="Pattern D radial layout" /><div class="desc">3 rows @ 0°, 120°, 240°</div></label>
+              <label class="pattern-card"><input type="radio" name="pattern" value="E" /> <strong>Pattern E</strong><img class="pattern-img pattern-asset" src="images/patE.png" alt="Pattern E radial layout" /><div class="desc">3 rows @ 0°, 90°, 270°</div></label>
+              <label class="pattern-card"><input type="radio" name="pattern" value="F" /> <strong>Pattern F</strong><img class="pattern-img pattern-asset" src="images/patF.png" alt="Pattern F radial layout" /><div class="desc">3 rows @ 0°, 90°, 270°</div></label>
+              <label class="pattern-card"><input type="radio" name="pattern" value="G" /> <strong>Pattern G</strong><img class="pattern-img pattern-asset" src="images/patG.png" alt="Pattern G radial layout" /><div class="desc">2 rows @ 0°, 120°</div></label>
+              <label class="pattern-card"><input type="radio" name="pattern" value="H" /> <strong>Pattern H</strong><img class="pattern-img pattern-asset" src="images/patH.png" alt="Pattern H radial layout" /><div class="desc">8 rows @ 45° spacing</div></label>
               <label class="pattern-card"><input type="radio" name="pattern" value="Custom" /> <strong>Custom</strong><div class="pattern-img radial-custom"></div><div class="desc">Build visual pattern from RFQ values</div></label>
             </div>
 
@@ -1618,7 +2085,13 @@
             </div>
 
             <div class="approved-pattern-box" id="approvedPatternBox">
-              <div class="approved-pattern-title">Approved Custom Pattern</div>
+              <div class="approved-pattern-head">
+                <div class="approved-pattern-title">Approved Custom Pattern</div>
+                <div class="button-row approved-pattern-actions">
+                  <button type="button" onclick="openCustomPatternBuilder()">Edit Custom Pattern</button>
+                  <button type="button" class="secondary" onclick="clearApprovedPattern()">Clear Approved Pattern</button>
+                </div>
+              </div>
               <div id="approvedPatternSummary"></div>
               <div class="svg-preview"><svg id="approvedPatternSvg" viewBox="0 0 340 340"></svg></div>
             </div>
@@ -1730,6 +2203,25 @@
             <input id="b_startOffset" type="hidden" value="12" />
             <input id="b_endOffset" type="hidden" value="12" />
             <div class="fixed-offset-note builder-offset-note">Start/end offsets are locked at 12&quot; from each pipe end.</div>
+
+            <div class="builder-field row-position-builder-block">
+              <label>Row Position Override</label>
+              <div class="desc">Use only when the custom pattern is not evenly spaced around the pipe.</div>
+              <div class="button-row row-override-actions">
+                <button type="button" class="secondary" onclick="toggleRowPositionOverride()">Row Position Override</button>
+                <button type="button" class="secondary" onclick="clearRowPositionOverride()">Use Pattern / Even Spacing</button>
+              </div>
+              <div class="row-override-panel" id="rowPositionOverridePanel">
+                <div class="row-override-head">
+                  <div>
+                    <div class="row-override-title">Custom Row Degree Positions</div>
+                    <div class="desc">Enter one radial degree position per row. 0° is top/dead center.</div>
+                  </div>
+                </div>
+                <div class="row-override-grid" id="rowDegreeInputs"></div>
+              </div>
+            </div>
+
             <div class="builder-field">
               <label>Builder Notes</label>
               <textarea id="b_patternNotes" placeholder="Optional custom pattern note"></textarea>
@@ -1803,6 +2295,17 @@
       var testPanel = document.getElementById('testPanel');
       var approvedPattern = null;
 
+      var PRESET_PATTERNS = {
+        A: { rows: 1, degrees: [0] },
+        B: { rows: 4, degrees: [0, 90, 180, 270] },
+        C: { rows: 4, degrees: [60, 120, 240, 300] },
+        D: { rows: 3, degrees: [0, 120, 240] },
+        E: { rows: 3, degrees: [0, 90, 270] },
+        F: { rows: 3, degrees: [0, 90, 270] },
+        G: { rows: 2, degrees: [0, 120] },
+        H: { rows: 8, degrees: [0, 45, 90, 135, 180, 225, 270, 315] }
+      };
+
       window.openCustomPatternBuilder = openCustomPatternBuilder;
       window.closeCustomPatternBuilder = closeCustomPatternBuilder;
       window.approveCustomPattern = approveCustomPattern;
@@ -1818,6 +2321,8 @@
       window.openManufacturingDetails = openManufacturingDetails;
       window.closeManufacturingDetails = closeManufacturingDetails;
       window.validateFormOnly = validateFormOnly;
+      window.toggleRowPositionOverride = toggleRowPositionOverride;
+      window.clearRowPositionOverride = clearRowPositionOverride;
 
       function trimText(value) { return String(value || '').replace(/^\s+|\s+$/g, ''); }
 
@@ -1850,6 +2355,194 @@
         var radios = form.querySelectorAll('input[name="' + name + '"]');
         for (var i = 0; i < radios.length; i += 1) {
           radios[i].checked = radios[i].value === value;
+        }
+      }
+
+
+      function normalizeDegree(value) {
+        var n = toNumber(value);
+        if (n === null) { return null; }
+        n = n % 360;
+        if (n < 0) { n += 360; }
+        return Math.round(n * 1000) / 1000;
+      }
+
+      function formatDegree(value) {
+        var n = normalizeDegree(value);
+        if (n === null) { return ''; }
+        return formatNumber(n) + '°';
+      }
+
+      function evenDegrees(rowCount) {
+        var count = Math.max(1, Math.floor(toNumber(rowCount) || 1));
+        var arr = [];
+        for (var i = 0; i < count; i += 1) {
+          arr.push(Math.round((i * 360 / count) * 1000) / 1000);
+        }
+        return arr;
+      }
+
+      function getBuilderRowCount() {
+        var field = document.getElementById('b_rowCount');
+        if (field && field.value) { return Math.max(1, Math.floor(toNumber(field.value) || 1)); }
+        return Math.max(1, Math.floor(toNumber(getFieldValue('holeRows')) || 1));
+      }
+
+      function getPatternDefinition(pattern) {
+        return PRESET_PATTERNS[pattern] || null;
+      }
+
+      function getCurrentBaseDegrees() {
+        var pattern = getCheckedValue('pattern');
+        var def = getPatternDefinition(pattern);
+        if (def) { return def.degrees.slice(); }
+        return evenDegrees(getFieldValue('holeRows'));
+      }
+
+      function getRowOverrideActive() {
+        var field = document.getElementById('rowPositionOverrideActive');
+        return !!(field && field.value === 'Yes');
+      }
+
+      function setRowOverrideActive(active) {
+        var field = document.getElementById('rowPositionOverrideActive');
+        if (field) { field.value = active ? 'Yes' : 'No'; }
+      }
+
+      function readRowOverrideDegrees() {
+        var inputs = document.querySelectorAll('#rowDegreeInputs input[data-row-degree]');
+        var degrees = [];
+        for (var i = 0; i < inputs.length; i += 1) {
+          var degree = normalizeDegree(inputs[i].value);
+          if (degree === null) { return null; }
+          degrees.push(degree);
+        }
+        return degrees.length ? degrees : null;
+      }
+
+      function getActiveRowDegrees() {
+        if (getCheckedValue('pattern') === 'Custom' && getRowOverrideActive()) {
+          var overrideDegrees = readRowOverrideDegrees();
+          if (overrideDegrees) { return overrideDegrees; }
+        }
+        return getCurrentBaseDegrees();
+      }
+
+      function syncRowPositionPayload() {
+        var payload = document.getElementById('rowPositionPayload');
+        if (!payload) { return; }
+        var active = getRowOverrideActive();
+        var degrees = active ? readRowOverrideDegrees() : getCurrentBaseDegrees();
+        var value = {
+          active: active,
+          pattern: getCheckedValue('pattern') || '',
+          degrees: degrees || [],
+          rowCount: degrees ? degrees.length : 0
+        };
+        payload.value = JSON.stringify(value);
+        payload.setAttribute('value', payload.value);
+      }
+
+      function buildRowOverrideInputs(seedDegrees) {
+        var holder = document.getElementById('rowDegreeInputs');
+        if (!holder) { return; }
+
+        var degrees = seedDegrees && seedDegrees.length ? seedDegrees.slice() : getActiveRowDegrees();
+        if (!degrees || !degrees.length) { degrees = evenDegrees(getBuilderRowCount()); }
+
+        holder.innerHTML = degrees.map(function (degree, index) {
+          return '<div class="row-degree-field">' +
+            '<label>Row ' + (index + 1) + '</label>' +
+            '<input type="number" step="0.001" min="0" max="359.999" data-row-degree="' + index + '" value="' + escapeHtml(formatNumber(degree)) + '" />' +
+          '</div>';
+        }).join('');
+
+        var inputs = holder.querySelectorAll('input[data-row-degree]');
+        for (var i = 0; i < inputs.length; i += 1) {
+          addEvent(inputs[i], 'input', function () {
+            var degreesNow = readRowOverrideDegrees();
+            if (degreesNow) {
+              setFieldValue('holeRows', degreesNow.length);
+              setIdValue('b_rowCount', degreesNow.length);
+            }
+            syncRowPositionPayload();
+            refreshCustomPattern();
+            updateSummary();
+          });
+          addEvent(inputs[i], 'change', function () {
+            var degreesNow = readRowOverrideDegrees();
+            if (degreesNow) {
+              setFieldValue('holeRows', degreesNow.length);
+              setIdValue('b_rowCount', degreesNow.length);
+            }
+            syncRowPositionPayload();
+            refreshCustomPattern();
+            updateSummary();
+          });
+        }
+
+        if (getRowOverrideActive()) {
+          setFieldValue('holeRows', degrees.length);
+          setIdValue('b_rowCount', degrees.length);
+        }
+        syncRowPositionPayload();
+      }
+
+      function toggleRowPositionOverride() {
+        var panel = document.getElementById('rowPositionOverridePanel');
+        var active = !getRowOverrideActive();
+        setRowOverrideActive(active);
+        if (active) {
+          if (panel) { panel.className = 'row-override-panel active'; }
+          buildRowOverrideInputs(evenDegrees(getBuilderRowCount()));
+        } else {
+          clearRowPositionOverride();
+          return;
+        }
+        updateSummary();
+      }
+
+      function clearRowPositionOverride() {
+        var panel = document.getElementById('rowPositionOverridePanel');
+        setRowOverrideActive(false);
+        if (panel) { panel.className = 'row-override-panel'; }
+        var holder = document.getElementById('rowDegreeInputs');
+        if (holder) { holder.innerHTML = ''; }
+        syncRowPositionPayload();
+        updateSummary();
+      }
+
+      function applyPatternDefaults() {
+        var pattern = getCheckedValue('pattern');
+        var def = getPatternDefinition(pattern);
+        if (def) {
+          setFieldValue('holeRows', def.rows);
+        } else if (getRowOverrideActive()) {
+          buildRowOverrideInputs(evenDegrees(getBuilderRowCount()));
+        }
+        syncRowPositionPayload();
+      }
+
+      function updateStaggerOffset() {
+        var note = document.getElementById('staggerOffsetNote');
+        var spacingRaw = getFieldValue('holeSpacing');
+        var spacingUnit = getSelectValue('holeSpacingUnit') || 'inches';
+        var spacing = toNumber(spacingRaw);
+
+        setFieldValue('staggerOffsetUnit', spacingUnit);
+
+        if (getCheckedValue('staggerRequired') === 'Yes') {
+          if (spacing !== null) {
+            var half = spacing / 2;
+            setFieldValue('staggerOffset', formatNumber(half));
+            if (note) { note.textContent = 'Stagger offset: ' + formatNumber(half) + ' ' + spacingUnit + ' (1/2 of C-C spacing).'; }
+          } else {
+            setFieldValue('staggerOffset', '');
+            if (note) { note.textContent = 'Stagger offset is locked to 1/2 of C-C spacing. Enter C-C spacing first.'; }
+          }
+        } else {
+          setFieldValue('staggerOffset', '');
+          if (note) { note.textContent = 'If staggered, offset is locked to 1/2 of C-C spacing.'; }
         }
       }
 
@@ -2014,6 +2707,9 @@
         updateChoiceButtons();
         updateProjectTimingVisibility();
         updatePipeEndSummary();
+        updateStaggerOffset();
+        if (getCheckedValue('pattern') === 'Custom' && getRowOverrideActive()) { buildRowOverrideInputs(readRowOverrideDegrees() || evenDegrees(getBuilderRowCount())); }
+        else { syncRowPositionPayload(); }
 
         var bar = document.getElementById('customBuilderBar');
         bar.className = getCheckedValue('pattern') === 'Custom' ? 'custom-builder-bar active' : 'custom-builder-bar';
@@ -2173,7 +2869,9 @@
         var approvedText = '';
 
         if (getCheckedValue('staggerRequired') === 'Yes') {
-          staggerText = ' | stagger ' + (getFieldValue('staggerOffset') || '[offset]');
+          var staggerValue = getFieldValue('staggerOffset');
+          var staggerUnit = getSelectValue('staggerOffsetUnit') || getSelectValue('holeSpacingUnit') || '';
+          staggerText = ' | stagger ' + (staggerValue ? staggerValue + ' ' + staggerUnit + ' (1/2 C-C)' : '1/2 C-C');
         }
 
         if (approvedPattern && pattern === 'Custom') {
@@ -2186,6 +2884,10 @@
       function getDisplayValue(name) {
         if (name === 'pipeSupplier' || name === 'material' || name === 'pattern' || name === 'staggerRequired') { return getCheckedValue(name); }
         if (name === 'pipeEnds') { return getFieldValue(name); }
+        if (name === 'rowPositionOverride') {
+          var degrees = readRowOverrideDegrees();
+          return getCheckedValue('pattern') === 'Custom' && getRowOverrideActive() && degrees ? degrees.map(formatDegree).join(', ') : '';
+        }
         return getFieldValue(name);
       }
 
@@ -2209,8 +2911,8 @@
           items.splice(6, 0, { name: 'pipeEnds', label: 'PVC Pipe Ends', section: 'Pipe Information' });
         }
 
-        if (getCheckedValue('staggerRequired') === 'Yes') {
-          items.push({ name: 'staggerOffset', label: 'Stagger Offset', section: 'Perforating Details' });
+        if (getCheckedValue('pattern') === 'Custom' && getRowOverrideActive()) {
+          items.push({ name: 'rowPositionOverride', label: 'Row Position Override Degrees', section: 'Perforating Details' });
         }
 
         return items;
@@ -2308,6 +3010,9 @@
         if (item.name === 'pipeEnds') {
           control = document.getElementById('pipeEndRowControl') || control;
         }
+        if (item.name === 'rowPositionOverride') {
+          control = document.getElementById('rowPositionOverridePanel') || control;
+        }
 
         if (control && String(control.className).indexOf('missing-control') === -1) {
           control.className += ' missing-control';
@@ -2336,7 +3041,9 @@
         var holeSpacing = p.holeSpacing || 0;
         var startOffset = p.startOffset || 12;
         var endOffset = p.endOffset || 12;
-        var rowCount = Math.max(1, Math.floor(p.rowCount || 1));
+        var rowDegrees = p.rowDegrees && p.rowDegrees.length ? p.rowDegrees.slice() : evenDegrees(p.rowCount || 1);
+        var rowCount = Math.max(1, rowDegrees.length || Math.floor(p.rowCount || 1));
+        var staggerOffset = p.staggered && holeSpacing > 0 ? holeSpacing / 2 : null;
         var usableLength = Math.max(0, pipeLength - startOffset - endOffset);
         var holesPerRow = holeSpacing > 0 ? Math.floor(usableLength / holeSpacing) + 1 : 0;
         var totalHolesPerPipe = holesPerRow * rowCount;
@@ -2349,6 +3056,8 @@
           holeDia: holeDia,
           holeSpacing: holeSpacing,
           rowCount: rowCount,
+          rowDegrees: rowDegrees,
+          rowPositionOverride: p.rowPositionOverride,
           startOffset: startOffset,
           endOffset: endOffset,
           usableLength: usableLength,
@@ -2356,6 +3065,7 @@
           totalHolesPerPipe: totalHolesPerPipe,
           totalHolesAllLengths: totalHolesPerPipe * (p.numberOfLengths || 1),
           staggered: p.staggered,
+          staggerOffset: staggerOffset,
           patternNotes: p.patternNotes
         };
       }
@@ -2368,6 +3078,7 @@
         if (metrics) {
           metrics.innerHTML = [
             metric('Rows', p.rowCount),
+            metric('Row Positions', (p.rowDegrees || evenDegrees(p.rowCount)).map(formatDegree).join(', ')),
             metric('Holes / Row', p.holesPerRow),
             metric('Holes / Pipe', p.totalHolesPerPipe),
             metric('Total Holes', p.totalHolesAllLengths),
@@ -2401,6 +3112,8 @@
 
       function updateSummary() {
         updateCalculatedTotal();
+        updateStaggerOffset();
+        syncRowPositionPayload();
         summaryLine.textContent = buildSummary();
       }
 
@@ -2413,6 +3126,14 @@
         if (event && event.target && event.target.name === 'projectTiming') {
           updateProjectTimingVisibility();
         }
+        if (event && event.target && event.target.name === 'pattern') {
+          applyPatternDefaults();
+        }
+        if (event && event.target && event.target.name === 'holeRows' && getRowOverrideActive()) {
+          buildRowOverrideInputs(evenDegrees(getFieldValue('holeRows')));
+        }
+        updateStaggerOffset();
+        syncRowPositionPayload();
         updateCards();
         updateSummary();
       }
@@ -2427,9 +3148,12 @@
           holeDia: unitToInches(getFieldValue('holeDiameter'), getSelectValue('holeDiameterUnit')),
           holeSpacing: unitToInches(getFieldValue('holeSpacing'), getSelectValue('holeSpacingUnit')),
           rowCount: Math.max(1, Math.floor(toNumber(getFieldValue('holeRows')) || 1)),
+          rowDegrees: getActiveRowDegrees(),
+          rowPositionOverride: getRowOverrideActive(),
           startOffset: unitToInches(getFieldValue('holeStartOffset') || '12', getSelectValue('startOffsetUnit')),
           endOffset: unitToInches(getFieldValue('holeEndOffset') || '12', getSelectValue('endOffsetUnit')),
           staggered: getCheckedValue('staggerRequired') === 'Yes',
+          staggerOffset: unitToInches(getFieldValue('staggerOffset'), getSelectValue('staggerOffsetUnit')),
           patternNotes: getFieldValue('patternNotes')
         };
       }
@@ -2445,6 +3169,7 @@
         setIdValue('b_endOffset', p.endOffset === null ? 12 : formatNumber(p.endOffset));
         setIdValue('b_staggered', p.staggered ? 'Yes' : 'No');
         setIdValue('b_patternNotes', p.patternNotes || '');
+        if (getRowOverrideActive()) { buildRowOverrideInputs(p.rowDegrees && p.rowDegrees.length ? p.rowDegrees : evenDegrees(p.rowCount || 1)); }
         refreshCustomPattern();
       }
 
@@ -2460,6 +3185,9 @@
         var usableLength = Math.max(0, pipeLength - startOffset - endOffset);
         var holesPerRow = holeSpacing > 0 ? Math.floor(usableLength / holeSpacing) + 1 : 0;
         var staggered = getIdValue('b_staggered') === 'Yes';
+        var overrideDegrees = getRowOverrideActive() ? readRowOverrideDegrees() : null;
+        var rowDegrees = overrideDegrees && overrideDegrees.length === rowCount ? overrideDegrees.slice() : evenDegrees(rowCount);
+        var staggerOffset = staggered && holeSpacing > 0 ? holeSpacing / 2 : null;
         var totalHolesPerPipe = holesPerRow * rowCount;
 
         return {
@@ -2471,6 +3199,8 @@
           holeDia: holeDia,
           holeSpacing: holeSpacing,
           rowCount: rowCount,
+          rowDegrees: rowDegrees,
+          rowPositionOverride: rfq.rowPositionOverride,
           startOffset: startOffset,
           endOffset: endOffset,
           usableLength: usableLength,
@@ -2478,6 +3208,7 @@
           totalHolesPerPipe: totalHolesPerPipe,
           totalHolesAllLengths: totalHolesPerPipe * (rfq.numberOfLengths || 1),
           staggered: staggered,
+          staggerOffset: staggerOffset,
           patternNotes: getIdValue('b_patternNotes'),
           approvedAt: new Date().toISOString()
         };
@@ -2491,6 +3222,7 @@
         var p = collectBuilderPatternData();
         document.getElementById('builderMetrics').innerHTML = [
           metric('Rows', p.rowCount),
+          metric('Row Positions', (p.rowDegrees || evenDegrees(p.rowCount)).map(formatDegree).join(', ')),
           metric('Holes / Row', p.holesPerRow),
           metric('Holes / Pipe', p.totalHolesPerPipe),
           metric('Total Holes', p.totalHolesAllLengths),
@@ -2552,11 +3284,12 @@
           metric('Hole Dia', formatInches(approvedPattern.holeDia)),
           metric('Spacing', formatInches(approvedPattern.holeSpacing)),
           metric('Rows', approvedPattern.rowCount),
+          metric('Row Positions', (approvedPattern.rowDegrees || evenDegrees(approvedPattern.rowCount)).map(formatDegree).join(', ')),
           metric('Holes / Row', approvedPattern.holesPerRow),
           metric('Holes / Pipe', approvedPattern.totalHolesPerPipe),
           metric('Total Holes', approvedPattern.totalHolesAllLengths)
         ].join('') + '</div>' +
-        '<div class="desc">' + escapeHtml(approvedPattern.rowCount + ' rows | ' + formatInches(approvedPattern.holeDia) + ' holes | ' + formatInches(approvedPattern.holeSpacing) + ' C-C | ' + (approvedPattern.staggered ? 'staggered' : 'straight rows')) + '</div>';
+        '<div class="desc">' + escapeHtml(approvedPattern.rowCount + ' rows @ ' + (approvedPattern.rowDegrees || evenDegrees(approvedPattern.rowCount)).map(formatDegree).join(', ') + ' | ' + formatInches(approvedPattern.holeDia) + ' holes | ' + formatInches(approvedPattern.holeSpacing) + ' C-C | ' + (approvedPattern.staggered ? 'staggered 1/2 C-C' : 'straight rows')) + '</div>';
 
         drawRadialSvg('approvedPatternSvg', approvedPattern);
       }
@@ -2569,23 +3302,24 @@
         var cy = 170;
         var radius = 115;
         var holeR = Math.max(4, Math.min(18, (p.holeDia / Math.max(p.pipeOD, 0.001)) * radius * 2));
-        var angleStep = 360 / p.rowCount;
+        var rowDegrees = p.rowDegrees && p.rowDegrees.length ? p.rowDegrees : evenDegrees(p.rowCount);
+        p.rowCount = rowDegrees.length || p.rowCount;
 
         add(svg, 'circle', { cx: cx, cy: cy, r: radius, fill: '#f8fafc', stroke: '#111827', 'stroke-width': 2 });
         add(svg, 'circle', { cx: cx, cy: cy, r: 3, fill: '#111827' });
 
-        for (var i = 0; i < p.rowCount; i += 1) {
-          var theta = ((i * angleStep) - 90) * Math.PI / 180;
+        for (var i = 0; i < rowDegrees.length; i += 1) {
+          var theta = (normalizeDegree(rowDegrees[i]) - 90) * Math.PI / 180;
           var x = cx + radius * Math.cos(theta);
           var y = cy + radius * Math.sin(theta);
-          var lx = cx + (radius + 28) * Math.cos(theta);
-          var ly = cy + (radius + 28) * Math.sin(theta);
+          var lx = cx + (radius + 30) * Math.cos(theta);
+          var ly = cy + (radius + 30) * Math.sin(theta);
           add(svg, 'line', { x1: cx, y1: cy, x2: x, y2: y, stroke: '#cbd5e1', 'stroke-width': 1 });
           add(svg, 'circle', { cx: x, cy: y, r: holeR, fill: '#0b5da8', stroke: '#003b73', 'stroke-width': 1 });
           addText(svg, lx, ly + 4, String(i + 1), 'middle', '12px', '#111827');
         }
 
-        addText(svg, cx, 22, p.rowCount + ' rows @ ' + (360 / p.rowCount).toFixed(1) + '°', 'middle', '13px', '#334155');
+        addText(svg, cx, 22, rowDegrees.length + ' rows @ ' + rowDegrees.map(formatDegree).join(', '), 'middle', '13px', '#334155');
         addText(svg, cx, 320, 'OD ' + formatInches(p.pipeOD) + ' | Hole ' + formatInches(p.holeDia), 'middle', '12px', '#667085');
       }
 
@@ -2597,34 +3331,51 @@
         var marginT = 54;
         var plotW = 610;
         var plotH = 285;
+        var rowDegrees = p.rowDegrees && p.rowDegrees.length ? p.rowDegrees : evenDegrees(p.rowCount);
+        p.rowCount = rowDegrees.length || p.rowCount;
         var rowGap = p.rowCount > 1 ? plotH / (p.rowCount - 1) : 0;
-        var sx = plotW / Math.max(0.001, p.pipeLength);
+        var visualLength = Math.min(Math.max(p.pipeLength || 0, 0.001), 120);
+        var isWindowed = (p.pipeLength || 0) > visualLength + 0.001;
+        var sx = plotW / Math.max(0.001, visualLength);
         var holeR = Math.max(3.5, Math.min(9, p.holeDia * sx / 2));
-        var startX = marginL + p.startOffset * sx;
-        var endX = marginL + (p.pipeLength - p.endOffset) * sx;
+        var staggerOffset = p.staggered && p.holeSpacing > 0 ? (p.staggerOffset || p.holeSpacing / 2) : 0;
+        var startX = marginL + Math.min(p.startOffset || 0, visualLength) * sx;
+        var endBoundary = Math.max(0, (p.pipeLength || 0) - (p.endOffset || 0));
+        var endVisible = endBoundary <= visualLength + 0.0001;
+        var endX = marginL + Math.min(endBoundary, visualLength) * sx;
 
         add(svg, 'rect', { x: marginL, y: marginT, width: plotW, height: plotH, rx: 8, fill: '#f8fafc', stroke: '#111827', 'stroke-width': 1.5 });
-        add(svg, 'line', { x1: startX, y1: marginT - 12, x2: startX, y2: marginT + plotH + 12, stroke: '#f97316', 'stroke-width': 1.5, 'stroke-dasharray': '5 4' });
-        add(svg, 'line', { x1: endX, y1: marginT - 12, x2: endX, y2: marginT + plotH + 12, stroke: '#f97316', 'stroke-width': 1.5, 'stroke-dasharray': '5 4' });
-        addText(svg, startX, marginT - 20, 'Start ' + formatInches(p.startOffset), 'middle', '11px', '#9a3412');
-        addText(svg, endX, marginT - 20, 'End ' + formatInches(p.endOffset), 'middle', '11px', '#9a3412');
+        if ((p.startOffset || 0) <= visualLength) {
+          add(svg, 'line', { x1: startX, y1: marginT - 12, x2: startX, y2: marginT + plotH + 12, stroke: '#f97316', 'stroke-width': 1.5, 'stroke-dasharray': '5 4' });
+          addText(svg, startX, marginT - 20, 'Start ' + formatInches(p.startOffset), 'middle', '11px', '#9a3412');
+        }
+        if (endVisible) {
+          add(svg, 'line', { x1: endX, y1: marginT - 12, x2: endX, y2: marginT + plotH + 12, stroke: '#f97316', 'stroke-width': 1.5, 'stroke-dasharray': '5 4' });
+          addText(svg, endX, marginT - 20, 'End ' + formatInches(p.endOffset), 'middle', '11px', '#9a3412');
+        } else if (isWindowed) {
+          add(svg, 'line', { x1: marginL + plotW, y1: marginT, x2: marginL + plotW, y2: marginT + plotH, stroke: '#94a3b8', 'stroke-width': 1.5, 'stroke-dasharray': '4 4' });
+          addText(svg, marginL + plotW, marginT - 20, '10 ft view cut', 'end', '11px', '#475569');
+        }
 
         for (var row = 0; row < p.rowCount; row += 1) {
           var y = p.rowCount === 1 ? marginT + plotH / 2 : marginT + row * rowGap;
           add(svg, 'line', { x1: marginL, y1: y, x2: marginL + plotW, y2: y, stroke: '#e2e8f0', 'stroke-width': 1 });
-          addText(svg, marginL - 20, y + 4, String(row + 1), 'middle', '12px', '#334155');
+          addText(svg, marginL - 26, y + 4, String(row + 1), 'middle', '12px', '#334155');
+          addText(svg, marginL - 4, y + 4, formatDegree(rowDegrees[row]), 'end', '10px', '#667085');
 
           for (var h = 0; h < p.holesPerRow; h += 1) {
             var pos = p.startOffset + h * p.holeSpacing;
-            if (p.staggered && row % 2 === 1) { pos += p.holeSpacing / 2; }
+            if (p.staggered && row % 2 === 1) { pos += staggerOffset; }
             if (pos > p.pipeLength - p.endOffset + 0.0001) { continue; }
+            if (pos > visualLength + 0.0001) { break; }
             var x = marginL + pos * sx;
             add(svg, 'circle', { cx: x, cy: y, r: holeR, fill: '#0b5da8', stroke: '#003b73', 'stroke-width': 0.75 });
           }
         }
 
-        addText(svg, marginL + plotW / 2, 24, 'Unwrapped view — length ' + formatInches(p.pipeLength), 'middle', '14px', '#334155');
-        addText(svg, marginL + plotW / 2, 382, formatInches(p.holeSpacing) + ' spacing along pipe' + (p.staggered ? ' | staggered rows' : ''), 'middle', '12px', '#667085');
+        var title = isWindowed ? 'Unwrapped view — first 10 ft of ' + formatInches(p.pipeLength) + ' pipe' : 'Unwrapped view — length ' + formatInches(p.pipeLength);
+        addText(svg, marginL + plotW / 2, 24, title, 'middle', '14px', '#334155');
+        addText(svg, marginL + plotW / 2, 382, formatInches(p.holeSpacing) + ' spacing along pipe' + (p.staggered ? ' | stagger 1/2 C-C' : '') + (isWindowed ? ' | visual scale limited to first 120&quot;' : ''), 'middle', '12px', '#667085');
       }
 
       function add(svg, tag, attrs) {
@@ -2712,8 +3463,14 @@
 
       ['b_pipeOD','b_pipeLength','b_holeDia','b_rowCount','b_holeSpacing','b_startOffset','b_endOffset','b_staggered'].forEach(function (id) {
         var el = document.getElementById(id);
-        addEvent(el, 'input', refreshCustomPattern);
-        addEvent(el, 'change', refreshCustomPattern);
+        addEvent(el, 'input', function () {
+          if (id === 'b_rowCount' && getRowOverrideActive()) { buildRowOverrideInputs(evenDegrees(getBuilderRowCount())); }
+          refreshCustomPattern();
+        });
+        addEvent(el, 'change', function () {
+          if (id === 'b_rowCount' && getRowOverrideActive()) { buildRowOverrideInputs(evenDegrees(getBuilderRowCount())); }
+          refreshCustomPattern();
+        });
       });
 
       addEvent(document.getElementById('customPatternModal'), 'click', function (event) {
@@ -2739,6 +3496,7 @@
       initAttachmentInputs();
       renderAttachments();
       runSmokeTests();
+      applyPatternDefaults();
       updateCards();
       updateSummary();
     }());
