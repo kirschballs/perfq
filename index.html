@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Perforating RFQ - Index v7 Print Ready</title>
+  <title>Perforating RFQ - Index v8</title>
   <style>
     :root {
       --blue: #003b73;
@@ -32,941 +32,327 @@
 
     .page {
       max-width: 1180px;
-      margin: 24px auto;
+      margin: 16px auto;
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: 10px;
-      box-shadow: 0 12px 40px rgba(16, 24, 40, 0.08);
+      box-shadow: 0 12px 40px rgba(16,24,40,0.08);
       overflow: hidden;
     }
 
     header {
       display: grid;
       grid-template-columns: 240px 1fr 230px;
-      gap: 20px;
+      gap: 16px;
       align-items: center;
-      padding: 24px 28px;
+      padding: 18px 22px;
       border-bottom: 1px solid var(--border);
-      background: linear-gradient(180deg, #ffffff, #f8fbff);
+      background: linear-gradient(180deg,#ffffff,#f8fbff);
     }
 
-    .logo {
-      font-size: 42px;
-      font-weight: 800;
-      color: var(--blue);
-      letter-spacing: -2px;
-      line-height: 0.9;
-    }
-
-    .logo span {
-      display: inline-block;
-      font-size: 18px;
-      letter-spacing: 0;
-      line-height: 1.05;
-      margin-left: 4px;
-      font-weight: 700;
-    }
+    .logo { font-size: 42px; font-weight: 800; color: var(--blue); letter-spacing: -2px; line-height: 0.9; }
+    .logo span { display: inline-block; font-size: 18px; letter-spacing: 0; line-height: 1.05; margin-left: 4px; font-weight: 700; }
 
     .title { text-align: center; }
+    .title h1 { margin: 0; color: var(--blue); font-size: 32px; letter-spacing: 0.5px; }
+    .title p { margin: 6px 0 0; color: var(--muted); font-size: 15px; }
 
-    .title h1 {
-      margin: 0;
-      color: var(--blue);
-      font-size: 32px;
-      letter-spacing: 0.5px;
-    }
+    .rfq-box { background: var(--light-blue); border: 1px solid var(--border); border-radius: 8px; padding: 10px; }
+    .rfq-box label { display: block; font-weight: 700; color: var(--blue); margin-bottom: 6px; text-align: center; }
 
-    .title p {
-      margin: 8px 0 0;
-      color: var(--muted);
-      font-size: 15px;
-    }
+    .content { padding: 12px 16px 14px; }
 
-    .rfq-box {
-      background: var(--light-blue);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 12px;
-    }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
-    .rfq-box label {
-      display: block;
-      font-weight: 700;
-      color: var(--blue);
-      margin-bottom: 8px;
-      text-align: center;
-    }
-
-    .content { padding: 18px 22px 24px; }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .section {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-      margin-bottom: 16px;
-      background: #fff;
-    }
+    .section { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 10px; background: #fff; }
 
     .section-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      background: linear-gradient(90deg, var(--light-blue), #f6faff);
-      color: var(--blue);
-      font-weight: 800;
-      letter-spacing: 0.3px;
-      text-transform: uppercase;
-      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 12px;
+      background: linear-gradient(90deg,var(--light-blue),#f6faff);
+      color: var(--blue); font-weight: 800; letter-spacing: 0.3px;
+      text-transform: uppercase; border-bottom: 1px solid var(--border);
     }
 
-    .num {
-      display: inline-grid;
-      place-items: center;
-      width: 28px;
-      height: 28px;
-      border-radius: 5px;
-      background: var(--blue);
-      color: white;
-      font-weight: 800;
-    }
+    .num { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 5px; background: var(--blue); color: white; font-weight: 800; }
 
-    .section-body { padding: 16px; }
+    .section-body { padding: 12px; }
 
-    .field-grid {
-      display: grid;
-      grid-template-columns: 150px 1fr;
-      gap: 10px 14px;
-      align-items: center;
-    }
+    .field-grid { display: grid; grid-template-columns: 150px 1fr; gap: 8px 12px; align-items: center; }
 
     label { font-weight: 700; }
 
-    .req::after {
-      content: " *";
-      color: var(--required);
-    }
+    .req::after { content: " *"; color: var(--required); }
 
     input, select, textarea {
-      width: 100%;
-      border: 1px solid #cfd8e3;
-      border-radius: 4px;
-      padding: 8px 9px;
-      font: inherit;
-      background: #fff;
+      width: 100%; border: 1px solid #cfd8e3; border-radius: 4px;
+      padding: 7px 9px; font: inherit; background: #fff;
     }
 
-    textarea { min-height: 86px; resize: vertical; }
+    textarea { min-height: 72px; resize: vertical; }
 
-    .inline-options {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
+    .inline-options { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    .inline-options label, .checkbox-line label { font-weight: 400; }
 
-    .inline-options label,
-    .checkbox-line label { font-weight: 400; }
+    .unit-row { display: grid; grid-template-columns: 1fr 90px; gap: 8px; }
 
-    .unit-row {
-      display: grid;
-      grid-template-columns: 1fr 90px;
-      gap: 8px;
-    }
+    .pattern-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 8px; }
 
-    .pipe-ends,
-    .pattern-grid,
-    .upload-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 8px;
-    }
+    .pattern-card { border: 1px solid var(--border); border-radius: 8px; padding: 10px; background: #fff; cursor: pointer; }
+    .pattern-card:hover { border-color: var(--blue-2); }
+    .pattern-card input[type="radio"] { transform: scale(1.15); width: auto; margin-right: 8px; }
+    .pattern-card.selected { border-color: var(--blue-2); background: #f0f7ff; box-shadow: 0 0 0 2px rgba(11,93,168,0.12); }
 
-    .pipe-card, .pattern-card {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 12px;
-      background: #fff;
-      cursor: pointer;
-    }
+    .desc { color: var(--muted); font-size: 12px; margin-top: 4px; }
 
-    .pipe-card:hover, .pattern-card:hover { border-color: var(--blue-2); }
+    .info-box { display: flex; gap: 10px; margin-top: 10px; padding: 10px; background: var(--light-blue); border-radius: 8px; color: #12385f; font-size: 13px; }
 
-    .pattern-card input[type="radio"] {
-      transform: scale(1.15);
-      width: auto;
-      margin-right: 8px;
-    }
+    .subsection-title { margin: 0 0 10px; color: var(--blue); text-transform: uppercase; font-weight: 800; padding: 6px 10px; background: var(--light-blue); border-radius: 5px; }
 
-    .pattern-card.selected {
-      border-color: var(--blue-2);
-      background: #f0f7ff;
-      box-shadow: 0 0 0 2px rgba(11, 93, 168, 0.12);
-    }
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 
-    .pipe-img, .pattern-img {
-      height: 64px;
-      border-radius: 6px;
-      background: linear-gradient(180deg, #eef1f4, #c4ccd4 45%, #f7f8fa 55%, #aeb8c2);
-      border: 1px solid #9aa4af;
-      margin: 10px 0;
-      position: relative;
-      overflow: hidden;
-    }
+    .pattern-subsection-title { margin-top: 14px; }
 
-    .pipe-img:before,
-    .pattern-img:before {
-      content: "";
-      position: absolute;
-      left: 12px;
-      right: 12px;
-      top: 20px;
-      height: 24px;
-      border-radius: 14px;
-      background: linear-gradient(180deg, #f7f8fa, #b3bcc6);
-      border: 1px solid #8f9aa6;
-    }
+    .pattern-detail-block { margin-bottom: 10px; }
 
-    .pipe-plain:after {
-      content: "";
-      position: absolute;
-      left: 13px;
-      top: 20px;
-      height: 24px;
-      width: 8px;
-      border-radius: 50%;
-      background: #9aa4af;
-      border: 1px solid #7e8994;
-    }
-
-    .pipe-bell:after {
-      content: "";
-      position: absolute;
-      right: 10px;
-      top: 15px;
-      height: 34px;
-      width: 30px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #f7f8fa, #adb7c1);
-      border: 1px solid #7e8994;
-    }
-
-    .pipe-thread:after {
-      content: "";
-      position: absolute;
-      right: 14px;
-      top: 22px;
-      width: 40px;
-      height: 20px;
-      background: repeating-linear-gradient(90deg, #808b96 0 2px, transparent 2px 6px);
-      border-left: 1px solid #7e8994;
-      border-right: 1px solid #7e8994;
-    }
-
-    .pattern-img:after {
-      content: "";
-      position: absolute;
-      left: 34px;
-      right: 34px;
-      top: 29px;
-      height: 6px;
-      background-image: radial-gradient(circle, #333 2px, transparent 3px);
-      background-size: 18px 6px;
-      opacity: 0.95;
-    }
-
-    .rows-4:after {
-      height: 22px;
-      top: 21px;
-      background-image:
-        radial-gradient(circle, #333 2px, transparent 3px),
-        radial-gradient(circle, #333 2px, transparent 3px),
-        radial-gradient(circle, #333 2px, transparent 3px),
-        radial-gradient(circle, #333 2px, transparent 3px);
-      background-size: 18px 6px, 18px 6px, 18px 6px, 18px 6px;
-      background-position: 0 0, 0 7px, 0 14px, 0 21px;
-      background-repeat: repeat-x;
-    }
-
-    .rows-wide:after { background-size: 28px 6px; }
-    .rows-tight:after { background-size: 12px 6px; }
-    .rows-custom:after {
-      background-image: radial-gradient(circle, #333 2px, transparent 3px);
-      background-size: 20px 10px;
-      transform: skewX(-12deg);
-    }
-
-    .desc {
-      color: var(--muted);
-      font-size: 12px;
-      margin-top: 4px;
-    }
-
-    .info-box {
-      display: flex;
-      gap: 10px;
-      margin-top: 14px;
-      padding: 12px;
-      background: var(--light-blue);
-      border-radius: 8px;
-      color: #12385f;
-      font-size: 13px;
-    }
-
-    .subsection-title {
-      margin: 0 0 12px;
-      color: var(--blue);
-      text-transform: uppercase;
-      font-weight: 800;
-      padding: 8px 10px;
-      background: var(--light-blue);
-      border-radius: 5px;
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .pattern-subsection-title {
-      margin-top: 18px;
-    }
-
-    .pattern-detail-block {
-      margin-bottom: 12px;
-    }
-
-    .upload-box {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 14px;
-      text-align: center;
-      color: var(--blue);
-      font-weight: 700;
-      background: #fff;
-    }
-
-    .drop-zone {
-      border: 1px dashed #91a7c1;
-      border-radius: 8px;
-      padding: 24px;
-      text-align: center;
-      color: var(--muted);
-      margin-top: 12px;
-    }
-
-    .upload-box { cursor: pointer; }
-
+    .upload-box { border: 1px solid var(--border); border-radius: 8px; padding: 12px; text-align: center; color: var(--blue); font-weight: 700; background: #fff; cursor: pointer; }
     .upload-box input[type="file"] { display: none; }
+    .upload-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 8px; }
 
-    .drop-zone.dragover {
-      border-color: var(--blue-2);
-      background: #f0f7ff;
-      color: var(--blue);
-    }
+    .drop-zone { border: 1px dashed #91a7c1; border-radius: 8px; padding: 20px; text-align: center; color: var(--muted); margin-top: 10px; }
+    .drop-zone.dragover { border-color: var(--blue-2); background: #f0f7ff; color: var(--blue); }
 
-    .attachment-list {
-      margin-top: 12px;
-      display: grid;
-      gap: 8px;
-    }
-
-    .attachment-item {
-      display: grid;
-      grid-template-columns: 56px 1fr auto;
-      gap: 10px;
-      align-items: center;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: #fbfcfe;
-      padding: 8px;
-    }
-
-    .attachment-thumb {
-      width: 56px;
-      height: 42px;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      background: #fff;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      font-weight: 900;
-      color: var(--blue);
-      font-size: 11px;
-    }
-
-    .attachment-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
+    .attachment-list { margin-top: 10px; display: grid; gap: 6px; }
+    .attachment-item { display: grid; grid-template-columns: 56px 1fr auto; gap: 10px; align-items: center; border: 1px solid var(--border); border-radius: 8px; background: #fbfcfe; padding: 8px; }
+    .attachment-thumb { width: 56px; height: 42px; border: 1px solid var(--border); border-radius: 6px; background: #fff; display: grid; place-items: center; overflow: hidden; font-weight: 900; color: var(--blue); font-size: 11px; }
+    .attachment-thumb img { width: 100%; height: 100%; object-fit: cover; }
     .attachment-name { font-weight: 800; color: var(--text); }
     .attachment-meta { color: var(--muted); font-size: 12px; margin-top: 2px; }
-
     .attachment-actions { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    .attachment-actions a, .attachment-actions button { border-radius: 6px; padding: 5px 8px; font-size: 12px; font-weight: 800; }
+    .attachment-actions a { background: var(--blue); color: white; text-decoration: none; }
 
-    .attachment-actions a,
-    .attachment-actions button {
-      border-radius: 6px;
-      padding: 6px 8px;
-      font-size: 12px;
-      font-weight: 800;
-    }
+    .next-box { background: var(--blue); color: #fff; border-radius: 8px; padding: 14px; height: 100%; }
+    .next-box h3 { margin: 0 0 8px; font-size: 14px; }
+    .next-box ul { margin: 0; padding-left: 18px; line-height: 1.6; }
 
-    .attachment-actions a {
-      background: var(--blue);
-      color: white;
-      text-decoration: none;
-    }
+    footer { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); font-size: 12px; padding-top: 8px; }
 
-    .next-box {
-      background: var(--blue);
-      color: #fff;
-      border-radius: 8px;
-      padding: 18px;
-      height: 100%;
-    }
+    .summary-line { margin-top: 10px; border: 1px solid var(--border); background: #fbfcfe; border-radius: 8px; padding: 10px; font-family: Consolas,monospace; color: #0f2742; }
 
-    .next-box h3 {
-      margin: 0 0 10px;
-      font-size: 15px;
-    }
-
-    .next-box ul {
-      margin: 0;
-      padding-left: 20px;
-      line-height: 1.7;
-    }
-
-    footer {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      color: var(--muted);
-      font-size: 12px;
-      padding-top: 10px;
-    }
-
-    .summary-line {
-      margin-top: 12px;
-      border: 1px solid var(--border);
-      background: #fbfcfe;
-      border-radius: 8px;
-      padding: 12px;
-      font-family: Consolas, monospace;
-      color: #0f2742;
-    }
-
+    /* Custom builder bar — always visible */
     .custom-builder-bar {
-      display: none;
-      margin-top: 14px;
+      margin-top: 12px;
       border: 1px solid #b6cbe0;
       border-radius: 8px;
       background: #f4faff;
-      padding: 12px;
+      padding: 10px;
     }
 
-    .custom-builder-bar.active { display: block; }
+    .button-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 8px; }
 
-    .button-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items: center;
-      margin-top: 10px;
+    button, .button-like {
+      appearance: none; border: 0; border-radius: 6px; padding: 8px 12px;
+      background: var(--blue); color: white; font-weight: 800; cursor: pointer;
+      font: inherit; text-decoration: none; display: inline-block;
     }
-
-    button,
-    .button-like {
-      appearance: none;
-      border: 0;
-      border-radius: 6px;
-      padding: 9px 12px;
-      background: var(--blue);
-      color: white;
-      font-weight: 800;
-      cursor: pointer;
-      font: inherit;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    button:hover,
-    .button-like:hover { background: var(--blue-2); }
-
+    button:hover, .button-like:hover { background: var(--blue-2); }
     button.secondary { background: #e5e7eb; color: #111827; }
     button.secondary:hover { background: #d1d5db; }
     button.green { background: var(--green); }
     button.orange { background: var(--orange); }
 
-    .download-help {
-      margin-top: 10px;
-      border: 1px dashed #91a7c1;
-      border-radius: 8px;
-      padding: 10px;
-      background: #fbfcfe;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.45;
-    }
+    .download-help { margin-top: 8px; border: 1px dashed #91a7c1; border-radius: 8px; padding: 8px; background: #fbfcfe; color: var(--muted); font-size: 12px; line-height: 1.45; }
 
-    .approved-pattern-box {
-      display: none;
-      margin-top: 12px;
-      border: 1px solid #98d7b2;
-      background: var(--soft-green);
-      border-radius: 8px;
-      padding: 12px;
-    }
-
+    /* Approved/preview pattern box */
+    .approved-pattern-box { display: none; margin-top: 10px; border: 1px solid #98d7b2; background: var(--soft-green); border-radius: 8px; padding: 10px; }
     .approved-pattern-box.active { display: block; }
-
-    .approved-pattern-title {
-      color: var(--green);
-      font-weight: 900;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-    }
-
-    .approved-pattern-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 8px;
-    }
-
+    .approved-pattern-title { color: var(--green); font-weight: 900; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.03em; }
+    .approved-pattern-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
     .approved-pattern-head .approved-pattern-title { margin-bottom: 0; }
-
     .approved-pattern-actions { margin-top: 0; }
+    .approved-pattern-actions button { padding: 6px 10px; font-size: 12px; }
 
-    .approved-pattern-actions button {
-      padding: 7px 10px;
-      font-size: 12px;
-    }
+    /* Both SVGs in approved box */
+    .approved-pattern-svgs { display: grid; grid-template-columns: 1fr 2fr; gap: 10px; margin-top: 10px; }
+    .approved-pattern-svgs .svg-box { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 8px; overflow: auto; }
+    .approved-pattern-svgs .svg-box-title { font-weight: 900; color: #334155; margin-bottom: 4px; font-size: 12px; }
+    .approved-pattern-svgs svg { display: block; width: 100%; height: auto; }
+    #approvedPatternSvg { max-height: 240px; }
+    #approvedPatternSideSvg { min-width: 480px; max-height: 200px; }
 
-    .row-position-builder-block {
-      margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px solid var(--border);
-    }
+    .row-position-builder-block { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
+    .row-override-actions { margin-top: 6px; }
 
-    .row-override-actions { margin-top: 8px; }
+    .metric-grid { display: grid; grid-template-columns: repeat(4,minmax(100px,1fr)); gap: 6px; margin: 8px 0; }
+    .metric { background: #fff; border: 1px solid var(--border); border-radius: 7px; padding: 7px; }
+    .metric .k { color: var(--muted); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; }
+    .metric .v { margin-top: 2px; color: var(--text); font-weight: 900; font-size: 14px; }
 
-    .metric-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(110px, 1fr));
-      gap: 8px;
-      margin: 10px 0;
-    }
+    .svg-preview { margin-top: 8px; background: white; border: 1px solid var(--border); border-radius: 8px; padding: 8px; overflow: auto; }
+    .svg-preview svg { display: block; width: 100%; height: auto; max-height: 260px; }
 
-    .metric {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 7px;
-      padding: 8px;
-    }
-
-    .metric .k {
-      color: var(--muted);
-      font-size: 10px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .metric .v {
-      margin-top: 3px;
-      color: var(--text);
-      font-weight: 900;
-      font-size: 15px;
-    }
-
-    .svg-preview {
-      margin-top: 10px;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 10px;
-      overflow: auto;
-    }
-
-    .svg-preview svg {
-      display: block;
-      width: 100%;
-      height: auto;
-      max-height: 270px;
-    }
-
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.68);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      z-index: 9999;
-    }
-
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(15,23,42,0.68); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 9999; }
     .modal-backdrop.active { display: flex; }
 
-    .modal {
-      width: min(1120px, 96vw);
-      max-height: 92vh;
-      overflow: auto;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
-      border: 1px solid #d7e0ea;
-    }
+    .modal { width: min(1120px,96vw); max-height: 92vh; overflow: auto; background: white; border-radius: 12px; box-shadow: 0 30px 90px rgba(0,0,0,0.35); border: 1px solid #d7e0ea; }
+    .modal-header { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; background: #ffffff; border-bottom: 1px solid var(--border); }
+    .modal-header h2 { margin: 0; color: var(--blue); font-size: 20px; }
+    .modal-body { padding: 14px; }
 
-    .modal-header {
-      position: sticky;
-      top: 0;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 14px 18px;
-      background: #ffffff;
-      border-bottom: 1px solid var(--border);
-    }
+    .builder-grid { display: grid; grid-template-columns: 320px 1fr; gap: 14px; align-items: start; }
+    .builder-panel { border: 1px solid var(--border); border-radius: 8px; padding: 10px; background: #fbfcfe; }
+    .builder-panel h3 { margin: 0 0 8px; color: var(--blue); text-transform: uppercase; font-size: 14px; }
+    .builder-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+    .builder-field label { display: block; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 3px; }
 
-    .modal-header h2 {
-      margin: 0;
-      color: var(--blue);
-      font-size: 20px;
-    }
+    .builder-visuals { display: grid; grid-template-columns: 330px 1fr; gap: 10px; }
+    .svg-box { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 8px; overflow: auto; }
+    .svg-box-title { font-weight: 900; color: #334155; margin-bottom: 5px; }
+    .svg-box svg { display: block; width: 100%; height: auto; background: #fff; }
 
-    .modal-body { padding: 16px; }
+    .test-panel { display: none; margin-top: 10px; padding: 10px; border-radius: 8px; border: 1px solid var(--border); background: #fbfcfe; font-family: Consolas,monospace; font-size: 12px; white-space: pre-wrap; }
 
-    .builder-grid {
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 16px;
-      align-items: start;
-    }
-
-    .builder-panel {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 12px;
-      background: #fbfcfe;
-    }
-
-    .builder-panel h3 {
-      margin: 0 0 10px;
-      color: var(--blue);
-      text-transform: uppercase;
-      font-size: 14px;
-    }
-
-    .builder-field-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 10px;
-    }
-
-    .builder-field label {
-      display: block;
-      color: var(--muted);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 4px;
-    }
-
-    .builder-visuals {
-      display: grid;
-      grid-template-columns: 330px 1fr;
-      gap: 12px;
-    }
-
-    .svg-box {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 10px;
-      overflow: auto;
-    }
-
-    .svg-box-title {
-      font-weight: 900;
-      color: #334155;
-      margin-bottom: 6px;
-    }
-
-    .svg-box svg {
-      display: block;
-      width: 100%;
-      height: auto;
-      background: #fff;
-    }
-
-    .test-panel {
-      display: none;
-      margin-top: 12px;
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: #fbfcfe;
-      font-family: Consolas, monospace;
-      font-size: 12px;
-      white-space: pre-wrap;
-    }
-
-    @media (max-width: 1000px) {
-      .builder-grid, .builder-visuals { grid-template-columns: 1fr; }
-      .metric-grid { grid-template-columns: repeat(2, minmax(110px, 1fr)); }
-    }
-
-
-
-    /* RFQ 2 v4 patch: fill the pipe section, move optional processing into specs, full-width attachments */
-    .customer-grid {
-      grid-template-columns: 180px minmax(260px, 1fr);
-      align-items: center;
-    }
-
+    .customer-grid { grid-template-columns: 180px minmax(260px,1fr); align-items: center; }
     .project-date-hidden { display: none !important; }
 
-    .pipe-layout {
-      display: grid;
-      grid-template-columns: minmax(520px, 0.95fr) minmax(320px, 0.75fr);
-      gap: 22px;
-      align-items: start;
-    }
-
-    .pipe-main-fields {
-      max-width: 660px;
-    }
-
-    .pipe-side-panel {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: #fbfcfe;
-      padding: 14px;
-      min-height: 100%;
-    }
-
-    .form-note {
-      margin: 0 0 12px;
-      color: #334155;
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
-    .side-field-grid {
-      grid-template-columns: 145px minmax(160px, 1fr);
-      gap: 10px 12px;
-      align-items: start;
-      margin-top: 12px;
-    }
-
-    .side-field-grid textarea { min-height: 78px; }
-
-    .side-divider {
-      height: 1px;
-      background: var(--border);
-      margin: 16px 0 12px;
-    }
-
+    .pipe-layout { display: grid; grid-template-columns: minmax(520px,0.95fr) minmax(320px,0.75fr); gap: 18px; align-items: start; }
+    .pipe-main-fields { max-width: 660px; }
+    .pipe-side-panel { border: 1px solid var(--border); border-radius: 8px; background: #fbfcfe; padding: 12px; }
+    .form-note { margin: 0 0 10px; color: #334155; font-size: 13px; line-height: 1.45; }
+    .side-field-grid { grid-template-columns: 145px minmax(160px,1fr); gap: 8px 10px; align-items: start; margin-top: 10px; }
+    .side-field-grid textarea { min-height: 68px; }
+    .side-divider { height: 1px; background: var(--border); margin: 12px 0 10px; }
     .attachments-full { width: 100%; }
 
+    .file-actions-grid { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; }
 
-    /* RFQ 2 v5 patch: spec summary, validation, and manufacturing detail modal */
-    .file-actions-grid {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 14px;
-      align-items: start;
-    }
-
-    .validation-result-box {
-      display: none;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: #fbfcfe;
-      padding: 10px;
-    }
-
+    .validation-result-box { display: none; border: 1px solid var(--border); border-radius: 8px; background: #fbfcfe; padding: 10px; }
     .validation-result-box.active { display: block; }
     .validation-result-box.valid { border-color: #98d7b2; background: var(--soft-green); }
     .validation-result-box.invalid { border-color: #fda29b; background: #fffafa; }
 
-    .spec-summary-head {
-      color: var(--blue);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 8px;
+    .spec-summary-head { color: var(--blue); font-weight: 900; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
+    .spec-summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .spec-k { color: var(--muted); font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+    .spec-chip-list { display: flex; flex-wrap: wrap; gap: 5px; min-height: 26px; align-items: flex-start; }
+    .spec-chip { border: 1px solid var(--border); background: #fff; border-radius: 999px; padding: 4px 8px; font-size: 12px; line-height: 1.2; color: #334155; }
+    .spec-chip.missing { border-color: #fda29b; background: #fff1f0; color: #912018; font-weight: 800; }
+
+    .section.section-error { border-color: #fda29b; box-shadow: 0 0 0 2px rgba(180,35,24,0.12); }
+    .section.section-error > .section-title { background: linear-gradient(90deg,#fff1f0,#fff7f6); color: #912018; border-bottom-color: #fda29b; }
+
+    input.missing-control, select.missing-control, textarea.missing-control,
+    .choice-row.missing-control, .inline-options.missing-control, .pipe-end-summary.missing-control {
+      border-color: #f04438 !important; box-shadow: 0 0 0 2px rgba(240,68,56,0.13); background: #fffafa; border-radius: 6px;
     }
+    .choice-row.missing-control, .inline-options.missing-control { padding: 4px; }
 
-    .spec-summary-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
+    .modal.full-page-modal { width: min(1180px,98vw); height: 96vh; max-height: 96vh; display: flex; flex-direction: column; }
+    .modal.full-page-modal .modal-body { flex: 1; overflow: auto; }
+
+    .manufacturing-detail-layout { grid-template-columns: 1fr !important; gap: 14px; }
+    .manufacturing-spec-panel, .manufacturing-visual-panel { border: 1px solid var(--border); border-radius: 8px; background: #fbfcfe; padding: 12px; }
+    .manufacturing-spec-line { font-family: Consolas,monospace; border: 1px solid var(--border); border-radius: 8px; background: #fff; padding: 10px; margin-bottom: 10px; color: #0f2742; line-height: 1.45; }
+    .manufacturing-visuals { display: grid; grid-template-columns: 1fr !important; gap: 12px; }
+    .manufacturing-visuals .svg-box { overflow-x: auto; }
+    .manufacturing-visuals .svg-box svg { width: 100%; max-height: none; min-width: 0; }
+    #manufacturingRadialSvg { max-width: 460px; margin: 0 auto; }
+    #manufacturingSideSvg { max-width: 100%; margin: 0 auto; }
+
+    .compact-form > .field-grid { grid-template-columns: 180px minmax(260px,460px); align-items: start; }
+    .compact-form .split { grid-template-columns: minmax(0,0.9fr) minmax(0,1fr); align-items: start; }
+    .compact-form .split .field-grid { grid-template-columns: 170px minmax(220px,330px); align-items: start; }
+
+    .choice-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .choice-button { position: relative; display: inline-flex; align-items: center; justify-content: center; min-width: 110px; padding: 8px 12px; border: 1px solid #cfd8e3; border-radius: 6px; background: #f8fafc; color: #111827; font-weight: 800; cursor: pointer; text-align: center; user-select: none; }
+    .choice-button input { position: absolute; opacity: 0; pointer-events: none; }
+    .choice-button:hover { border-color: var(--blue-2); }
+    .choice-button.selected { background: var(--blue); border-color: var(--blue); color: #fff; box-shadow: 0 0 0 2px rgba(11,93,168,0.12); }
+
+    .fixed-offset-note, .pipe-end-summary { border: 1px solid var(--border); border-radius: 6px; background: #fbfcfe; color: #334155; padding: 8px 9px; line-height: 1.35; }
+    .pipe-end-summary strong { color: var(--blue); }
+    .pipe-card.selected { border-color: var(--blue-2); background: #f0f7ff; box-shadow: 0 0 0 2px rgba(11,93,168,0.12); }
+    .modal.small-modal { width: min(760px,96vw); }
+
+    .pipe-end-picker { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 10px; }
+    .pipe-end-picker button.pipe-card { appearance: none; color: inherit; font: inherit; text-align: left; }
+    .builder-offset-note { margin-bottom: 8px; font-size: 13px; }
+
+    .pipe-img { height: 64px; border-radius: 6px; background: linear-gradient(180deg,#eef1f4,#c4ccd4 45%,#f7f8fa 55%,#aeb8c2); border: 1px solid #9aa4af; margin: 8px 0; position: relative; overflow: hidden; }
+    .pipe-img:before { content: ""; position: absolute; left: 12px; right: 12px; top: 20px; height: 24px; border-radius: 14px; background: linear-gradient(180deg,#f7f8fa,#b3bcc6); border: 1px solid #8f9aa6; }
+    .pipe-plain:after { content: ""; position: absolute; left: 13px; top: 20px; height: 24px; width: 8px; border-radius: 50%; background: #9aa4af; border: 1px solid #7e8994; }
+    .pipe-bell:after { content: ""; position: absolute; right: 10px; top: 15px; height: 34px; width: 30px; border-radius: 8px; background: linear-gradient(180deg,#f7f8fa,#adb7c1); border: 1px solid #7e8994; }
+    .pipe-thread:after { content: ""; position: absolute; right: 14px; top: 22px; width: 40px; height: 20px; background: repeating-linear-gradient(90deg,#808b96 0 2px,transparent 2px 6px); border-left: 1px solid #7e8994; border-right: 1px solid #7e8994; }
+
+    .row-override-panel { display: none; margin-top: 8px; border: 1px solid #b6cbe0; border-radius: 8px; background: #f4faff; padding: 10px; }
+    .row-override-panel.active { display: block; }
+    .row-override-head { display: flex; justify-content: space-between; gap: 10px; align-items: center; margin-bottom: 8px; flex-wrap: wrap; }
+    .row-override-title { color: var(--blue); font-weight: 900; text-transform: uppercase; letter-spacing: 0.03em; }
+    .row-override-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(100px,1fr)); gap: 6px; }
+    .row-degree-field label { display: block; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 3px; }
+    .row-degree-field input { font-weight: 800; }
+    .fixed-stagger-note { border: 1px solid var(--border); border-radius: 6px; background: #fbfcfe; padding: 7px 9px; color: #334155; min-height: 34px; display: flex; align-items: center; }
+    .row-override-panel.missing-control { border-color: #f04438 !important; box-shadow: 0 0 0 2px rgba(240,68,56,0.13); background: #fffafa; }
+
+    /* Pattern img — radial end-view */
+    .pattern-img {
+      height: 88px; border-radius: 8px; background: #ffffff; border: 1px solid #9aa4af;
+      margin: 8px 0; position: relative; overflow: hidden;
     }
-
-    .spec-k {
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 5px;
+    .pattern-img::before {
+      content: ""; position: absolute; width: 66px; height: 66px; left: 50%; top: 50%;
+      transform: translate(-50%,-50%); border-radius: 50%;
+      background: radial-gradient(circle at center,#ffffff 0 26px,transparent 27px),radial-gradient(circle at center,#f8fafc 0 100%);
+      border: 2px solid #334155; box-shadow: inset 0 0 0 1px #cbd5e1;
     }
-
-    .spec-chip-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      min-height: 28px;
-      align-items: flex-start;
+    .pattern-img::after {
+      content: ""; position: absolute; width: 66px; height: 66px; left: 50%; top: 50%;
+      transform: translate(-50%,-50%); border-radius: 50%; background-repeat: no-repeat;
     }
+    .radial-custom::before { border-style: dashed; }
 
-    .spec-chip {
-      border: 1px solid var(--border);
-      background: #fff;
-      border-radius: 999px;
-      padding: 5px 8px;
-      font-size: 12px;
-      line-height: 1.2;
-      color: #334155;
+    img.pattern-asset {
+      display: block; width: 100%; height: 100px; object-fit: contain; padding: 6px;
+      background: #ffffff; border: 1px solid #9aa4af; border-radius: 8px; margin: 8px 0;
     }
+    img.pattern-asset::before, img.pattern-asset::after { content: none !important; display: none !important; }
 
-    .spec-chip.missing {
-      border-color: #fda29b;
-      background: #fff1f0;
-      color: #912018;
-      font-weight: 800;
-    }
-
-    .section.section-error {
-      border-color: #fda29b;
-      box-shadow: 0 0 0 2px rgba(180, 35, 24, 0.12);
-    }
-
-    .section.section-error > .section-title {
-      background: linear-gradient(90deg, #fff1f0, #fff7f6);
-      color: #912018;
-      border-bottom-color: #fda29b;
-    }
-
-    input.missing-control,
-    select.missing-control,
-    textarea.missing-control,
-    .choice-row.missing-control,
-    .inline-options.missing-control,
-    .pipe-end-summary.missing-control {
-      border-color: #f04438 !important;
-      box-shadow: 0 0 0 2px rgba(240, 68, 56, 0.13);
-      background: #fffafa;
-      border-radius: 6px;
-    }
-
-    .choice-row.missing-control,
-    .inline-options.missing-control { padding: 4px; }
-
-    .modal.full-page-modal {
-      width: min(1320px, 98vw);
-      height: 96vh;
-      max-height: 96vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .modal.full-page-modal .modal-body {
-      flex: 1;
-      overflow: auto;
-    }
-
-    .manufacturing-detail-layout {
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 14px;
-      align-items: start;
-    }
-
-    .manufacturing-spec-panel,
-    .manufacturing-visual-panel {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: #fbfcfe;
-      padding: 12px;
-    }
-
-    .manufacturing-spec-line {
-      font-family: Consolas, monospace;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: #fff;
-      padding: 10px;
-      margin-bottom: 12px;
-      color: #0f2742;
-      line-height: 1.45;
-    }
-
-    .manufacturing-visuals {
-      display: grid;
-      grid-template-columns: minmax(320px, 0.75fr) minmax(520px, 1.25fr);
-      gap: 12px;
-    }
-
-    .manufacturing-visuals .svg-box svg {
-      max-height: 560px;
-    }
-
-    @media (max-width: 900px) {
-      .file-actions-grid,
-      .spec-summary-grid,
-      .manufacturing-detail-layout,
-      .manufacturing-visuals {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 1000px) {
+      .builder-grid, .builder-visuals { grid-template-columns: 1fr; }
+      .metric-grid { grid-template-columns: repeat(2,minmax(100px,1fr)); }
     }
 
     @media (max-width: 900px) {
       body { font-size: 13px; background: #fff; }
       .page { margin: 0; border: 0; border-radius: 0; box-shadow: none; }
       header, .grid-2, .split { grid-template-columns: 1fr; }
-      header { padding: 18px 16px; gap: 14px; }
+      header { padding: 14px; gap: 12px; }
       .logo { font-size: 34px; }
       .logo span { font-size: 15px; }
       .title { text-align: left; }
       .title h1 { font-size: 24px; }
-      .title p { font-size: 13px; }
-      .content, .section-body { padding: 12px; }
-      .pattern-grid, .upload-row, .pipe-ends, .field-grid { grid-template-columns: 1fr; }
+      .content, .section-body { padding: 10px; }
+      .pattern-grid, .upload-row, .field-grid { grid-template-columns: 1fr; }
       .unit-row { grid-template-columns: 1fr 88px; }
       .modal-backdrop { align-items: stretch; justify-content: stretch; padding: 0; }
       .modal { width: 100vw; max-height: 100vh; height: 100vh; border-radius: 0; border: 0; }
-      .modal-header { display: block; padding: 12px; }
+      .modal-header { display: block; padding: 10px; }
       .modal-header h2 { font-size: 18px; }
-      .modal-header .button-row { margin-top: 10px !important; }
+      .modal-header .button-row { margin-top: 8px !important; }
       .modal-header button { flex: 1 1 auto; }
-      .modal-body { padding: 12px; }
+      .modal-body { padding: 10px; }
       .builder-grid, .builder-visuals { grid-template-columns: 1fr; }
       .builder-field-row { grid-template-columns: 1fr 1fr; }
-      .metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .svg-box { padding: 8px; }
-      .svg-box svg, .svg-preview svg { min-width: 620px; }
+      .metric-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .svg-box { padding: 6px; }
+      .svg-box svg, .svg-preview svg { min-width: 560px; }
       .svg-box, .svg-preview { overflow-x: auto; -webkit-overflow-scrolling: touch; }
       footer { display: block; line-height: 1.7; }
+      .compact-form > .field-grid, .compact-form .split .field-grid, .customer-grid, .side-field-grid { grid-template-columns: 1fr; }
+      .compact-form .split, .pipe-layout, .pipe-end-picker { grid-template-columns: 1fr; }
+      .choice-button { flex: 1 1 120px; }
+      .approved-pattern-svgs { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 520px) {
@@ -978,930 +364,56 @@
     }
 
     @media print {
-      @page {
-        size: Letter portrait;
-        margin: 0.35in;
-      }
-
-      * {
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-      }
-
-      html,
-      body {
-        width: auto !important;
-        min-width: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        background: #fff !important;
-        color: #111827 !important;
-        font-size: 9.5pt !important;
-        line-height: 1.25 !important;
-      }
-
-      .page {
-        width: 100% !important;
-        max-width: none !important;
-        margin: 0 !important;
-        border: 0 !important;
-        border-radius: 0 !important;
-        box-shadow: none !important;
-        overflow: visible !important;
-      }
-
-      header {
-        display: grid !important;
-        grid-template-columns: 1.55in 1fr 1.65in !important;
-        gap: 0.15in !important;
-        align-items: center !important;
-        padding: 0 0 0.14in !important;
-        margin-bottom: 0.12in !important;
-        border-bottom: 1px solid #9aa4af !important;
-        background: #fff !important;
-        break-inside: avoid;
-        page-break-inside: avoid;
-      }
-
-      .logo {
-        font-size: 23pt !important;
-        letter-spacing: -1px !important;
-      }
-
-      .logo span {
-        font-size: 9pt !important;
-      }
-
-      .title {
-        text-align: center !important;
-      }
-
-      .title h1 {
-        font-size: 17pt !important;
-        margin: 0 !important;
-      }
-
-      .title p {
-        font-size: 8.5pt !important;
-        margin-top: 0.04in !important;
-      }
-
-      .rfq-box {
-        padding: 0.07in !important;
-        border: 1px solid #9aa4af !important;
-        background: #eef6ff !important;
-      }
-
-      .rfq-box label {
-        font-size: 8pt !important;
-        margin-bottom: 0.04in !important;
-      }
-
-      .content {
-        padding: 0 !important;
-      }
-
-      #fileActionsSection,
-      .modal-backdrop,
-      .test-panel,
-      .download-help,
-      .validation-result-box,
-      .custom-builder-bar .button-row,
-      button,
-      .button-row,
-      .upload-row,
-      .drop-zone {
-        display: none !important;
-      }
-
-      .section {
-        margin: 0 0 0.11in !important;
-        border: 1px solid #9aa4af !important;
-        border-radius: 5px !important;
-        overflow: visible !important;
-        background: #fff !important;
-        break-inside: avoid;
-        page-break-inside: avoid;
-      }
-
-      .section-title {
-        padding: 0.06in 0.08in !important;
-        font-size: 9.5pt !important;
-        line-height: 1.1 !important;
-        background: #eaf3fb !important;
-        color: #003b73 !important;
-        border-bottom: 1px solid #9aa4af !important;
-      }
-
-      .num {
-        width: 0.24in !important;
-        height: 0.24in !important;
-        border-radius: 3px !important;
-        font-size: 8.5pt !important;
-        background: #003b73 !important;
-        color: #fff !important;
-      }
-
-      .section-body {
-        padding: 0.09in !important;
-      }
-
-      .grid-2,
-      .split,
-      .pipe-section-layout {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 0.1in !important;
-      }
-
-      .field-grid {
-        display: grid !important;
-        grid-template-columns: 1.22in 1fr !important;
-        gap: 0.055in 0.08in !important;
-        align-items: center !important;
-      }
-
-      .pipe-spec-grid {
-        display: grid !important;
-        grid-template-columns: 1.18in 1fr !important;
-        gap: 0.055in 0.08in !important;
-        align-items: center !important;
-      }
-
-      label {
-        font-size: 8.4pt !important;
-        line-height: 1.15 !important;
-      }
-
-      input,
-      select,
-      textarea {
-        border: 1px solid #9aa4af !important;
-        border-radius: 3px !important;
-        padding: 0.045in 0.055in !important;
-        min-height: 0.22in !important;
-        font-size: 8.5pt !important;
-        line-height: 1.2 !important;
-        background: #fff !important;
-        color: #111827 !important;
-        box-shadow: none !important;
-      }
-
-      input[type="radio"],
-      input[type="checkbox"] {
-        width: auto !important;
-        min-height: 0 !important;
-        padding: 0 !important;
-      }
-
-      textarea {
-        min-height: 0.55in !important;
-        resize: none !important;
-      }
-
-      .unit-row {
-        grid-template-columns: 1fr 0.62in !important;
-        gap: 0.05in !important;
-      }
-
-      .choice-row,
-      .inline-options {
-        gap: 0.08in !important;
-      }
-
-      .choice-card {
-        padding: 0.055in 0.08in !important;
-        min-width: 0.78in !important;
-        border: 1px solid #9aa4af !important;
-        border-radius: 4px !important;
-        background: #fff !important;
-      }
-
-      .choice-card.selected {
-        background: #eaf3fb !important;
-        border-color: #003b73 !important;
-        box-shadow: inset 0 0 0 1px #003b73 !important;
-      }
-
-      .subsection-title {
-        margin: 0 0 0.075in !important;
-        padding: 0.045in 0.06in !important;
-        font-size: 9pt !important;
-        background: #eaf3fb !important;
-      }
-
-      .pattern-grid {
-        grid-template-columns: 1fr !important;
-        gap: 0 !important;
-        margin-top: 0.06in !important;
-      }
-
-      .pattern-card {
-        display: none !important;
-      }
-
-      .pattern-card.selected {
-        display: block !important;
-        border: 1px solid #003b73 !important;
-        background: #f8fbff !important;
-        box-shadow: none !important;
-        padding: 0.075in !important;
-        break-inside: avoid;
-        page-break-inside: avoid;
-      }
-
-      img.pattern-asset,
-      .pattern-img {
-        height: 0.95in !important;
-        max-height: 0.95in !important;
-        margin: 0.04in 0 !important;
-        padding: 0.03in !important;
-      }
-
-      .approved-pattern-box {
-        display: block !important;
-        border: 1px solid #98d7b2 !important;
-        background: #e7f7ec !important;
-        padding: 0.08in !important;
-        margin-top: 0.08in !important;
-        break-inside: avoid;
-        page-break-inside: avoid;
-      }
-
-      .metric-grid {
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 0.055in !important;
-        margin: 0.06in 0 !important;
-      }
-
-      .metric {
-        padding: 0.055in !important;
-        border: 1px solid #9aa4af !important;
-        border-radius: 4px !important;
-        background: #fff !important;
-      }
-
-      .metric .k {
-        font-size: 6.8pt !important;
-      }
-
-      .metric .v {
-        font-size: 10pt !important;
-      }
-
-      .svg-preview {
-        padding: 0.06in !important;
-        margin-top: 0.06in !important;
-        border: 1px solid #9aa4af !important;
-        overflow: visible !important;
-      }
-
-      .svg-preview svg {
-        max-height: 2.05in !important;
-        min-width: 0 !important;
-        width: 100% !important;
-      }
-
-      .info-box,
-      .summary-line {
-        padding: 0.07in !important;
-        margin-top: 0.07in !important;
-        font-size: 8pt !important;
-        border: 1px solid #9aa4af !important;
-        background: #f8fbff !important;
-      }
-
-      .attachment-list {
-        display: grid !important;
-        gap: 0.05in !important;
-      }
-
-      .attachment-item {
-        grid-template-columns: 0.45in 1fr !important;
-        padding: 0.055in !important;
-        break-inside: avoid;
-        page-break-inside: avoid;
-      }
-
-      .attachment-actions {
-        display: none !important;
-      }
-
-      .attachment-thumb {
-        width: 0.45in !important;
-        height: 0.34in !important;
-      }
-
-      .next-box {
-        border-radius: 5px !important;
-        padding: 0.11in !important;
-        background: #003b73 !important;
-        color: #fff !important;
-        break-inside: avoid;
-        page-break-inside: avoid;
-      }
-
-      .next-box h3 {
-        font-size: 9.5pt !important;
-      }
-
-      .next-box ul {
-        line-height: 1.35 !important;
-        padding-left: 0.16in !important;
-      }
-
-      footer {
-        display: flex !important;
-        justify-content: space-between !important;
-        gap: 0.08in !important;
-        padding-top: 0.04in !important;
-        font-size: 7.5pt !important;
-        border-top: 1px solid #d7e0ea !important;
-      }
+      @page { size: Letter portrait; margin: 0.35in; }
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      html, body { width: auto !important; min-width: 0 !important; margin: 0 !important; padding: 0 !important; background: #fff !important; color: #111827 !important; font-size: 9.5pt !important; line-height: 1.25 !important; }
+      .page { width: 100% !important; max-width: none !important; margin: 0 !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; overflow: visible !important; }
+      header { display: grid !important; grid-template-columns: 1.55in 1fr 1.65in !important; gap: 0.15in !important; align-items: center !important; padding: 0 0 0.12in !important; margin-bottom: 0.1in !important; border-bottom: 1px solid #9aa4af !important; background: #fff !important; break-inside: avoid; }
+      .logo { font-size: 23pt !important; letter-spacing: -1px !important; }
+      .logo span { font-size: 9pt !important; }
+      .title { text-align: center !important; }
+      .title h1 { font-size: 17pt !important; margin: 0 !important; }
+      .title p { font-size: 8.5pt !important; margin-top: 0.04in !important; }
+      .rfq-box { padding: 0.07in !important; border: 1px solid #9aa4af !important; background: #eef6ff !important; }
+      .rfq-box label { font-size: 8pt !important; margin-bottom: 0.04in !important; }
+      .content { padding: 0 !important; }
+      #fileActionsSection, .modal-backdrop, .test-panel, .download-help, .validation-result-box, .custom-builder-bar .button-row, button, .button-row, .upload-row, .drop-zone { display: none !important; }
+      .section { margin: 0 0 0.09in !important; border: 1px solid #9aa4af !important; border-radius: 5px !important; overflow: visible !important; background: #fff !important; break-inside: avoid; }
+      .section-title { padding: 0.05in 0.07in !important; font-size: 9.5pt !important; line-height: 1.1 !important; background: #eaf3fb !important; color: #003b73 !important; border-bottom: 1px solid #9aa4af !important; }
+      .num { width: 0.22in !important; height: 0.22in !important; border-radius: 3px !important; font-size: 8.5pt !important; background: #003b73 !important; color: #fff !important; }
+      .section-body { padding: 0.08in !important; }
+      .grid-2, .split { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 0.09in !important; }
+      .field-grid { display: grid !important; grid-template-columns: 1.22in 1fr !important; gap: 0.05in 0.07in !important; align-items: center !important; }
+      label { font-size: 8.4pt !important; line-height: 1.15 !important; }
+      input, select, textarea { border: 1px solid #9aa4af !important; border-radius: 3px !important; padding: 0.04in 0.05in !important; min-height: 0.22in !important; font-size: 8.5pt !important; line-height: 1.2 !important; background: #fff !important; color: #111827 !important; box-shadow: none !important; }
+      input[type="radio"], input[type="checkbox"] { width: auto !important; min-height: 0 !important; padding: 0 !important; }
+      textarea { min-height: 0.5in !important; resize: none !important; }
+      .unit-row { grid-template-columns: 1fr 0.62in !important; gap: 0.05in !important; }
+      .choice-row, .inline-options { gap: 0.07in !important; }
+      .choice-card { padding: 0.05in 0.07in !important; border: 1px solid #9aa4af !important; border-radius: 4px !important; background: #fff !important; }
+      .choice-card.selected { background: #eaf3fb !important; border-color: #003b73 !important; }
+      .subsection-title { margin: 0 0 0.065in !important; padding: 0.04in 0.06in !important; font-size: 9pt !important; background: #eaf3fb !important; }
+      .pattern-grid { grid-template-columns: 1fr !important; gap: 0 !important; margin-top: 0.06in !important; }
+      .pattern-card { display: none !important; }
+      .pattern-card.selected { display: block !important; border: 1px solid #003b73 !important; background: #f8fbff !important; box-shadow: none !important; padding: 0.07in !important; break-inside: avoid; }
+      img.pattern-asset { height: 0.85in !important; max-height: 0.85in !important; margin: 0.04in 0 !important; }
+      .approved-pattern-box { display: block !important; border: 1px solid #98d7b2 !important; background: #e7f7ec !important; padding: 0.08in !important; margin-top: 0.07in !important; break-inside: avoid; }
+      .approved-pattern-svgs { grid-template-columns: 1fr 2fr !important; gap: 0.07in !important; }
+      .metric-grid { grid-template-columns: repeat(4,1fr) !important; gap: 0.05in !important; margin: 0.05in 0 !important; }
+      .metric { padding: 0.05in !important; border: 1px solid #9aa4af !important; border-radius: 4px !important; background: #fff !important; }
+      .metric .k { font-size: 6.8pt !important; }
+      .metric .v { font-size: 10pt !important; }
+      .svg-preview { padding: 0.05in !important; margin-top: 0.05in !important; border: 1px solid #9aa4af !important; overflow: visible !important; }
+      .svg-preview svg { max-height: 1.9in !important; min-width: 0 !important; width: 100% !important; }
+      .info-box, .summary-line { padding: 0.06in !important; margin-top: 0.06in !important; font-size: 8pt !important; border: 1px solid #9aa4af !important; background: #f8fbff !important; }
+      .attachment-item { grid-template-columns: 0.45in 1fr !important; padding: 0.05in !important; break-inside: avoid; }
+      .attachment-actions { display: none !important; }
+      .attachment-thumb { width: 0.45in !important; height: 0.34in !important; }
+      .next-box { border-radius: 5px !important; padding: 0.1in !important; background: #003b73 !important; color: #fff !important; break-inside: avoid; }
+      .next-box h3 { font-size: 9.5pt !important; }
+      .next-box ul { line-height: 1.35 !important; padding-left: 0.15in !important; }
+      footer { display: flex !important; justify-content: space-between !important; gap: 0.07in !important; padding-top: 0.04in !important; font-size: 7.5pt !important; border-top: 1px solid #d7e0ea !important; }
     }
-  
-    /* RFQ 2 patch: pattern selector images are radial/end-view diagrams, not side-view rows */
-    .pattern-img {
-      height: 96px;
-      border-radius: 8px;
-      background: #ffffff;
-      border: 1px solid #9aa4af;
-      margin: 10px 0;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .pattern-img::before {
-      content: "";
-      position: absolute;
-      width: 66px;
-      height: 66px;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at center, #ffffff 0 26px, transparent 27px),
-        radial-gradient(circle at center, #f8fafc 0 100%);
-      border: 2px solid #334155;
-      box-shadow: inset 0 0 0 1px #cbd5e1;
-    }
-
-    .pattern-img::after {
-      content: "";
-      position: absolute;
-      width: 66px;
-      height: 66px;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      background-repeat: no-repeat;
-    }
-
-    .radial-2::after {
-      background-image:
-        radial-gradient(circle, #0b5da8 0 5px, transparent 6px),
-        radial-gradient(circle, #0b5da8 0 5px, transparent 6px);
-      background-position:
-        30px 0px,
-        30px 60px;
-      background-size: 8px 8px;
-    }
-
-    .radial-4::after {
-      background-image:
-        radial-gradient(circle, #0b5da8 0 5px, transparent 6px),
-        radial-gradient(circle, #0b5da8 0 5px, transparent 6px),
-        radial-gradient(circle, #0b5da8 0 5px, transparent 6px),
-        radial-gradient(circle, #0b5da8 0 5px, transparent 6px);
-      background-position:
-        30px 0px,
-        60px 30px,
-        30px 60px,
-        0px 30px;
-      background-size: 8px 8px;
-    }
-
-    .radial-6::after {
-      background-image:
-        radial-gradient(circle, #0b5da8 0 5px, transparent 6px),
-        radial-gradient(circle, #0b5da8 0 5px, transparent 6px),
-        radial-gradient(circle, #0b5da8 0 5px, transparent 6px),
-        radial-gradient(circle, #0b5da8 0 5px, transparent 6px),
-        radial-gradient(circle, #0b5da8 0 5px, transparent 6px),
-        radial-gradient(circle, #0b5da8 0 5px, transparent 6px);
-      background-position:
-        30px 0px,
-        56px 15px,
-        56px 45px,
-        30px 60px,
-        4px 45px,
-        4px 15px;
-      background-size: 8px 8px;
-    }
-
-    .radial-8::after,
-    .radial-custom::after {
-      background-image:
-        radial-gradient(circle, #0b5da8 0 4.5px, transparent 5.5px),
-        radial-gradient(circle, #0b5da8 0 4.5px, transparent 5.5px),
-        radial-gradient(circle, #0b5da8 0 4.5px, transparent 5.5px),
-        radial-gradient(circle, #0b5da8 0 4.5px, transparent 5.5px),
-        radial-gradient(circle, #0b5da8 0 4.5px, transparent 5.5px),
-        radial-gradient(circle, #0b5da8 0 4.5px, transparent 5.5px),
-        radial-gradient(circle, #0b5da8 0 4.5px, transparent 5.5px),
-        radial-gradient(circle, #0b5da8 0 4.5px, transparent 5.5px);
-      background-position:
-        30px 0px,
-        51px 9px,
-        60px 30px,
-        51px 51px,
-        30px 60px,
-        9px 51px,
-        0px 30px,
-        9px 9px;
-      background-size: 8px 8px;
-    }
-
-    .radial-stagger::after {
-      background-image:
-        radial-gradient(circle, #0b5da8 0 5px, transparent 6px),
-        radial-gradient(circle, #0b5da8 0 5px, transparent 6px),
-        radial-gradient(circle, #0b5da8 0 5px, transparent 6px),
-        radial-gradient(circle, #0b5da8 0 5px, transparent 6px),
-        linear-gradient(45deg, transparent 48%, #f97316 49%, #f97316 51%, transparent 52%);
-      background-position:
-        30px 0px,
-        56px 45px,
-        4px 45px,
-        30px 60px,
-        center;
-      background-size:
-        8px 8px,
-        8px 8px,
-        8px 8px,
-        8px 8px,
-        66px 66px;
-    }
-
-    .radial-custom::before {
-      border-style: dashed;
-    }
-
-
-    /* RFQ 2 patch: use real PNG preset images from /images instead of CSS-generated placeholders */
-    img.pattern-asset {
-      display: block;
-      width: 100%;
-      height: 116px;
-      object-fit: contain;
-      padding: 6px;
-      background: #ffffff;
-      border: 1px solid #9aa4af;
-      border-radius: 8px;
-      margin: 10px 0;
-      position: static;
-      overflow: visible;
-    }
-
-    img.pattern-asset::before,
-    img.pattern-asset::after {
-      content: none !important;
-      display: none !important;
-    }
-
-
-
-    /* RFQ 2 v3 patch: compact entry fields + clean radio button rows */
-    .compact-form > .field-grid {
-      grid-template-columns: 180px minmax(260px, 460px);
-      align-items: start;
-    }
-
-    .compact-form .split {
-      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
-      align-items: start;
-    }
-
-    .compact-form .split .field-grid {
-      grid-template-columns: 170px minmax(220px, 330px);
-      align-items: start;
-    }
-
-    .choice-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .choice-button {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 118px;
-      padding: 9px 14px;
-      border: 1px solid #cfd8e3;
-      border-radius: 6px;
-      background: #f8fafc;
-      color: #111827;
-      font-weight: 800;
-      cursor: pointer;
-      text-align: center;
-      user-select: none;
-    }
-
-    .choice-button input {
-      position: absolute;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .choice-button:hover { border-color: var(--blue-2); }
-
-    .choice-button.selected {
-      background: var(--blue);
-      border-color: var(--blue);
-      color: #fff;
-      box-shadow: 0 0 0 2px rgba(11, 93, 168, 0.12);
-    }
-
-    .fixed-offset-note,
-    .pipe-end-summary {
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      background: #fbfcfe;
-      color: #334155;
-      padding: 9px 10px;
-      line-height: 1.35;
-    }
-
-    .pipe-end-summary strong { color: var(--blue); }
-
-    .pipe-card.selected {
-      border-color: var(--blue-2);
-      background: #f0f7ff;
-      box-shadow: 0 0 0 2px rgba(11, 93, 168, 0.12);
-    }
-
-    .modal.small-modal { width: min(760px, 96vw); }
-
-    .pipe-end-picker {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .pipe-end-picker button.pipe-card {
-      appearance: none;
-      color: inherit;
-      font: inherit;
-      text-align: left;
-    }
-
-    .builder-offset-note {
-      margin-bottom: 10px;
-      font-size: 13px;
-    }
-
-    .approved-pattern-box .svg-preview {
-      max-width: 430px;
-      margin: 12px auto 0;
-    }
-
-    .approved-pattern-box .svg-preview svg,
-    #approvedPatternSvg {
-      min-width: 0 !important;
-      max-height: 360px;
-    }
-
-
-
-    /* RFQ 2 v4 patch: fill the pipe section, move optional processing into specs, full-width attachments */
-    .customer-grid {
-      grid-template-columns: 180px minmax(260px, 1fr);
-      align-items: center;
-    }
-
-    .project-date-hidden { display: none !important; }
-
-    .pipe-layout {
-      display: grid;
-      grid-template-columns: minmax(520px, 0.95fr) minmax(320px, 0.75fr);
-      gap: 22px;
-      align-items: start;
-    }
-
-    .pipe-main-fields {
-      max-width: 660px;
-    }
-
-    .pipe-side-panel {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: #fbfcfe;
-      padding: 14px;
-      min-height: 100%;
-    }
-
-    .form-note {
-      margin: 0 0 12px;
-      color: #334155;
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
-    .side-field-grid {
-      grid-template-columns: 145px minmax(160px, 1fr);
-      gap: 10px 12px;
-      align-items: start;
-      margin-top: 12px;
-    }
-
-    .side-field-grid textarea { min-height: 78px; }
-
-    .side-divider {
-      height: 1px;
-      background: var(--border);
-      margin: 16px 0 12px;
-    }
-
-    .attachments-full { width: 100%; }
-
-
-    /* RFQ 2 v5 patch: spec summary, validation, and manufacturing detail modal */
-    .file-actions-grid {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 14px;
-      align-items: start;
-    }
-
-    .validation-result-box {
-      display: none;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: #fbfcfe;
-      padding: 10px;
-    }
-
-    .validation-result-box.active { display: block; }
-    .validation-result-box.valid { border-color: #98d7b2; background: var(--soft-green); }
-    .validation-result-box.invalid { border-color: #fda29b; background: #fffafa; }
-
-    .spec-summary-head {
-      color: var(--blue);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 8px;
-    }
-
-    .spec-summary-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .spec-k {
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 5px;
-    }
-
-    .spec-chip-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      min-height: 28px;
-      align-items: flex-start;
-    }
-
-    .spec-chip {
-      border: 1px solid var(--border);
-      background: #fff;
-      border-radius: 999px;
-      padding: 5px 8px;
-      font-size: 12px;
-      line-height: 1.2;
-      color: #334155;
-    }
-
-    .spec-chip.missing {
-      border-color: #fda29b;
-      background: #fff1f0;
-      color: #912018;
-      font-weight: 800;
-    }
-
-    .section.section-error {
-      border-color: #fda29b;
-      box-shadow: 0 0 0 2px rgba(180, 35, 24, 0.12);
-    }
-
-    .section.section-error > .section-title {
-      background: linear-gradient(90deg, #fff1f0, #fff7f6);
-      color: #912018;
-      border-bottom-color: #fda29b;
-    }
-
-    input.missing-control,
-    select.missing-control,
-    textarea.missing-control,
-    .choice-row.missing-control,
-    .inline-options.missing-control,
-    .pipe-end-summary.missing-control {
-      border-color: #f04438 !important;
-      box-shadow: 0 0 0 2px rgba(240, 68, 56, 0.13);
-      background: #fffafa;
-      border-radius: 6px;
-    }
-
-    .choice-row.missing-control,
-    .inline-options.missing-control { padding: 4px; }
-
-    .modal.full-page-modal {
-      width: min(1320px, 98vw);
-      height: 96vh;
-      max-height: 96vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .modal.full-page-modal .modal-body {
-      flex: 1;
-      overflow: auto;
-    }
-
-    .manufacturing-detail-layout {
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 14px;
-      align-items: start;
-    }
-
-    .manufacturing-spec-panel,
-    .manufacturing-visual-panel {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: #fbfcfe;
-      padding: 12px;
-    }
-
-    .manufacturing-spec-line {
-      font-family: Consolas, monospace;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: #fff;
-      padding: 10px;
-      margin-bottom: 12px;
-      color: #0f2742;
-      line-height: 1.45;
-    }
-
-    .manufacturing-visuals {
-      display: grid;
-      grid-template-columns: minmax(320px, 0.75fr) minmax(520px, 1.25fr);
-      gap: 12px;
-    }
-
-    .manufacturing-visuals .svg-box svg {
-      max-height: 560px;
-    }
-
-    @media (max-width: 900px) {
-      .file-actions-grid,
-      .spec-summary-grid,
-      .manufacturing-detail-layout,
-      .manufacturing-visuals {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 900px) {
-      .compact-form > .field-grid,
-      .compact-form .split .field-grid,
-      .customer-grid,
-      .side-field-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .compact-form .split,
-      .pipe-layout,
-      .pipe-end-picker {
-        grid-template-columns: 1fr;
-      }
-
-      .choice-button { flex: 1 1 130px; }
-    }
-
-
-    /* RFQ 2 v8 patch: pattern row data, fixed half-spacing stagger, row position override */
-    .row-override-panel {
-      display: none;
-      margin-top: 10px;
-      border: 1px solid #b6cbe0;
-      border-radius: 8px;
-      background: #f4faff;
-      padding: 12px;
-    }
-
-    .row-override-panel.active { display: block; }
-
-    .row-override-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      align-items: center;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
-    }
-
-    .row-override-title {
-      color: var(--blue);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-    }
-
-    .row-override-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-      gap: 8px;
-    }
-
-    .row-degree-field label {
-      display: block;
-      color: var(--muted);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 4px;
-    }
-
-    .row-degree-field input {
-      font-weight: 800;
-    }
-
-    .fixed-stagger-note {
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      background: #fbfcfe;
-      padding: 8px 9px;
-      color: #334155;
-      min-height: 36px;
-      display: flex;
-      align-items: center;
-    }
-
-    .row-override-panel.missing-control {
-      border-color: #f04438 !important;
-      box-shadow: 0 0 0 2px rgba(240, 68, 56, 0.13);
-      background: #fffafa;
-    }
-
-
-    /* RFQ 2 v10 patch: stack manufacturing detail panels vertically for readable full-page review */
-    .modal.full-page-modal {
-      width: min(1180px, 98vw);
-    }
-
-    .manufacturing-detail-layout {
-      grid-template-columns: 1fr !important;
-      gap: 16px;
-    }
-
-    .manufacturing-visuals {
-      grid-template-columns: 1fr !important;
-      gap: 16px;
-    }
-
-    .manufacturing-visuals .svg-box {
-      overflow-x: auto;
-    }
-
-    .manufacturing-visuals .svg-box svg {
-      width: 100%;
-      max-height: none;
-      min-width: 0;
-    }
-
-    #manufacturingRadialSvg {
-      max-width: 460px;
-      margin: 0 auto;
-    }
-
-    #manufacturingSideSvg {
-      max-width: 100%;
-      margin: 0 auto;
-    }
-
   </style>
 </head>
 <body>
@@ -1950,9 +462,9 @@
         <div class="section-title"><span class="num">1</span> Customer Information</div>
         <div class="section-body">
           <div class="field-grid customer-grid">
-            <label class="req">Company Name</label><input name="company" required />
-            <label class="req">Contact Name</label><input name="contact" required />
-            <label class="req">Email Address</label><input name="email" type="email" required />
+            <label>Company Name</label><input name="company" />
+            <label>Contact Name</label><input name="contact" />
+            <label>Email Address</label><input name="email" type="email" />
             <label>Phone Number</label><input name="phone" />
             <label>Project Name</label><input name="project" />
             <label>Project Timing</label>
@@ -1960,7 +472,7 @@
               <label class="choice-button"><input type="radio" name="projectTiming" value="TBD" checked /> Bid / End Date TBD</label>
               <label class="choice-button"><input type="radio" name="projectTiming" value="Specific" /> Specific Dates</label>
             </div>
-            <label class="req">Quote Required By</label><input name="quoteRequired" type="date" required />
+            <label>Quote Required By</label><input name="quoteRequired" type="date" />
             <label class="project-date-field-label">Product Required By</label><input class="project-date-field" name="productRequired" type="date" />
             <label>Sales Representative</label>
             <select name="salesRep"><option></option><option>Cory Hornung</option><option>Dale</option><option>Other</option></select>
@@ -1978,35 +490,25 @@
                 <label class="choice-button"><input type="radio" name="pipeSupplier" value="Rice" required /> Rice</label>
                 <label class="choice-button"><input type="radio" name="pipeSupplier" value="Customer" /> Customer</label>
               </div>
-
               <label class="req">Pipe Material</label>
               <div class="choice-row">
                 <label class="choice-button"><input type="radio" name="material" value="PVC" /> PVC</label>
                 <label class="choice-button"><input type="radio" name="material" value="HDPE" /> HDPE</label>
               </div>
-
               <label id="pipeEndRowLabel" style="display:none">Pipe Ends</label>
               <div id="pipeEndRowControl" class="pipe-end-summary" style="display:none">PVC selected — choose pipe end style.</div>
               <input type="hidden" id="pipeEndsValue" name="pipeEnds" />
-
               <label class="req">Pipe Size (OD)</label>
               <div class="unit-row"><input name="pipeOD" required /><select name="pipeODUnit"><option>inches</option><option>mm</option></select></div>
-
               <label>SDR / Schedule / Series</label><input name="pipeSpec" />
-
               <label class="req">Length Per Pipe</label>
               <div class="unit-row"><input name="pipeLength" required /><select name="pipeLengthUnit"><option>ft</option><option>m</option><option>inches</option><option>mm</option></select></div>
-
               <label class="req">Number of Lengths</label><input name="numberOfLengths" required />
-
               <label>Provided Total</label>
               <div class="unit-row"><input name="providedTotal" placeholder="If provided" /><select name="providedTotalUnit"><option>ft</option><option>m</option></select></div>
-
               <label>Calculated Total</label><input name="calculatedTotal" readonly placeholder="Length × # lengths" />
-
               <label>Quantity Notes</label><textarea name="quantityNotes" placeholder="Use when total quantity and length count do not match, or when customer provided unclear quantity info."></textarea>
             </div>
-
             <div class="pipe-side-panel">
               <h3 class="subsection-title">Length Exceptions / Processing</h3>
               <p class="form-note">The main pipe fields assume equal lengths of pipe. Use this section for partial lengths, processed-only sections, or any quantity/length setup that does not fit the basic fields.</p>
@@ -2019,11 +521,10 @@
                 <label>Start Location</label><div class="unit-row"><input name="startLocation" /><select name="startLocationUnit"><option>ft</option><option>m</option></select></div>
                 <label>Processing Notes</label><textarea name="partialNotes" placeholder="Example: first length full pipe, second length 20 ft only, customer supplied mixed lengths, etc."></textarea>
               </div>
-
               <div class="side-divider"></div>
               <h3 class="subsection-title">Packaging Requirements</h3>
               <label class="checkbox-line"><input type="checkbox" name="packaging" value="Wrapped" /> Wrapped</label>
-              <textarea name="packagingNotes" placeholder="Additional packaging instructions" style="margin-top:12px"></textarea>
+              <textarea name="packagingNotes" placeholder="Additional packaging instructions" style="margin-top:10px"></textarea>
             </div>
           </div>
         </div>
@@ -2060,6 +561,7 @@
               <input type="hidden" id="rowPositionPayload" name="rowPositionPayload" />
             </div>
           </div>
+
           <h3 class="subsection-title pattern-subsection-title">Row Pattern Detail</h3>
           <div class="pattern-detail-block">
             <p style="margin-top:0">Select the radial/end-view pattern that most closely matches the required row layout, otherwise build a custom pattern.</p>
@@ -2075,25 +577,36 @@
               <label class="pattern-card"><input type="radio" name="pattern" value="Custom" /> <strong>Custom</strong><div class="pattern-img radial-custom"></div><div class="desc">Build visual pattern from RFQ values</div></label>
             </div>
 
+            <!-- Always-visible builder bar -->
             <div class="custom-builder-bar" id="customBuilderBar">
               <strong>Custom Pattern Builder</strong>
               <div class="desc">Uses the RFQ pipe and perforating details already entered above. No re-keying unless needed.</div>
               <div class="button-row">
                 <button type="button" onclick="openCustomPatternBuilder()">Launch Custom Pattern Builder</button>
-                <button type="button" class="secondary" onclick="clearApprovedPattern()">Clear Approved Pattern</button>
+                <button type="button" class="green" onclick="previewPattern()">Preview Pattern</button>
+                <button type="button" class="secondary" onclick="clearApprovedPattern()">Clear</button>
               </div>
             </div>
 
             <div class="approved-pattern-box" id="approvedPatternBox">
               <div class="approved-pattern-head">
-                <div class="approved-pattern-title">Approved Custom Pattern</div>
+                <div class="approved-pattern-title">Pattern Preview</div>
                 <div class="button-row approved-pattern-actions">
                   <button type="button" onclick="openCustomPatternBuilder()">Edit Custom Pattern</button>
-                  <button type="button" class="secondary" onclick="clearApprovedPattern()">Clear Approved Pattern</button>
+                  <button type="button" class="secondary" onclick="clearApprovedPattern()">Clear</button>
                 </div>
               </div>
               <div id="approvedPatternSummary"></div>
-              <div class="svg-preview"><svg id="approvedPatternSvg" viewBox="0 0 340 340"></svg></div>
+              <div class="approved-pattern-svgs">
+                <div class="svg-box">
+                  <div class="svg-box-title">Radial / End View</div>
+                  <svg id="approvedPatternSvg" viewBox="0 0 340 340"></svg>
+                </div>
+                <div class="svg-box">
+                  <div class="svg-box-title">Unwrapped Side View</div>
+                  <svg id="approvedPatternSideSvg" viewBox="0 0 720 420"></svg>
+                </div>
+              </div>
             </div>
 
             <div class="info-box"><strong>i</strong><span>Most perforating requests can be defined by pipe size, length per pipe, number of lengths, hole diameter, center-to-center spacing, number of rows. Start/end offsets are locked at 12&quot; by machine constraint.</span></div>
@@ -2103,7 +616,7 @@
           <div class="test-panel" id="testPanel"></div>
         </div>
       </section>
-	  
+
       <section class="section attachments-full">
         <div class="section-title"><span class="num">4</span> Attachments / Sketches</div>
         <div class="section-body">
@@ -2125,9 +638,9 @@
           <div class="section-body">
             <p>I confirm that the above information reflects the requested perforating requirements.</p>
             <div class="field-grid">
-              <label class="req">Name</label><input name="approvedName" />
+              <label>Name</label><input name="approvedName" />
               <label>Title</label><input name="approvedTitle" />
-              <label class="req">Date</label><input name="approvedDate" type="date" />
+              <label>Date</label><input name="approvedDate" type="date" />
             </div>
           </div>
         </section>
@@ -2150,7 +663,7 @@
     </main>
   </form>
 
-
+  <!-- Pipe End Modal -->
   <div class="modal-backdrop" id="pipeEndModal" aria-hidden="true">
     <div class="modal small-modal" role="dialog" aria-modal="true" aria-labelledby="pipeEndTitle">
       <div class="modal-header">
@@ -2172,6 +685,7 @@
     </div>
   </div>
 
+  <!-- Custom Pattern Builder Modal -->
   <div class="modal-backdrop" id="customPatternModal" aria-hidden="true">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="builderTitle">
       <div class="modal-header">
@@ -2203,7 +717,6 @@
             <input id="b_startOffset" type="hidden" value="12" />
             <input id="b_endOffset" type="hidden" value="12" />
             <div class="fixed-offset-note builder-offset-note">Start/end offsets are locked at 12&quot; from each pipe end.</div>
-
             <div class="builder-field row-position-builder-block">
               <label>Row Position Override</label>
               <div class="desc">Use only when the custom pattern is not evenly spaced around the pipe.</div>
@@ -2221,7 +734,6 @@
                 <div class="row-override-grid" id="rowDegreeInputs"></div>
               </div>
             </div>
-
             <div class="builder-field">
               <label>Builder Notes</label>
               <textarea id="b_patternNotes" placeholder="Optional custom pattern note"></textarea>
@@ -2231,11 +743,10 @@
               <button type="button" class="secondary" onclick="pullBuilderFromRfq()">Re-pull RFQ Values</button>
             </div>
           </div>
-
           <div class="builder-panel">
             <h3>Generated Pattern</h3>
             <div class="metric-grid" id="builderMetrics"></div>
-            <div class="builder-visuals" style="margin-top:12px">
+            <div class="builder-visuals" style="margin-top:10px">
               <div class="svg-box">
                 <div class="svg-box-title">Radial / End View</div>
                 <svg id="radialSvg" viewBox="0 0 340 340"></svg>
@@ -2251,8 +762,7 @@
     </div>
   </div>
 
-
-
+  <!-- Manufacturing Details Modal -->
   <div class="modal-backdrop" id="manufacturingDetailsModal" aria-hidden="true">
     <div class="modal full-page-modal" role="dialog" aria-modal="true" aria-labelledby="manufacturingDetailsTitle">
       <div class="modal-header">
@@ -2288,6 +798,7 @@
       </div>
     </div>
   </div>
+
   <script>
     (function () {
       var form = document.getElementById('rfqForm');
@@ -2323,168 +834,69 @@
       window.validateFormOnly = validateFormOnly;
       window.toggleRowPositionOverride = toggleRowPositionOverride;
       window.clearRowPositionOverride = clearRowPositionOverride;
+      window.previewPattern = previewPattern;
 
-      function trimText(value) { return String(value || '').replace(/^\s+|\s+$/g, ''); }
+      function trimText(v) { return String(v || '').replace(/^\s+|\s+$/g, ''); }
+      function getFieldValue(n) { var f = form.elements[n]; return f ? trimText(f.value) : ''; }
+      function getSelectValue(n) { var f = form.elements[n]; return f ? (f.value || '') : ''; }
+      function getCheckedValue(n) { var r = form.querySelectorAll('input[name="' + n + '"]'); for (var i = 0; i < r.length; i++) { if (r[i].checked) return r[i].value; } return ''; }
+      function setFieldValue(n, v) { var f = form.elements[n]; if (f) f.value = v; }
+      function setRadioValue(n, v) { var r = form.querySelectorAll('input[name="' + n + '"]'); for (var i = 0; i < r.length; i++) r[i].checked = r[i].value === v; }
 
-      function getFieldValue(name) {
-        var field = form.elements[name];
-        if (!field) { return ''; }
-        return trimText(field.value);
-      }
-
-      function getSelectValue(name) {
-        var field = form.elements[name];
-        if (!field) { return ''; }
-        return field.value || '';
-      }
-
-      function getCheckedValue(name) {
-        var radios = form.querySelectorAll('input[name="' + name + '"]');
-        for (var i = 0; i < radios.length; i += 1) {
-          if (radios[i].checked) { return radios[i].value; }
-        }
-        return '';
-      }
-
-      function setFieldValue(name, value) {
-        var field = form.elements[name];
-        if (field) { field.value = value; }
-      }
-
-      function setRadioValue(name, value) {
-        var radios = form.querySelectorAll('input[name="' + name + '"]');
-        for (var i = 0; i < radios.length; i += 1) {
-          radios[i].checked = radios[i].value === value;
-        }
-      }
-
-
-      function normalizeDegree(value) {
-        var n = toNumber(value);
-        if (n === null) { return null; }
-        n = n % 360;
-        if (n < 0) { n += 360; }
-        return Math.round(n * 1000) / 1000;
-      }
-
-      function formatDegree(value) {
-        var n = normalizeDegree(value);
-        if (n === null) { return ''; }
-        return formatNumber(n) + '°';
-      }
-
-      function evenDegrees(rowCount) {
-        var count = Math.max(1, Math.floor(toNumber(rowCount) || 1));
-        var arr = [];
-        for (var i = 0; i < count; i += 1) {
-          arr.push(Math.round((i * 360 / count) * 1000) / 1000);
-        }
-        return arr;
-      }
-
-      function getBuilderRowCount() {
-        var field = document.getElementById('b_rowCount');
-        if (field && field.value) { return Math.max(1, Math.floor(toNumber(field.value) || 1)); }
-        return Math.max(1, Math.floor(toNumber(getFieldValue('holeRows')) || 1));
-      }
-
-      function getPatternDefinition(pattern) {
-        return PRESET_PATTERNS[pattern] || null;
-      }
+      function normalizeDegree(v) { var n = toNumber(v); if (n === null) return null; n = n % 360; if (n < 0) n += 360; return Math.round(n * 1000) / 1000; }
+      function formatDegree(v) { var n = normalizeDegree(v); return n === null ? '' : formatNumber(n) + '°'; }
+      function evenDegrees(rc) { var c = Math.max(1, Math.floor(toNumber(rc) || 1)); var a = []; for (var i = 0; i < c; i++) a.push(Math.round((i * 360 / c) * 1000) / 1000); return a; }
+      function getBuilderRowCount() { var f = document.getElementById('b_rowCount'); if (f && f.value) return Math.max(1, Math.floor(toNumber(f.value) || 1)); return Math.max(1, Math.floor(toNumber(getFieldValue('holeRows')) || 1)); }
+      function getPatternDefinition(p) { return PRESET_PATTERNS[p] || null; }
 
       function getCurrentBaseDegrees() {
         var pattern = getCheckedValue('pattern');
         var def = getPatternDefinition(pattern);
-        if (def) { return def.degrees.slice(); }
+        if (def) return def.degrees.slice();
         return evenDegrees(getFieldValue('holeRows'));
       }
 
-      function getRowOverrideActive() {
-        var field = document.getElementById('rowPositionOverrideActive');
-        return !!(field && field.value === 'Yes');
-      }
-
-      function setRowOverrideActive(active) {
-        var field = document.getElementById('rowPositionOverrideActive');
-        if (field) { field.value = active ? 'Yes' : 'No'; }
-      }
+      function getRowOverrideActive() { var f = document.getElementById('rowPositionOverrideActive'); return !!(f && f.value === 'Yes'); }
+      function setRowOverrideActive(a) { var f = document.getElementById('rowPositionOverrideActive'); if (f) f.value = a ? 'Yes' : 'No'; }
 
       function readRowOverrideDegrees() {
         var inputs = document.querySelectorAll('#rowDegreeInputs input[data-row-degree]');
         var degrees = [];
-        for (var i = 0; i < inputs.length; i += 1) {
-          var degree = normalizeDegree(inputs[i].value);
-          if (degree === null) { return null; }
-          degrees.push(degree);
-        }
+        for (var i = 0; i < inputs.length; i++) { var d = normalizeDegree(inputs[i].value); if (d === null) return null; degrees.push(d); }
         return degrees.length ? degrees : null;
       }
 
       function getActiveRowDegrees() {
         if (getCheckedValue('pattern') === 'Custom' && getRowOverrideActive()) {
-          var overrideDegrees = readRowOverrideDegrees();
-          if (overrideDegrees) { return overrideDegrees; }
+          var od = readRowOverrideDegrees();
+          if (od) return od;
         }
         return getCurrentBaseDegrees();
       }
 
       function syncRowPositionPayload() {
-        var payload = document.getElementById('rowPositionPayload');
-        if (!payload) { return; }
+        var p = document.getElementById('rowPositionPayload');
+        if (!p) return;
         var active = getRowOverrideActive();
         var degrees = active ? readRowOverrideDegrees() : getCurrentBaseDegrees();
-        var value = {
-          active: active,
-          pattern: getCheckedValue('pattern') || '',
-          degrees: degrees || [],
-          rowCount: degrees ? degrees.length : 0
-        };
-        payload.value = JSON.stringify(value);
-        payload.setAttribute('value', payload.value);
+        p.value = JSON.stringify({ active: active, pattern: getCheckedValue('pattern') || '', degrees: degrees || [], rowCount: degrees ? degrees.length : 0 });
+        p.setAttribute('value', p.value);
       }
 
       function buildRowOverrideInputs(seedDegrees) {
         var holder = document.getElementById('rowDegreeInputs');
-        if (!holder) { return; }
-
+        if (!holder) return;
         var degrees = seedDegrees && seedDegrees.length ? seedDegrees.slice() : getActiveRowDegrees();
-        if (!degrees || !degrees.length) { degrees = evenDegrees(getBuilderRowCount()); }
-
-        holder.innerHTML = degrees.map(function (degree, index) {
-          return '<div class="row-degree-field">' +
-            '<label>Row ' + (index + 1) + '</label>' +
-            '<input type="number" step="0.001" min="0" max="359.999" data-row-degree="' + index + '" value="' + escapeHtml(formatNumber(degree)) + '" />' +
-          '</div>';
+        if (!degrees || !degrees.length) degrees = evenDegrees(getBuilderRowCount());
+        holder.innerHTML = degrees.map(function (d, i) {
+          return '<div class="row-degree-field"><label>Row ' + (i + 1) + '</label><input type="number" step="0.001" min="0" max="359.999" data-row-degree="' + i + '" value="' + escapeHtml(formatNumber(d)) + '" /></div>';
         }).join('');
-
         var inputs = holder.querySelectorAll('input[data-row-degree]');
-        for (var i = 0; i < inputs.length; i += 1) {
-          addEvent(inputs[i], 'input', function () {
-            var degreesNow = readRowOverrideDegrees();
-            if (degreesNow) {
-              setFieldValue('holeRows', degreesNow.length);
-              setIdValue('b_rowCount', degreesNow.length);
-            }
-            syncRowPositionPayload();
-            refreshCustomPattern();
-            updateSummary();
-          });
-          addEvent(inputs[i], 'change', function () {
-            var degreesNow = readRowOverrideDegrees();
-            if (degreesNow) {
-              setFieldValue('holeRows', degreesNow.length);
-              setIdValue('b_rowCount', degreesNow.length);
-            }
-            syncRowPositionPayload();
-            refreshCustomPattern();
-            updateSummary();
-          });
+        for (var i = 0; i < inputs.length; i++) {
+          addEvent(inputs[i], 'input', function () { var dn = readRowOverrideDegrees(); if (dn) { setFieldValue('holeRows', dn.length); setIdValue('b_rowCount', dn.length); } syncRowPositionPayload(); refreshCustomPattern(); updateSummary(); });
+          addEvent(inputs[i], 'change', function () { var dn = readRowOverrideDegrees(); if (dn) { setFieldValue('holeRows', dn.length); setIdValue('b_rowCount', dn.length); } syncRowPositionPayload(); refreshCustomPattern(); updateSummary(); });
         }
-
-        if (getRowOverrideActive()) {
-          setFieldValue('holeRows', degrees.length);
-          setIdValue('b_rowCount', degrees.length);
-        }
+        if (getRowOverrideActive()) { setFieldValue('holeRows', degrees.length); setIdValue('b_rowCount', degrees.length); }
         syncRowPositionPayload();
       }
 
@@ -2492,22 +904,17 @@
         var panel = document.getElementById('rowPositionOverridePanel');
         var active = !getRowOverrideActive();
         setRowOverrideActive(active);
-        if (active) {
-          if (panel) { panel.className = 'row-override-panel active'; }
-          buildRowOverrideInputs(evenDegrees(getBuilderRowCount()));
-        } else {
-          clearRowPositionOverride();
-          return;
-        }
+        if (active) { if (panel) panel.className = 'row-override-panel active'; buildRowOverrideInputs(evenDegrees(getBuilderRowCount())); }
+        else { clearRowPositionOverride(); return; }
         updateSummary();
       }
 
       function clearRowPositionOverride() {
         var panel = document.getElementById('rowPositionOverridePanel');
         setRowOverrideActive(false);
-        if (panel) { panel.className = 'row-override-panel'; }
+        if (panel) panel.className = 'row-override-panel';
         var holder = document.getElementById('rowDegreeInputs');
-        if (holder) { holder.innerHTML = ''; }
+        if (holder) holder.innerHTML = '';
         syncRowPositionPayload();
         updateSummary();
       }
@@ -2515,12 +922,19 @@
       function applyPatternDefaults() {
         var pattern = getCheckedValue('pattern');
         var def = getPatternDefinition(pattern);
-        if (def) {
-          setFieldValue('holeRows', def.rows);
-        } else if (getRowOverrideActive()) {
-          buildRowOverrideInputs(evenDegrees(getBuilderRowCount()));
-        }
+        if (def) { setFieldValue('holeRows', def.rows); }
+        else if (getRowOverrideActive()) { buildRowOverrideInputs(evenDegrees(getBuilderRowCount())); }
         syncRowPositionPayload();
+      }
+
+      // When a preset is selected, also push degrees into builder fields
+      function syncBuilderFromPattern() {
+        var pattern = getCheckedValue('pattern');
+        var def = getPatternDefinition(pattern);
+        var degrees = def ? def.degrees.slice() : evenDegrees(getFieldValue('holeRows') || 1);
+        if (def) setIdValue('b_rowCount', def.rows);
+        // If override panel is open, rebuild with preset degrees
+        if (getRowOverrideActive()) { buildRowOverrideInputs(degrees); }
       }
 
       function updateStaggerOffset() {
@@ -2528,27 +942,16 @@
         var spacingRaw = getFieldValue('holeSpacing');
         var spacingUnit = getSelectValue('holeSpacingUnit') || 'inches';
         var spacing = toNumber(spacingRaw);
-
         setFieldValue('staggerOffsetUnit', spacingUnit);
-
         if (getCheckedValue('staggerRequired') === 'Yes') {
-          if (spacing !== null) {
-            var half = spacing / 2;
-            setFieldValue('staggerOffset', formatNumber(half));
-            if (note) { note.textContent = 'Stagger offset: ' + formatNumber(half) + ' ' + spacingUnit + ' (1/2 of C-C spacing).'; }
-          } else {
-            setFieldValue('staggerOffset', '');
-            if (note) { note.textContent = 'Stagger offset is locked to 1/2 of C-C spacing. Enter C-C spacing first.'; }
-          }
-        } else {
-          setFieldValue('staggerOffset', '');
-          if (note) { note.textContent = 'If staggered, offset is locked to 1/2 of C-C spacing.'; }
-        }
+          if (spacing !== null) { var half = spacing / 2; setFieldValue('staggerOffset', formatNumber(half)); if (note) note.textContent = 'Stagger offset: ' + formatNumber(half) + ' ' + spacingUnit + ' (1/2 of C-C spacing).'; }
+          else { setFieldValue('staggerOffset', ''); if (note) note.textContent = 'Stagger offset is locked to 1/2 of C-C spacing. Enter C-C spacing first.'; }
+        } else { setFieldValue('staggerOffset', ''); if (note) note.textContent = 'If staggered, offset is locked to 1/2 of C-C spacing.'; }
       }
 
       function fieldById(id) { return document.getElementById(id); }
-      function setIdValue(id, value) { fieldById(id).value = value === null || value === undefined ? '' : value; }
-      function getIdValue(id) { return trimText(fieldById(id).value); }
+      function setIdValue(id, v) { var el = fieldById(id); if (el) el.value = (v === null || v === undefined) ? '' : v; }
+      function getIdValue(id) { var el = fieldById(id); return el ? trimText(el.value) : ''; }
 
       function downloadCurrentHtml() {
         try {
@@ -2557,189 +960,88 @@
           var blob = new Blob([html], { type: 'text/html;charset=utf-8' });
           var url = URL.createObjectURL(blob);
           var a = document.createElement('a');
-          var stamp = new Date().toISOString().slice(0, 10);
           a.href = url;
-          a.download = 'perforating-rfq-custom-pattern-' + stamp + '.html';
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
+          a.download = 'perforating-rfq-' + new Date().toISOString().slice(0, 10) + '.html';
+          document.body.appendChild(a); a.click(); document.body.removeChild(a);
           setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
-        } catch (err) {
-          alert('Download blocked by this browser/app. Open this page in Chrome/Safari and try again. Error: ' + err.message);
-        }
+        } catch (err) { alert('Download blocked by this browser/app. Error: ' + err.message); }
       }
 
       var attachmentStore = [];
       var attachmentSeq = 0;
 
-      function formatFileSize(bytes) {
-        if (!bytes && bytes !== 0) { return ''; }
-        if (bytes < 1024) { return bytes + ' B'; }
-        if (bytes < 1024 * 1024) { return Math.round(bytes / 1024) + ' KB'; }
-        return (bytes / 1024 / 1024).toFixed(1) + ' MB';
-      }
-
-      function syncAttachmentPayload() {
-        var payload = document.getElementById('attachmentPayload');
-        if (!payload) { return; }
-        payload.setAttribute('value', JSON.stringify(attachmentStore));
-        payload.value = JSON.stringify(attachmentStore);
-      }
-
-      function loadAttachmentPayload() {
-        var payload = document.getElementById('attachmentPayload');
-        if (!payload || !payload.value) { return; }
-        try {
-          var parsed = JSON.parse(payload.value);
-          if (Object.prototype.toString.call(parsed) === '[object Array]') { attachmentStore = parsed; }
-        } catch (err) { attachmentStore = []; }
-      }
+      function formatFileSize(b) { if (!b && b !== 0) return ''; if (b < 1024) return b + ' B'; if (b < 1048576) return Math.round(b / 1024) + ' KB'; return (b / 1048576).toFixed(1) + ' MB'; }
+      function syncAttachmentPayload() { var p = document.getElementById('attachmentPayload'); if (!p) return; p.setAttribute('value', JSON.stringify(attachmentStore)); p.value = JSON.stringify(attachmentStore); }
+      function loadAttachmentPayload() { var p = document.getElementById('attachmentPayload'); if (!p || !p.value) return; try { var parsed = JSON.parse(p.value); if (Array.isArray(parsed)) attachmentStore = parsed; } catch (e) { attachmentStore = []; } }
 
       function addFiles(files, category) {
-        var list = Array.prototype.slice.call(files || []);
-        if (!list.length) { return; }
-
-        list.forEach(function (file) {
+        Array.prototype.slice.call(files || []).forEach(function (file) {
           var reader = new FileReader();
-          var item = {
-            id: 'att_' + (++attachmentSeq),
-            category: category || 'Attachment',
-            name: file.name,
-            type: file.type || 'application/octet-stream',
-            size: file.size || 0,
-            dataUrl: '',
-            addedAt: new Date().toISOString()
-          };
-
-          reader.onload = function (event) {
-            item.dataUrl = event.target.result || '';
-            attachmentStore.push(item);
-            renderAttachments();
-          };
-
-          reader.onerror = function () {
-            alert('Could not read file: ' + file.name);
-          };
-
+          var item = { id: 'att_' + (++attachmentSeq), category: category || 'Attachment', name: file.name, type: file.type || 'application/octet-stream', size: file.size || 0, dataUrl: '', addedAt: new Date().toISOString() };
+          reader.onload = function (e) { item.dataUrl = e.target.result || ''; attachmentStore.push(item); renderAttachments(); };
+          reader.onerror = function () { alert('Could not read file: ' + file.name); };
           reader.readAsDataURL(file);
         });
       }
 
       function renderAttachments() {
         var list = document.getElementById('attachmentList');
-        if (!list) { return; }
-        if (!attachmentStore.length) {
-          list.innerHTML = '';
-          syncAttachmentPayload();
-          return;
-        }
-
+        if (!list) return;
+        if (!attachmentStore.length) { list.innerHTML = ''; syncAttachmentPayload(); return; }
         list.innerHTML = attachmentStore.map(function (item) {
-          var isImage = String(item.type || '').indexOf('image/') === 0;
+          var isImg = String(item.type || '').indexOf('image/') === 0;
           var ext = (item.name.split('.').pop() || 'FILE').slice(0, 5).toUpperCase();
-          var thumb = isImage && item.dataUrl ? '<img alt="" src="' + item.dataUrl + '" />' : escapeHtml(ext);
-          return '<div class="attachment-item" data-attachment-id="' + escapeHtml(item.id) + '">' +
-            '<div class="attachment-thumb">' + thumb + '</div>' +
-            '<div><div class="attachment-name">' + escapeHtml(item.name) + '</div>' +
-            '<div class="attachment-meta">' + escapeHtml(item.category) + ' | ' + escapeHtml(formatFileSize(item.size)) + '</div></div>' +
-            '<div class="attachment-actions"><a href="' + item.dataUrl + '" download="' + escapeHtml(item.name) + '">Open</a>' +
-            '<button type="button" class="secondary" onclick="removeAttachment(\'' + escapeHtml(item.id) + '\')">Remove</button></div>' +
-          '</div>';
+          var thumb = isImg && item.dataUrl ? '<img alt="" src="' + item.dataUrl + '" />' : escapeHtml(ext);
+          return '<div class="attachment-item" data-attachment-id="' + escapeHtml(item.id) + '"><div class="attachment-thumb">' + thumb + '</div><div><div class="attachment-name">' + escapeHtml(item.name) + '</div><div class="attachment-meta">' + escapeHtml(item.category) + ' | ' + escapeHtml(formatFileSize(item.size)) + '</div></div><div class="attachment-actions"><a href="' + item.dataUrl + '" download="' + escapeHtml(item.name) + '">Open</a><button type="button" class="secondary" onclick="removeAttachment(\'' + escapeHtml(item.id) + '\')">Remove</button></div></div>';
         }).join('');
-
         syncAttachmentPayload();
       }
 
-      function removeAttachment(id) {
-        attachmentStore = attachmentStore.filter(function (item) { return item.id !== id; });
-        renderAttachments();
-      }
-
-      function clearAttachments() {
-        attachmentStore = [];
-        renderAttachments();
-      }
+      function removeAttachment(id) { attachmentStore = attachmentStore.filter(function (i) { return i.id !== id; }); renderAttachments(); }
+      function clearAttachments() { attachmentStore = []; renderAttachments(); }
 
       function initAttachmentInputs() {
         var inputs = document.querySelectorAll('input[type="file"][data-attachment-category]');
-        for (var i = 0; i < inputs.length; i += 1) {
-          addEvent(inputs[i], 'change', function (event) {
-            addFiles(event.target.files, event.target.getAttribute('data-attachment-category'));
-            event.target.value = '';
-          });
+        for (var i = 0; i < inputs.length; i++) {
+          addEvent(inputs[i], 'change', function (e) { addFiles(e.target.files, e.target.getAttribute('data-attachment-category')); e.target.value = ''; });
         }
-
-        var dropZone = document.getElementById('dropZone');
-        if (!dropZone) { return; }
-
-        ['dragenter', 'dragover'].forEach(function (eventName) {
-          addEvent(dropZone, eventName, function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-            dropZone.className = 'drop-zone dragover';
-          });
-        });
-
-        ['dragleave', 'drop'].forEach(function (eventName) {
-          addEvent(dropZone, eventName, function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-            dropZone.className = 'drop-zone';
-          });
-        });
-
-        addEvent(dropZone, 'drop', function (event) {
-          addFiles(event.dataTransfer.files, 'Dropped File');
-        });
+        var dz = document.getElementById('dropZone');
+        if (!dz) return;
+        ['dragenter','dragover'].forEach(function (ev) { addEvent(dz, ev, function (e) { e.preventDefault(); e.stopPropagation(); dz.className = 'drop-zone dragover'; }); });
+        ['dragleave','drop'].forEach(function (ev) { addEvent(dz, ev, function (e) { e.preventDefault(); e.stopPropagation(); dz.className = 'drop-zone'; }); });
+        addEvent(dz, 'drop', function (e) { addFiles(e.dataTransfer.files, 'Dropped File'); });
       }
 
       function updateCards() {
         var cards = document.querySelectorAll('.pattern-card');
-        for (var i = 0; i < cards.length; i += 1) {
+        for (var i = 0; i < cards.length; i++) {
           var radio = cards[i].querySelector('input');
-          if (radio && radio.checked) {
-            cards[i].className = cards[i].className.replace(/\s*selected/g, '') + ' selected';
-          } else {
-            cards[i].className = cards[i].className.replace(/\s*selected/g, '');
-          }
+          cards[i].className = cards[i].className.replace(/\s*selected/g, '') + (radio && radio.checked ? ' selected' : '');
         }
-
         updateChoiceButtons();
         updateProjectTimingVisibility();
         updatePipeEndSummary();
         updateStaggerOffset();
-        if (getCheckedValue('pattern') === 'Custom' && getRowOverrideActive()) { buildRowOverrideInputs(readRowOverrideDegrees() || evenDegrees(getBuilderRowCount())); }
-        else { syncRowPositionPayload(); }
-
-        var bar = document.getElementById('customBuilderBar');
-        bar.className = getCheckedValue('pattern') === 'Custom' ? 'custom-builder-bar active' : 'custom-builder-bar';
+        if (getCheckedValue('pattern') === 'Custom' && getRowOverrideActive()) buildRowOverrideInputs(readRowOverrideDegrees() || evenDegrees(getBuilderRowCount()));
+        else syncRowPositionPayload();
+        // Builder bar always visible — no toggle needed
       }
 
       function updateChoiceButtons() {
-        var buttons = document.querySelectorAll('.choice-button');
-        for (var i = 0; i < buttons.length; i += 1) {
-          var radio = buttons[i].querySelector('input[type="radio"]');
-          if (radio && radio.checked) {
-            buttons[i].className = buttons[i].className.replace(/\s*selected/g, '') + ' selected';
-          } else {
-            buttons[i].className = buttons[i].className.replace(/\s*selected/g, '');
-          }
+        var btns = document.querySelectorAll('.choice-button');
+        for (var i = 0; i < btns.length; i++) {
+          var radio = btns[i].querySelector('input[type="radio"]');
+          btns[i].className = btns[i].className.replace(/\s*selected/g, '') + (radio && radio.checked ? ' selected' : '');
         }
       }
 
       function updateProjectTimingVisibility() {
-        var showProductRequired = getCheckedValue('projectTiming') === 'Specific';
+        var show = getCheckedValue('projectTiming') === 'Specific';
         var fields = document.querySelectorAll('.project-date-field, .project-date-field-label');
-        for (var i = 0; i < fields.length; i += 1) {
-          if (showProductRequired) {
-            fields[i].className = fields[i].className.replace(/\s*project-date-hidden/g, '');
-          } else if (fields[i].className.indexOf('project-date-hidden') === -1) {
-            fields[i].className += ' project-date-hidden';
-          }
+        for (var i = 0; i < fields.length; i++) {
+          if (show) fields[i].className = fields[i].className.replace(/\s*project-date-hidden/g, '');
+          else if (fields[i].className.indexOf('project-date-hidden') === -1) fields[i].className += ' project-date-hidden';
         }
-
-        var quoteRequired = form.elements.quoteRequired;
-        if (quoteRequired) { quoteRequired.required = true; }
       }
 
       function updatePipeEndSummary() {
@@ -2747,111 +1049,51 @@
         var value = getFieldValue('pipeEnds');
         var label = document.getElementById('pipeEndRowLabel');
         var control = document.getElementById('pipeEndRowControl');
-
-        if (label) { label.style.display = isPvc ? '' : 'none'; }
+        if (label) label.style.display = isPvc ? '' : 'none';
         if (control) {
           control.style.display = isPvc ? '' : 'none';
-          control.innerHTML = value ? '<strong>' + escapeHtml(value) + '</strong> <button type="button" class="secondary" onclick="openPipeEndModal()" style="margin-left:10px;padding:6px 8px">Change</button>' : 'PVC selected — <button type="button" onclick="openPipeEndModal()" style="padding:6px 8px">Choose pipe ends</button>';
+          control.innerHTML = value ? '<strong>' + escapeHtml(value) + '</strong> <button type="button" class="secondary" onclick="openPipeEndModal()" style="margin-left:8px;padding:5px 8px">Change</button>' : 'PVC selected — <button type="button" onclick="openPipeEndModal()" style="padding:5px 8px">Choose pipe ends</button>';
         }
-
         var endCards = document.querySelectorAll('[data-pipe-end]');
-        for (var i = 0; i < endCards.length; i += 1) {
-          if (endCards[i].getAttribute('data-pipe-end') === value) {
-            endCards[i].className = endCards[i].className.replace(/\s*selected/g, '') + ' selected';
-          } else {
-            endCards[i].className = endCards[i].className.replace(/\s*selected/g, '');
-          }
+        for (var i = 0; i < endCards.length; i++) {
+          endCards[i].className = endCards[i].className.replace(/\s*selected/g, '') + (endCards[i].getAttribute('data-pipe-end') === value ? ' selected' : '');
         }
       }
 
-      function openPipeEndModal() {
-        if (getCheckedValue('material') !== 'PVC') { return; }
-        updatePipeEndSummary();
-        document.getElementById('pipeEndModal').className = 'modal-backdrop active';
-        document.getElementById('pipeEndModal').setAttribute('aria-hidden', 'false');
-      }
-
-      function closePipeEndModal() {
-        document.getElementById('pipeEndModal').className = 'modal-backdrop';
-        document.getElementById('pipeEndModal').setAttribute('aria-hidden', 'true');
-      }
-
-      function choosePipeEnd(value) {
-        setFieldValue('pipeEnds', value);
-        updatePipeEndSummary();
-        updateSummary();
-        closePipeEndModal();
-      }
+      function openPipeEndModal() { if (getCheckedValue('material') !== 'PVC') return; updatePipeEndSummary(); document.getElementById('pipeEndModal').className = 'modal-backdrop active'; document.getElementById('pipeEndModal').setAttribute('aria-hidden', 'false'); }
+      function closePipeEndModal() { document.getElementById('pipeEndModal').className = 'modal-backdrop'; document.getElementById('pipeEndModal').setAttribute('aria-hidden', 'true'); }
+      function choosePipeEnd(v) { setFieldValue('pipeEnds', v); updatePipeEndSummary(); updateSummary(); closePipeEndModal(); }
 
       function handleMaterialSelectionChanged() {
-        if (getCheckedValue('material') === 'PVC') {
-          openPipeEndModal();
-        } else {
-          setFieldValue('pipeEnds', '');
-          closePipeEndModal();
-          updatePipeEndSummary();
-        }
+        if (getCheckedValue('material') === 'PVC') openPipeEndModal();
+        else { setFieldValue('pipeEnds', ''); closePipeEndModal(); updatePipeEndSummary(); }
       }
 
-      function toNumber(value) {
-        var cleaned = String(value || '').replace(/[^0-9.\-]/g, '');
-        var parsed = parseFloat(cleaned);
-        return isNaN(parsed) ? null : parsed;
-      }
+      function toNumber(v) { var c = String(v || '').replace(/[^0-9.\-]/g, ''); var p = parseFloat(c); return isNaN(p) ? null : p; }
+      function unitToInches(v, unit) { var n = toNumber(v); if (n === null) return null; unit = String(unit || '').toLowerCase(); if (unit === 'ft' || unit === 'feet') return n * 12; if (unit === 'm' || unit === 'meter' || unit === 'metres' || unit === 'meters') return n * 39.37007874; if (unit === 'mm' || unit === 'millimeters') return n / 25.4; return n; }
+      function formatNumber(v) { if (v === null || isNaN(v)) return ''; if (Math.round(v * 100) / 100 === Math.round(v)) return String(Math.round(v)); return String(Math.round(v * 100) / 100); }
+      function formatInches(v) { if (v === null || isNaN(v)) return ''; return formatNumber(v) + '"'; }
 
-      function unitToInches(value, unit) {
-        var n = toNumber(value);
-        if (n === null) { return null; }
-        unit = String(unit || '').toLowerCase();
-        if (unit === 'ft' || unit === 'feet') { return n * 12; }
-        if (unit === 'm' || unit === 'meter' || unit === 'metres' || unit === 'meters') { return n * 39.37007874; }
-        if (unit === 'mm' || unit === 'millimeters') { return n / 25.4; }
-        return n;
-      }
-
-      function formatNumber(value) {
-        if (value === null || isNaN(value)) { return ''; }
-        if (Math.round(value * 100) / 100 === Math.round(value)) { return String(Math.round(value)); }
-        return String(Math.round(value * 100) / 100);
-      }
-
-      function formatInches(value) {
-        if (value === null || isNaN(value)) { return ''; }
-        return formatNumber(value) + '"';
-      }
-
-      function getCalculatedTotal() {
-        var length = toNumber(getFieldValue('pipeLength'));
-        var count = toNumber(getFieldValue('numberOfLengths'));
-        if (length === null || count === null) { return null; }
-        return length * count;
-      }
-
-      function updateCalculatedTotal() {
-        var total = getCalculatedTotal();
-        var unit = getSelectValue('pipeLengthUnit') || '';
-        var field = form.elements.calculatedTotal;
-        if (!field) { return; }
-        field.value = total === null ? '' : formatNumber(total) + ' ' + unit;
-      }
+      function getCalculatedTotal() { var l = toNumber(getFieldValue('pipeLength')); var c = toNumber(getFieldValue('numberOfLengths')); return (l === null || c === null) ? null : l * c; }
+      function updateCalculatedTotal() { var total = getCalculatedTotal(); var unit = getSelectValue('pipeLengthUnit') || ''; var f = form.elements.calculatedTotal; if (f) f.value = total === null ? '' : formatNumber(total) + ' ' + unit; }
 
       function buildQuantityText() {
         var length = getFieldValue('pipeLength') || '[length]';
-        var lengthUnit = getSelectValue('pipeLengthUnit') || '';
+        var lu = getSelectValue('pipeLengthUnit') || '';
         var count = getFieldValue('numberOfLengths') || '[# lengths]';
         var total = getCalculatedTotal();
-        var totalText = total === null ? '[total]' : formatNumber(total) + ' ' + lengthUnit;
-        return count + ' pcs @ ' + length + ' ' + lengthUnit + ' each = ' + totalText;
+        var totalText = total === null ? '[total]' : formatNumber(total) + ' ' + lu;
+        return count + ' pcs @ ' + length + ' ' + lu + ' each = ' + totalText;
       }
 
       function buildQuantityWarning() {
         var provided = toNumber(getFieldValue('providedTotal'));
         var calculated = getCalculatedTotal();
-        var providedUnit = getSelectValue('providedTotalUnit');
-        var calcUnit = getSelectValue('pipeLengthUnit');
-        if (provided === null || calculated === null) { return ''; }
-        if (providedUnit !== calcUnit) { return ' | VERIFY QTY: provided total unit differs from length unit'; }
-        if (Math.abs(provided - calculated) > 0.01) { return ' | VERIFY QTY: provided total does not match length × # lengths'; }
+        var pu = getSelectValue('providedTotalUnit');
+        var cu = getSelectValue('pipeLengthUnit');
+        if (provided === null || calculated === null) return '';
+        if (pu !== cu) return ' | VERIFY QTY: provided total unit differs from length unit';
+        if (Math.abs(provided - calculated) > 0.01) return ' | VERIFY QTY: provided total does not match length × # lengths';
         return '';
       }
 
@@ -2863,40 +1105,26 @@
         var diameter = getFieldValue('holeDiameter') || '[diameter]';
         var spacing = getFieldValue('holeSpacing') || '[spacing]';
         var rows = getFieldValue('holeRows') || '[rows]';
-        var pipeEnds = getFieldValue('pipeEnds');
-        var pipeEndsText = material === 'PVC' ? ' | Ends: ' + (pipeEnds || '[pipe ends]') : '';
+        var pipeEndsText = material === 'PVC' ? ' | Ends: ' + (getFieldValue('pipeEnds') || '[pipe ends]') : '';
         var staggerText = '';
-        var approvedText = '';
-
         if (getCheckedValue('staggerRequired') === 'Yes') {
-          var staggerValue = getFieldValue('staggerOffset');
-          var staggerUnit = getSelectValue('staggerOffsetUnit') || getSelectValue('holeSpacingUnit') || '';
-          staggerText = ' | stagger ' + (staggerValue ? staggerValue + ' ' + staggerUnit + ' (1/2 C-C)' : '1/2 C-C');
+          var sv = getFieldValue('staggerOffset'), su = getSelectValue('staggerOffsetUnit') || getSelectValue('holeSpacingUnit') || '';
+          staggerText = ' | stagger ' + (sv ? sv + ' ' + su + ' (1/2 C-C)' : '1/2 C-C');
         }
-
-        if (approvedPattern && pattern === 'Custom') {
-          approvedText = ' | APPROVED VISUAL: ' + approvedPattern.totalHolesPerPipe + ' holes/pipe';
-        }
-
+        var approvedText = (approvedPattern && pattern === 'Custom') ? ' | APPROVED VISUAL: ' + approvedPattern.totalHolesPerPipe + ' holes/pipe' : '';
         return od + ' ' + spec + ' ' + material + pipeEndsText + ' | ' + buildQuantityText() + ' | ' + diameter + ' holes | ' + spacing + ' C-C | ' + rows + ' rows | Pattern ' + pattern + staggerText + approvedText + buildQuantityWarning();
       }
 
       function getDisplayValue(name) {
-        if (name === 'pipeSupplier' || name === 'material' || name === 'pattern' || name === 'staggerRequired') { return getCheckedValue(name); }
-        if (name === 'pipeEnds') { return getFieldValue(name); }
-        if (name === 'rowPositionOverride') {
-          var degrees = readRowOverrideDegrees();
-          return getCheckedValue('pattern') === 'Custom' && getRowOverrideActive() && degrees ? degrees.map(formatDegree).join(', ') : '';
-        }
+        if (['pipeSupplier','material','pattern','staggerRequired'].indexOf(name) !== -1) return getCheckedValue(name);
+        if (name === 'pipeEnds') return getFieldValue(name);
+        if (name === 'rowPositionOverride') { var d = readRowOverrideDegrees(); return (getCheckedValue('pattern') === 'Custom' && getRowOverrideActive() && d) ? d.map(formatDegree).join(', ') : ''; }
         return getFieldValue(name);
       }
 
+      // Validation only requires pipe specs + perforating details — customer info skipped
       function getRequiredSpecs() {
         var items = [
-          { name: 'company', label: 'Company Name', section: 'Customer Information' },
-          { name: 'contact', label: 'Contact Name', section: 'Customer Information' },
-          { name: 'email', label: 'Email Address', section: 'Customer Information' },
-          { name: 'quoteRequired', label: 'Quote Required By', section: 'Customer Information' },
           { name: 'pipeSupplier', label: 'Pipe Supplied By', section: 'Pipe Information' },
           { name: 'material', label: 'Pipe Material', section: 'Pipe Information' },
           { name: 'pipeOD', label: 'Pipe Size OD', section: 'Pipe Information' },
@@ -2906,50 +1134,27 @@
           { name: 'holeSpacing', label: 'Center-to-Center Spacing', section: 'Perforating Details' },
           { name: 'holeRows', label: 'Number of Rows', section: 'Perforating Details' }
         ];
-
-        if (getCheckedValue('material') === 'PVC') {
-          items.splice(6, 0, { name: 'pipeEnds', label: 'PVC Pipe Ends', section: 'Pipe Information' });
-        }
-
-        if (getCheckedValue('pattern') === 'Custom' && getRowOverrideActive()) {
-          items.push({ name: 'rowPositionOverride', label: 'Row Position Override Degrees', section: 'Perforating Details' });
-        }
-
+        if (getCheckedValue('material') === 'PVC') items.splice(2, 0, { name: 'pipeEnds', label: 'PVC Pipe Ends', section: 'Pipe Information' });
+        if (getCheckedValue('pattern') === 'Custom' && getRowOverrideActive()) items.push({ name: 'rowPositionOverride', label: 'Row Position Override Degrees', section: 'Perforating Details' });
         return items;
       }
 
       function getSpecStatus() {
-        var items = getRequiredSpecs();
-        var entered = [];
-        var missing = [];
-        for (var i = 0; i < items.length; i += 1) {
-          var value = getDisplayValue(items[i].name);
-          if (value) {
-            entered.push({ label: items[i].label, value: value, name: items[i].name, section: items[i].section });
-          } else {
-            missing.push(items[i]);
-          }
+        var items = getRequiredSpecs(); var entered = []; var missing = [];
+        for (var i = 0; i < items.length; i++) {
+          var v = getDisplayValue(items[i].name);
+          if (v) entered.push({ label: items[i].label, value: v, name: items[i].name, section: items[i].section });
+          else missing.push(items[i]);
         }
         return { entered: entered, missing: missing };
       }
 
       function renderChipList(items, missing) {
-        if (!items.length) {
-          return '<span class="spec-chip' + (missing ? ' missing' : '') + '">None</span>';
-        }
-        return items.map(function (item) {
-          var text = item.value ? item.label + ': ' + item.value : item.label;
-          return '<span class="spec-chip' + (missing ? ' missing' : '') + '">' + escapeHtml(text) + '</span>';
-        }).join('');
+        if (!items.length) return '<span class="spec-chip' + (missing ? ' missing' : '') + '">None</span>';
+        return items.map(function (item) { return '<span class="spec-chip' + (missing ? ' missing' : '') + '">' + escapeHtml(item.value ? item.label + ': ' + item.value : item.label) + '</span>'; }).join('');
       }
 
-      function setValidationResultVisible(show) {
-        var box = document.getElementById('validationResultBox');
-        if (!box) { return; }
-        if (!show) {
-          box.className = 'validation-result-box';
-        }
-      }
+      function setValidationResultVisible(show) { var b = document.getElementById('validationResultBox'); if (b && !show) b.className = 'validation-result-box'; }
 
       function renderValidationResult(status) {
         var entered = document.getElementById('enteredRequiredList');
@@ -2957,37 +1162,30 @@
         var box = document.getElementById('validationResultBox');
         var title = document.getElementById('validationResultTitle');
         var isValid = status.missing.length === 0;
-
-        if (entered) { entered.innerHTML = renderChipList(status.entered, false); }
-        if (missing) { missing.innerHTML = renderChipList(status.missing, true); }
-        if (title) { title.textContent = isValid ? 'Validation Passed' : 'Validation Failed'; }
-        if (box) { box.className = 'validation-result-box active ' + (isValid ? 'valid' : 'invalid'); }
+        if (entered) entered.innerHTML = renderChipList(status.entered, false);
+        if (missing) missing.innerHTML = renderChipList(status.missing, true);
+        if (title) title.textContent = isValid ? 'Validation Passed' : 'Validation Failed';
+        if (box) box.className = 'validation-result-box active ' + (isValid ? 'valid' : 'invalid');
       }
 
       function validateFormOnly() {
-        var validation = validateManufacturingInputs(true);
-        if (!validation.valid && validation.firstSection && validation.firstSection.scrollIntoView) {
-          validation.firstSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
+        var v = validateManufacturingInputs(true);
+        if (!v.valid && v.firstSection && v.firstSection.scrollIntoView) v.firstSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
 
       function clearValidationState() {
         var controls = form.querySelectorAll('.missing-control');
-        for (var i = 0; i < controls.length; i += 1) {
-          controls[i].className = controls[i].className.replace(/\s*missing-control/g, '');
-        }
+        for (var i = 0; i < controls.length; i++) controls[i].className = controls[i].className.replace(/\s*missing-control/g, '');
         var sections = form.querySelectorAll('.section-error');
-        for (var j = 0; j < sections.length; j += 1) {
-          sections[j].className = sections[j].className.replace(/\s*section-error/g, '');
-        }
+        for (var j = 0; j < sections.length; j++) sections[j].className = sections[j].className.replace(/\s*section-error/g, '');
       }
 
       function markSectionErrorForControl(control) {
-        if (!control) { return null; }
+        if (!control) return null;
         var node = control;
         while (node && node !== form) {
           if (node.className && String(node.className).indexOf('section') !== -1) {
-            if (String(node.className).indexOf('section-error') === -1) { node.className += ' section-error'; }
+            if (String(node.className).indexOf('section-error') === -1) node.className += ' section-error';
             return node;
           }
           node = node.parentNode;
@@ -3000,24 +1198,12 @@
         var input = form.querySelector('[name="' + item.name + '"]');
         if (input) {
           var type = String(input.type || '').toLowerCase();
-          if (type === 'radio') {
-            control = input.closest ? input.closest('.choice-row, .inline-options') : input.parentNode;
-          } else {
-            control = input;
-          }
+          if (type === 'radio') control = input.closest ? input.closest('.choice-row, .inline-options') : input.parentNode;
+          else control = input;
         }
-
-        if (item.name === 'pipeEnds') {
-          control = document.getElementById('pipeEndRowControl') || control;
-        }
-        if (item.name === 'rowPositionOverride') {
-          control = document.getElementById('rowPositionOverridePanel') || control;
-        }
-
-        if (control && String(control.className).indexOf('missing-control') === -1) {
-          control.className += ' missing-control';
-        }
-
+        if (item.name === 'pipeEnds') control = document.getElementById('pipeEndRowControl') || control;
+        if (item.name === 'rowPositionOverride') control = document.getElementById('rowPositionOverridePanel') || control;
+        if (control && String(control.className).indexOf('missing-control') === -1) control.className += ' missing-control';
         return markSectionErrorForControl(control || input);
       }
 
@@ -3025,112 +1211,106 @@
         clearValidationState();
         var status = getSpecStatus();
         var firstSection = null;
-        for (var i = 0; i < status.missing.length; i += 1) {
-          var section = markMissing(status.missing[i]);
-          if (!firstSection && section) { firstSection = section; }
-        }
-        if (showResults) { renderValidationResult(status); }
+        for (var i = 0; i < status.missing.length; i++) { var s = markMissing(status.missing[i]); if (!firstSection && s) firstSection = s; }
+        if (showResults) renderValidationResult(status);
         return { valid: status.missing.length === 0, firstSection: firstSection, missing: status.missing, status: status };
       }
 
       function buildManufacturingPatternData() {
         var p = collectRfqPatternData();
-        var pipeOD = p.pipeOD || 0;
-        var pipeLength = p.pipeLength || 0;
-        var holeDia = p.holeDia || 0;
-        var holeSpacing = p.holeSpacing || 0;
-        var startOffset = p.startOffset || 12;
-        var endOffset = p.endOffset || 12;
+        var pipeOD = p.pipeOD || 0, pipeLength = p.pipeLength || 0, holeDia = p.holeDia || 0, holeSpacing = p.holeSpacing || 0;
+        var startOffset = p.startOffset || 12, endOffset = p.endOffset || 12;
         var rowDegrees = p.rowDegrees && p.rowDegrees.length ? p.rowDegrees.slice() : evenDegrees(p.rowCount || 1);
         var rowCount = Math.max(1, rowDegrees.length || Math.floor(p.rowCount || 1));
         var staggerOffset = p.staggered && holeSpacing > 0 ? holeSpacing / 2 : null;
         var usableLength = Math.max(0, pipeLength - startOffset - endOffset);
         var holesPerRow = holeSpacing > 0 ? Math.floor(usableLength / holeSpacing) + 1 : 0;
         var totalHolesPerPipe = holesPerRow * rowCount;
-        return {
-          material: p.material,
-          pipeSpec: p.pipeSpec,
-          numberOfLengths: p.numberOfLengths || 1,
-          pipeOD: pipeOD,
-          pipeLength: pipeLength,
-          holeDia: holeDia,
-          holeSpacing: holeSpacing,
-          rowCount: rowCount,
-          rowDegrees: rowDegrees,
-          rowPositionOverride: p.rowPositionOverride,
-          startOffset: startOffset,
-          endOffset: endOffset,
-          usableLength: usableLength,
-          holesPerRow: holesPerRow,
-          totalHolesPerPipe: totalHolesPerPipe,
-          totalHolesAllLengths: totalHolesPerPipe * (p.numberOfLengths || 1),
-          staggered: p.staggered,
-          staggerOffset: staggerOffset,
-          patternNotes: p.patternNotes
-        };
+        return { material: p.material, pipeSpec: p.pipeSpec, numberOfLengths: p.numberOfLengths || 1, pipeOD: pipeOD, pipeLength: pipeLength, holeDia: holeDia, holeSpacing: holeSpacing, rowCount: rowCount, rowDegrees: rowDegrees, rowPositionOverride: p.rowPositionOverride, startOffset: startOffset, endOffset: endOffset, usableLength: usableLength, holesPerRow: holesPerRow, totalHolesPerPipe: totalHolesPerPipe, totalHolesAllLengths: totalHolesPerPipe * (p.numberOfLengths || 1), staggered: p.staggered, staggerOffset: staggerOffset, patternNotes: p.patternNotes };
       }
 
       function renderManufacturingDetails() {
         var p = buildManufacturingPatternData();
         var metrics = document.getElementById('manufacturingMetrics');
         var specLine = document.getElementById('manufacturingSpecLine');
-        if (specLine) { specLine.textContent = buildSummary(); }
-        if (metrics) {
-          metrics.innerHTML = [
-            metric('Rows', p.rowCount),
-            metric('Row Positions', (p.rowDegrees || evenDegrees(p.rowCount)).map(formatDegree).join(', ')),
-            metric('Holes / Row', p.holesPerRow),
-            metric('Holes / Pipe', p.totalHolesPerPipe),
-            metric('Total Holes', p.totalHolesAllLengths),
-            metric('Spacing', formatInches(p.holeSpacing)),
-            metric('Offsets', formatInches(p.startOffset) + ' / ' + formatInches(p.endOffset)),
-            metric('Pipe OD', formatInches(p.pipeOD)),
-            metric('Pipe Length', formatInches(p.pipeLength))
-          ].join('');
-        }
+        if (specLine) specLine.textContent = buildSummary();
+        if (metrics) metrics.innerHTML = [metric('Rows', p.rowCount), metric('Row Positions', (p.rowDegrees || evenDegrees(p.rowCount)).map(formatDegree).join(', ')), metric('Holes / Row', p.holesPerRow), metric('Holes / Pipe', p.totalHolesPerPipe), metric('Total Holes', p.totalHolesAllLengths), metric('Spacing', formatInches(p.holeSpacing)), metric('Offsets', formatInches(p.startOffset) + ' / ' + formatInches(p.endOffset)), metric('Pipe OD', formatInches(p.pipeOD)), metric('Pipe Length', formatInches(p.pipeLength))].join('');
         drawRadialSvg('manufacturingRadialSvg', p);
         drawSideSvg('manufacturingSideSvg', p);
       }
 
       function openManufacturingDetails() {
-        var validation = validateManufacturingInputs(true);
-        if (!validation.valid) {
-          if (validation.firstSection && validation.firstSection.scrollIntoView) {
-            validation.firstSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }
-          return;
-        }
+        var v = validateManufacturingInputs(true);
+        if (!v.valid) { if (v.firstSection && v.firstSection.scrollIntoView) v.firstSection.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
         renderManufacturingDetails();
         document.getElementById('manufacturingDetailsModal').className = 'modal-backdrop active';
         document.getElementById('manufacturingDetailsModal').setAttribute('aria-hidden', 'false');
       }
 
-      function closeManufacturingDetails() {
-        document.getElementById('manufacturingDetailsModal').className = 'modal-backdrop';
-        document.getElementById('manufacturingDetailsModal').setAttribute('aria-hidden', 'true');
+      function closeManufacturingDetails() { document.getElementById('manufacturingDetailsModal').className = 'modal-backdrop'; document.getElementById('manufacturingDetailsModal').setAttribute('aria-hidden', 'true'); }
+
+      // Preview Pattern — works for presets and custom, shows both SVGs in approved box
+      function previewPattern() {
+        var pattern = getCheckedValue('pattern');
+        var p;
+        if (pattern === 'Custom' && approvedPattern) {
+          p = approvedPattern;
+        } else {
+          // Build from current RFQ data, using preset degrees if applicable
+          var rfq = collectRfqPatternData();
+          var rowDegrees = rfq.rowDegrees && rfq.rowDegrees.length ? rfq.rowDegrees : evenDegrees(rfq.rowCount || 1);
+          var rowCount = rowDegrees.length || Math.max(1, rfq.rowCount || 1);
+          var holeSpacing = rfq.holeSpacing || 0;
+          var startOffset = rfq.startOffset || 12;
+          var endOffset = rfq.endOffset || 12;
+          var pipeLength = rfq.pipeLength || 0;
+          var usableLength = Math.max(0, pipeLength - startOffset - endOffset);
+          var holesPerRow = holeSpacing > 0 ? Math.floor(usableLength / holeSpacing) + 1 : 0;
+          var staggerOffset = rfq.staggered && holeSpacing > 0 ? holeSpacing / 2 : null;
+          var totalHolesPerPipe = holesPerRow * rowCount;
+          p = {
+            pipeOD: rfq.pipeOD || 0, pipeLength: pipeLength, holeDia: rfq.holeDia || 0,
+            holeSpacing: holeSpacing, rowCount: rowCount, rowDegrees: rowDegrees,
+            startOffset: startOffset, endOffset: endOffset, usableLength: usableLength,
+            holesPerRow: holesPerRow, totalHolesPerPipe: totalHolesPerPipe,
+            totalHolesAllLengths: totalHolesPerPipe * (rfq.numberOfLengths || 1),
+            staggered: rfq.staggered, staggerOffset: staggerOffset,
+            numberOfLengths: rfq.numberOfLengths || 1
+          };
+        }
+        renderPreviewPattern(p);
       }
 
-      function updateSummary() {
-        updateCalculatedTotal();
-        updateStaggerOffset();
-        syncRowPositionPayload();
-        summaryLine.textContent = buildSummary();
+      function renderPreviewPattern(p) {
+        var box = document.getElementById('approvedPatternBox');
+        var summary = document.getElementById('approvedPatternSummary');
+        box.className = 'approved-pattern-box active';
+        summary.innerHTML = '<div class="metric-grid">' + [
+          metric('Pipe OD', formatInches(p.pipeOD)),
+          metric('Pipe Length', formatInches(p.pipeLength)),
+          metric('Hole Dia', formatInches(p.holeDia)),
+          metric('Spacing', formatInches(p.holeSpacing)),
+          metric('Rows', p.rowCount),
+          metric('Row Positions', (p.rowDegrees || evenDegrees(p.rowCount)).map(formatDegree).join(', ')),
+          metric('Holes / Row', p.holesPerRow),
+          metric('Holes / Pipe', p.totalHolesPerPipe),
+          metric('Total Holes', p.totalHolesAllLengths)
+        ].join('') + '</div>' +
+        '<div class="desc">' + escapeHtml(p.rowCount + ' rows @ ' + (p.rowDegrees || evenDegrees(p.rowCount)).map(formatDegree).join(', ') + ' | ' + formatInches(p.holeDia) + ' holes | ' + formatInches(p.holeSpacing) + ' C-C | ' + (p.staggered ? 'staggered 1/2 C-C' : 'straight rows')) + '</div>';
+        drawRadialSvg('approvedPatternSvg', p);
+        drawSideSvg('approvedPatternSideSvg', p);
       }
+
+      function updateSummary() { updateCalculatedTotal(); updateStaggerOffset(); syncRowPositionPayload(); summaryLine.textContent = buildSummary(); }
 
       function handleFormChange(event) {
         clearValidationState();
         setValidationResultVisible(false);
-        if (event && event.target && event.target.name === 'material') {
-          handleMaterialSelectionChanged();
-        }
-        if (event && event.target && event.target.name === 'projectTiming') {
-          updateProjectTimingVisibility();
-        }
-        if (event && event.target && event.target.name === 'pattern') {
-          applyPatternDefaults();
-        }
-        if (event && event.target && event.target.name === 'holeRows' && getRowOverrideActive()) {
-          buildRowOverrideInputs(evenDegrees(getFieldValue('holeRows')));
+        if (event && event.target) {
+          if (event.target.name === 'material') handleMaterialSelectionChanged();
+          if (event.target.name === 'projectTiming') updateProjectTimingVisibility();
+          if (event.target.name === 'pattern') { applyPatternDefaults(); syncBuilderFromPattern(); }
+          if (event.target.name === 'holeRows' && getRowOverrideActive()) buildRowOverrideInputs(evenDegrees(getFieldValue('holeRows')));
         }
         updateStaggerOffset();
         syncRowPositionPayload();
@@ -3169,7 +1349,7 @@
         setIdValue('b_endOffset', p.endOffset === null ? 12 : formatNumber(p.endOffset));
         setIdValue('b_staggered', p.staggered ? 'Yes' : 'No');
         setIdValue('b_patternNotes', p.patternNotes || '');
-        if (getRowOverrideActive()) { buildRowOverrideInputs(p.rowDegrees && p.rowDegrees.length ? p.rowDegrees : evenDegrees(p.rowCount || 1)); }
+        if (getRowOverrideActive()) buildRowOverrideInputs(p.rowDegrees && p.rowDegrees.length ? p.rowDegrees : evenDegrees(p.rowCount || 1));
         refreshCustomPattern();
       }
 
@@ -3189,48 +1369,14 @@
         var rowDegrees = overrideDegrees && overrideDegrees.length === rowCount ? overrideDegrees.slice() : evenDegrees(rowCount);
         var staggerOffset = staggered && holeSpacing > 0 ? holeSpacing / 2 : null;
         var totalHolesPerPipe = holesPerRow * rowCount;
-
-        return {
-          material: rfq.material,
-          pipeSpec: rfq.pipeSpec,
-          numberOfLengths: rfq.numberOfLengths || 1,
-          pipeOD: pipeOD,
-          pipeLength: pipeLength,
-          holeDia: holeDia,
-          holeSpacing: holeSpacing,
-          rowCount: rowCount,
-          rowDegrees: rowDegrees,
-          rowPositionOverride: rfq.rowPositionOverride,
-          startOffset: startOffset,
-          endOffset: endOffset,
-          usableLength: usableLength,
-          holesPerRow: holesPerRow,
-          totalHolesPerPipe: totalHolesPerPipe,
-          totalHolesAllLengths: totalHolesPerPipe * (rfq.numberOfLengths || 1),
-          staggered: staggered,
-          staggerOffset: staggerOffset,
-          patternNotes: getIdValue('b_patternNotes'),
-          approvedAt: new Date().toISOString()
-        };
+        return { material: rfq.material, pipeSpec: rfq.pipeSpec, numberOfLengths: rfq.numberOfLengths || 1, pipeOD: pipeOD, pipeLength: pipeLength, holeDia: holeDia, holeSpacing: holeSpacing, rowCount: rowCount, rowDegrees: rowDegrees, rowPositionOverride: rfq.rowPositionOverride, startOffset: startOffset, endOffset: endOffset, usableLength: usableLength, holesPerRow: holesPerRow, totalHolesPerPipe: totalHolesPerPipe, totalHolesAllLengths: totalHolesPerPipe * (rfq.numberOfLengths || 1), staggered: staggered, staggerOffset: staggerOffset, patternNotes: getIdValue('b_patternNotes'), approvedAt: new Date().toISOString() };
       }
 
-      function metric(label, value) {
-        return '<div class="metric"><div class="k">' + label + '</div><div class="v">' + value + '</div></div>';
-      }
+      function metric(label, value) { return '<div class="metric"><div class="k">' + label + '</div><div class="v">' + value + '</div></div>'; }
 
       function refreshCustomPattern() {
         var p = collectBuilderPatternData();
-        document.getElementById('builderMetrics').innerHTML = [
-          metric('Rows', p.rowCount),
-          metric('Row Positions', (p.rowDegrees || evenDegrees(p.rowCount)).map(formatDegree).join(', ')),
-          metric('Holes / Row', p.holesPerRow),
-          metric('Holes / Pipe', p.totalHolesPerPipe),
-          metric('Total Holes', p.totalHolesAllLengths),
-          metric('Spacing', formatInches(p.holeSpacing)),
-          metric('Offsets', formatInches(p.startOffset) + ' / ' + formatInches(p.endOffset)),
-          metric('Pipe OD', formatInches(p.pipeOD)),
-          metric('Pipe Length', formatInches(p.pipeLength))
-        ].join('');
+        document.getElementById('builderMetrics').innerHTML = [metric('Rows', p.rowCount), metric('Row Positions', (p.rowDegrees || evenDegrees(p.rowCount)).map(formatDegree).join(', ')), metric('Holes / Row', p.holesPerRow), metric('Holes / Pipe', p.totalHolesPerPipe), metric('Total Holes', p.totalHolesAllLengths), metric('Spacing', formatInches(p.holeSpacing)), metric('Offsets', formatInches(p.startOffset) + ' / ' + formatInches(p.endOffset)), metric('Pipe OD', formatInches(p.pipeOD)), metric('Pipe Length', formatInches(p.pipeLength))].join('');
         drawRadialSvg('radialSvg', p);
         drawSideSvg('sideSvg', p);
       }
@@ -3243,10 +1389,7 @@
         document.getElementById('customPatternModal').setAttribute('aria-hidden', 'false');
       }
 
-      function closeCustomPatternBuilder() {
-        document.getElementById('customPatternModal').className = 'modal-backdrop';
-        document.getElementById('customPatternModal').setAttribute('aria-hidden', 'true');
-      }
+      function closeCustomPatternBuilder() { document.getElementById('customPatternModal').className = 'modal-backdrop'; document.getElementById('customPatternModal').setAttribute('aria-hidden', 'true'); }
 
       function approveCustomPattern() {
         approvedPattern = collectBuilderPatternData();
@@ -3257,8 +1400,8 @@
         setFieldValue('holeStartOffset', formatNumber(approvedPattern.startOffset));
         setFieldValue('holeEndOffset', formatNumber(approvedPattern.endOffset));
         setRadioValue('staggerRequired', approvedPattern.staggered ? 'Yes' : 'No');
-        if (approvedPattern.patternNotes) { setFieldValue('patternNotes', approvedPattern.patternNotes); }
-        renderApprovedPattern();
+        if (approvedPattern.patternNotes) setFieldValue('patternNotes', approvedPattern.patternNotes);
+        renderPreviewPattern(approvedPattern);
         updateCards();
         updateSummary();
         closeCustomPatternBuilder();
@@ -3269,233 +1412,95 @@
         document.getElementById('approvedPatternBox').className = 'approved-pattern-box';
         document.getElementById('approvedPatternSummary').innerHTML = '';
         document.getElementById('approvedPatternSvg').innerHTML = '';
+        document.getElementById('approvedPatternSideSvg').innerHTML = '';
         updateSummary();
-      }
-
-      function renderApprovedPattern() {
-        var box = document.getElementById('approvedPatternBox');
-        var summary = document.getElementById('approvedPatternSummary');
-        if (!approvedPattern) { return; }
-
-        box.className = 'approved-pattern-box active';
-        summary.innerHTML = '<div class="metric-grid">' + [
-          metric('Pipe OD', formatInches(approvedPattern.pipeOD)),
-          metric('Pipe Length', formatInches(approvedPattern.pipeLength)),
-          metric('Hole Dia', formatInches(approvedPattern.holeDia)),
-          metric('Spacing', formatInches(approvedPattern.holeSpacing)),
-          metric('Rows', approvedPattern.rowCount),
-          metric('Row Positions', (approvedPattern.rowDegrees || evenDegrees(approvedPattern.rowCount)).map(formatDegree).join(', ')),
-          metric('Holes / Row', approvedPattern.holesPerRow),
-          metric('Holes / Pipe', approvedPattern.totalHolesPerPipe),
-          metric('Total Holes', approvedPattern.totalHolesAllLengths)
-        ].join('') + '</div>' +
-        '<div class="desc">' + escapeHtml(approvedPattern.rowCount + ' rows @ ' + (approvedPattern.rowDegrees || evenDegrees(approvedPattern.rowCount)).map(formatDegree).join(', ') + ' | ' + formatInches(approvedPattern.holeDia) + ' holes | ' + formatInches(approvedPattern.holeSpacing) + ' C-C | ' + (approvedPattern.staggered ? 'staggered 1/2 C-C' : 'straight rows')) + '</div>';
-
-        drawRadialSvg('approvedPatternSvg', approvedPattern);
       }
 
       function drawRadialSvg(svgId, p) {
         var svg = document.getElementById(svgId);
+        if (!svg) return;
         svg.setAttribute('viewBox', '0 0 340 340');
         svg.innerHTML = '';
-        var cx = 170;
-        var cy = 170;
-        var radius = 115;
+        var cx = 170, cy = 170, radius = 115;
         var holeR = Math.max(4, Math.min(18, (p.holeDia / Math.max(p.pipeOD, 0.001)) * radius * 2));
         var rowDegrees = p.rowDegrees && p.rowDegrees.length ? p.rowDegrees : evenDegrees(p.rowCount);
         p.rowCount = rowDegrees.length || p.rowCount;
-
         add(svg, 'circle', { cx: cx, cy: cy, r: radius, fill: '#f8fafc', stroke: '#111827', 'stroke-width': 2 });
         add(svg, 'circle', { cx: cx, cy: cy, r: 3, fill: '#111827' });
-
-        for (var i = 0; i < rowDegrees.length; i += 1) {
+        for (var i = 0; i < rowDegrees.length; i++) {
           var theta = (normalizeDegree(rowDegrees[i]) - 90) * Math.PI / 180;
-          var x = cx + radius * Math.cos(theta);
-          var y = cy + radius * Math.sin(theta);
-          var lx = cx + (radius + 30) * Math.cos(theta);
-          var ly = cy + (radius + 30) * Math.sin(theta);
+          var x = cx + radius * Math.cos(theta), y = cy + radius * Math.sin(theta);
+          var lx = cx + (radius + 30) * Math.cos(theta), ly = cy + (radius + 30) * Math.sin(theta);
           add(svg, 'line', { x1: cx, y1: cy, x2: x, y2: y, stroke: '#cbd5e1', 'stroke-width': 1 });
           add(svg, 'circle', { cx: x, cy: y, r: holeR, fill: '#0b5da8', stroke: '#003b73', 'stroke-width': 1 });
           addText(svg, lx, ly + 4, String(i + 1), 'middle', '12px', '#111827');
         }
-
         addText(svg, cx, 22, rowDegrees.length + ' rows @ ' + rowDegrees.map(formatDegree).join(', '), 'middle', '13px', '#334155');
         addText(svg, cx, 320, 'OD ' + formatInches(p.pipeOD) + ' | Hole ' + formatInches(p.holeDia), 'middle', '12px', '#667085');
       }
 
       function drawSideSvg(svgId, p) {
         var svg = document.getElementById(svgId);
+        if (!svg) return;
         svg.setAttribute('viewBox', '0 0 720 420');
         svg.innerHTML = '';
-        var marginL = 54;
-        var marginT = 54;
-        var plotW = 610;
-        var plotH = 285;
+        var mL = 54, mT = 54, plotW = 610, plotH = 285;
         var rowDegrees = p.rowDegrees && p.rowDegrees.length ? p.rowDegrees : evenDegrees(p.rowCount);
         p.rowCount = rowDegrees.length || p.rowCount;
         var rowGap = p.rowCount > 1 ? plotH / (p.rowCount - 1) : 0;
-        var visualLength = Math.min(Math.max(p.pipeLength || 0, 0.001), 120);
-        var isWindowed = (p.pipeLength || 0) > visualLength + 0.001;
-        var sx = plotW / Math.max(0.001, visualLength);
+        var visLen = Math.min(Math.max(p.pipeLength || 0, 0.001), 120);
+        var isWindowed = (p.pipeLength || 0) > visLen + 0.001;
+        var sx = plotW / Math.max(0.001, visLen);
         var holeR = Math.max(3.5, Math.min(9, p.holeDia * sx / 2));
         var staggerOffset = p.staggered && p.holeSpacing > 0 ? (p.staggerOffset || p.holeSpacing / 2) : 0;
-        var startX = marginL + Math.min(p.startOffset || 0, visualLength) * sx;
+        var startX = mL + Math.min(p.startOffset || 0, visLen) * sx;
         var endBoundary = Math.max(0, (p.pipeLength || 0) - (p.endOffset || 0));
-        var endVisible = endBoundary <= visualLength + 0.0001;
-        var endX = marginL + Math.min(endBoundary, visualLength) * sx;
-
-        add(svg, 'rect', { x: marginL, y: marginT, width: plotW, height: plotH, rx: 8, fill: '#f8fafc', stroke: '#111827', 'stroke-width': 1.5 });
-        if ((p.startOffset || 0) <= visualLength) {
-          add(svg, 'line', { x1: startX, y1: marginT - 12, x2: startX, y2: marginT + plotH + 12, stroke: '#f97316', 'stroke-width': 1.5, 'stroke-dasharray': '5 4' });
-          addText(svg, startX, marginT - 20, 'Start ' + formatInches(p.startOffset), 'middle', '11px', '#9a3412');
-        }
-        if (endVisible) {
-          add(svg, 'line', { x1: endX, y1: marginT - 12, x2: endX, y2: marginT + plotH + 12, stroke: '#f97316', 'stroke-width': 1.5, 'stroke-dasharray': '5 4' });
-          addText(svg, endX, marginT - 20, 'End ' + formatInches(p.endOffset), 'middle', '11px', '#9a3412');
-        } else if (isWindowed) {
-          add(svg, 'line', { x1: marginL + plotW, y1: marginT, x2: marginL + plotW, y2: marginT + plotH, stroke: '#94a3b8', 'stroke-width': 1.5, 'stroke-dasharray': '4 4' });
-          addText(svg, marginL + plotW, marginT - 20, '10 ft view cut', 'end', '11px', '#475569');
-        }
-
-        for (var row = 0; row < p.rowCount; row += 1) {
-          var y = p.rowCount === 1 ? marginT + plotH / 2 : marginT + row * rowGap;
-          add(svg, 'line', { x1: marginL, y1: y, x2: marginL + plotW, y2: y, stroke: '#e2e8f0', 'stroke-width': 1 });
-          addText(svg, marginL - 26, y + 4, String(row + 1), 'middle', '12px', '#334155');
-          addText(svg, marginL - 4, y + 4, formatDegree(rowDegrees[row]), 'end', '10px', '#667085');
-
-          for (var h = 0; h < p.holesPerRow; h += 1) {
+        var endVisible = endBoundary <= visLen + 0.0001;
+        var endX = mL + Math.min(endBoundary, visLen) * sx;
+        add(svg, 'rect', { x: mL, y: mT, width: plotW, height: plotH, rx: 8, fill: '#f8fafc', stroke: '#111827', 'stroke-width': 1.5 });
+        if ((p.startOffset || 0) <= visLen) { add(svg, 'line', { x1: startX, y1: mT - 12, x2: startX, y2: mT + plotH + 12, stroke: '#f97316', 'stroke-width': 1.5, 'stroke-dasharray': '5 4' }); addText(svg, startX, mT - 20, 'Start ' + formatInches(p.startOffset), 'middle', '11px', '#9a3412'); }
+        if (endVisible) { add(svg, 'line', { x1: endX, y1: mT - 12, x2: endX, y2: mT + plotH + 12, stroke: '#f97316', 'stroke-width': 1.5, 'stroke-dasharray': '5 4' }); addText(svg, endX, mT - 20, 'End ' + formatInches(p.endOffset), 'middle', '11px', '#9a3412'); }
+        else if (isWindowed) { add(svg, 'line', { x1: mL + plotW, y1: mT, x2: mL + plotW, y2: mT + plotH, stroke: '#94a3b8', 'stroke-width': 1.5, 'stroke-dasharray': '4 4' }); addText(svg, mL + plotW, mT - 20, '10 ft view cut', 'end', '11px', '#475569'); }
+        for (var row = 0; row < p.rowCount; row++) {
+          var y = p.rowCount === 1 ? mT + plotH / 2 : mT + row * rowGap;
+          add(svg, 'line', { x1: mL, y1: y, x2: mL + plotW, y2: y, stroke: '#e2e8f0', 'stroke-width': 1 });
+          addText(svg, mL - 26, y + 4, String(row + 1), 'middle', '12px', '#334155');
+          addText(svg, mL - 4, y + 4, formatDegree(rowDegrees[row]), 'end', '10px', '#667085');
+          for (var h = 0; h < p.holesPerRow; h++) {
             var pos = p.startOffset + h * p.holeSpacing;
-            if (p.staggered && row % 2 === 1) { pos += staggerOffset; }
-            if (pos > p.pipeLength - p.endOffset + 0.0001) { continue; }
-            if (pos > visualLength + 0.0001) { break; }
-            var x = marginL + pos * sx;
-            add(svg, 'circle', { cx: x, cy: y, r: holeR, fill: '#0b5da8', stroke: '#003b73', 'stroke-width': 0.75 });
+            if (p.staggered && row % 2 === 1) pos += staggerOffset;
+            if (pos > p.pipeLength - p.endOffset + 0.0001) continue;
+            if (pos > visLen + 0.0001) break;
+            add(svg, 'circle', { cx: mL + pos * sx, cy: y, r: holeR, fill: '#0b5da8', stroke: '#003b73', 'stroke-width': 0.75 });
           }
         }
-
         var title = isWindowed ? 'Unwrapped view — first 10 ft of ' + formatInches(p.pipeLength) + ' pipe' : 'Unwrapped view — length ' + formatInches(p.pipeLength);
-        addText(svg, marginL + plotW / 2, 24, title, 'middle', '14px', '#334155');
-        addText(svg, marginL + plotW / 2, 382, formatInches(p.holeSpacing) + ' spacing along pipe' + (p.staggered ? ' | stagger 1/2 C-C' : '') + (isWindowed ? ' | visual scale limited to first 120&quot;' : ''), 'middle', '12px', '#667085');
+        addText(svg, mL + plotW / 2, 24, title, 'middle', '14px', '#334155');
+        addText(svg, mL + plotW / 2, 382, formatInches(p.holeSpacing) + ' spacing along pipe' + (p.staggered ? ' | stagger 1/2 C-C' : '') + (isWindowed ? ' | visual scale limited to first 120"' : ''), 'middle', '12px', '#667085');
       }
 
-      function add(svg, tag, attrs) {
-        var el = document.createElementNS('http://www.w3.org/2000/svg', tag);
-        for (var key in attrs) {
-          if (Object.prototype.hasOwnProperty.call(attrs, key)) {
-            el.setAttribute(key, attrs[key]);
-          }
-        }
-        svg.appendChild(el);
-        return el;
-      }
-
-      function addText(svg, x, y, value, anchor, size, fill) {
-        var el = add(svg, 'text', {
-          x: x,
-          y: y,
-          'text-anchor': anchor || 'start',
-          'font-size': size || '12px',
-          fill: fill || '#111827',
-          'font-family': 'Arial, Helvetica, sans-serif'
-        });
-        el.textContent = value;
-        return el;
-      }
-
-      function escapeHtml(str) {
-        return String(str)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;')
-          .replace(/'/g, '&#039;');
-      }
-
-      function addEvent(element, eventName, handler) {
-        if (!element) { return; }
-        if (element.addEventListener) { element.addEventListener(eventName, handler, false); }
-        else if (element.attachEvent) { element.attachEvent('on' + eventName, handler); }
-      }
-
-      function runSmokeTests() {
-        var original = {
-          material: getCheckedValue('material'), pattern: getCheckedValue('pattern'), staggerRequired: getCheckedValue('staggerRequired'),
-          od: getFieldValue('pipeOD'), spec: getFieldValue('pipeSpec'), length: getFieldValue('pipeLength'), numberOfLengths: getFieldValue('numberOfLengths'),
-          providedTotal: getFieldValue('providedTotal'), diameter: getFieldValue('holeDiameter'), spacing: getFieldValue('holeSpacing'), rows: getFieldValue('holeRows'), staggerOffset: getFieldValue('staggerOffset')
-        };
-
-        setRadioValue('material', 'HDPE');
-        setRadioValue('pattern', 'B');
-        setRadioValue('staggerRequired', 'No');
-        setFieldValue('pipeOD', '24"');
-        setFieldValue('pipeSpec', 'DR11');
-        setFieldValue('pipeLength', '17');
-        setFieldValue('numberOfLengths', '10');
-        setFieldValue('providedTotal', '170');
-        setFieldValue('holeDiameter', '16mm');
-        setFieldValue('holeSpacing', '150mm');
-        setFieldValue('holeRows', '4');
-
-        var passed = buildSummary() === '24" DR11 HDPE | 10 pcs @ 17 ft each = 170 ft | 16mm holes | 150mm C-C | 4 rows | Pattern B';
-
-        setRadioValue('material', original.material);
-        setRadioValue('pattern', original.pattern || 'A');
-        setRadioValue('staggerRequired', original.staggerRequired || 'No');
-        setFieldValue('pipeOD', original.od);
-        setFieldValue('pipeSpec', original.spec);
-        setFieldValue('pipeLength', original.length);
-        setFieldValue('numberOfLengths', original.numberOfLengths);
-        setFieldValue('providedTotal', original.providedTotal);
-        setFieldValue('holeDiameter', original.diameter);
-        setFieldValue('holeSpacing', original.spacing);
-        setFieldValue('holeRows', original.rows);
-        setFieldValue('staggerOffset', original.staggerOffset);
-        approvedPattern = null;
-
-        if (testPanel) {
-          testPanel.style.display = 'block';
-          testPanel.textContent = passed ? 'Smoke tests: PASS' : 'Smoke tests: FAIL';
-        }
-      }
+      function add(svg, tag, attrs) { var el = document.createElementNS('http://www.w3.org/2000/svg', tag); for (var k in attrs) if (Object.prototype.hasOwnProperty.call(attrs, k)) el.setAttribute(k, attrs[k]); svg.appendChild(el); return el; }
+      function addText(svg, x, y, value, anchor, size, fill) { var el = add(svg, 'text', { x: x, y: y, 'text-anchor': anchor || 'start', 'font-size': size || '12px', fill: fill || '#111827', 'font-family': 'Arial, Helvetica, sans-serif' }); el.textContent = value; return el; }
+      function escapeHtml(str) { return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;'); }
+      function addEvent(el, ev, fn) { if (!el) return; if (el.addEventListener) el.addEventListener(ev, fn, false); else if (el.attachEvent) el.attachEvent('on' + ev, fn); }
 
       addEvent(form, 'input', handleFormChange);
       addEvent(form, 'change', handleFormChange);
 
       ['b_pipeOD','b_pipeLength','b_holeDia','b_rowCount','b_holeSpacing','b_startOffset','b_endOffset','b_staggered'].forEach(function (id) {
         var el = document.getElementById(id);
-        addEvent(el, 'input', function () {
-          if (id === 'b_rowCount' && getRowOverrideActive()) { buildRowOverrideInputs(evenDegrees(getBuilderRowCount())); }
-          refreshCustomPattern();
-        });
-        addEvent(el, 'change', function () {
-          if (id === 'b_rowCount' && getRowOverrideActive()) { buildRowOverrideInputs(evenDegrees(getBuilderRowCount())); }
-          refreshCustomPattern();
-        });
+        addEvent(el, 'input', function () { if (id === 'b_rowCount' && getRowOverrideActive()) buildRowOverrideInputs(evenDegrees(getBuilderRowCount())); refreshCustomPattern(); });
+        addEvent(el, 'change', function () { if (id === 'b_rowCount' && getRowOverrideActive()) buildRowOverrideInputs(evenDegrees(getBuilderRowCount())); refreshCustomPattern(); });
       });
 
-      addEvent(document.getElementById('customPatternModal'), 'click', function (event) {
-        if (event.target && event.target.id === 'customPatternModal') { closeCustomPatternBuilder(); }
-      });
-
-      addEvent(document.getElementById('manufacturingDetailsModal'), 'click', function (event) {
-        if (event.target && event.target.id === 'manufacturingDetailsModal') { closeManufacturingDetails(); }
-      });
-
-      addEvent(document.getElementById('pipeEndModal'), 'click', function (event) {
-        if (event.target && event.target.id === 'pipeEndModal') { closePipeEndModal(); }
-      });
-
-      addEvent(document, 'keydown', function (event) {
-        if (event.key === 'Escape') {
-          closeCustomPatternBuilder();
-          closePipeEndModal();
-        }
-      });
+      addEvent(document.getElementById('customPatternModal'), 'click', function (e) { if (e.target && e.target.id === 'customPatternModal') closeCustomPatternBuilder(); });
+      addEvent(document.getElementById('manufacturingDetailsModal'), 'click', function (e) { if (e.target && e.target.id === 'manufacturingDetailsModal') closeManufacturingDetails(); });
+      addEvent(document.getElementById('pipeEndModal'), 'click', function (e) { if (e.target && e.target.id === 'pipeEndModal') closePipeEndModal(); });
+      addEvent(document, 'keydown', function (e) { if (e.key === 'Escape') { closeCustomPatternBuilder(); closePipeEndModal(); } });
 
       loadAttachmentPayload();
       initAttachmentInputs();
       renderAttachments();
-      runSmokeTests();
       applyPatternDefaults();
       updateCards();
       updateSummary();
